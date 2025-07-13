@@ -1,7 +1,12 @@
 // app/layout.tsx
-import "./globals.css";
-import Link from "next/link";
-import { ReactNode } from "react";
+import './globals.css';
+import Link from 'next/link';
+import { ReactNode } from 'react';
+
+export const metadata = {
+  title: 'Luna Haven Wholesaling',
+  description: 'We help homeowners sell fast and investors find great deals.',
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -19,3 +24,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Link href="/how-it-works" className="hover:underline">How It Works</Link>
             </div>
           </div>
+        </nav>
+        <main className="p-6">{children}</main>
+      </body>
+    </html>
+  );
+}
