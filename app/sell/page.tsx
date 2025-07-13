@@ -76,6 +76,22 @@ export default function SellPage() {
           Thanks — we’ll be in touch shortly.
         </p>
       )}
+
+      {/* CTA block */}
+      <div className="bg-gray-100 p-6 rounded mt-10 text-center">
+        <h2 className="text-xl font-semibold mb-2">Not Sure If You’re Ready to Sell?</h2>
+        <p className="mb-4 text-gray-700">
+          Stuck with tenants? Exploring your options? Book a free call to see how our team can help you move forward — whether that means selling, partnering, or something in between.
+        </p>
+        <a
+          href="https://calendly.com/your-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"
+        >
+          Book a Free Call
+        </a>
+      </div>
     </main>
   );
 }
