@@ -192,3 +192,15 @@
     filter: blur(3px);
   }
 }
+
+/* --------------------------------------------- */
+/* ✅ DARK MODE SUPPORT — added at the bottom */
+/* --------------------------------------------- */
+
+body {
+  @apply bg-white text-gray-900;
+}
+
+.dark body {
+  @apply bg-gray-900 text-white;
+}
