@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { type Demo, type DemoCategory } from '#/lib/db';
 import { LinkStatus } from '#/ui/link-status';
 import { NextLogoDark } from '#/ui/logo-next';
@@ -7,29 +8,53 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { Suspense, useState } from 'react';
+import { Suspense } from 'react';
 
 export function GlobalNav({ items }: { items: DemoCategory[] }) {
   const [isOpen, setIsOpen] = useState(false);
   const close = () => setIsOpen(false);
 
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    if (stored) {
+      setTheme(stored);
+      document.documentElement.classList.toggle('dark', stored === 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    localStorage.setItem('theme', next);
+    document.documentElement.classList.toggle('dark', next === 'dark');
+  };
+
   return (
     <>
-      <div className="flex h-14 items-center px-4 py-4 lg:h-auto">
+      <div className="flex h-14 items-center justify-between px-4 py-4 lg:h-auto">
         <Link
           href="/"
-          className="group flex w-full items-center gap-x-2.5"
+          className="group flex items-center gap-x-2.5"
           onClick={close}
         >
           <div className="size-9 rounded-full border-2 border-gray-800 group-hover:border-gray-700">
             <NextLogoDark />
           </div>
-
           <h3 className="text-lg font-medium text-gray-200 group-hover:text-white">
             Playground
           </h3>
         </Link>
+
+        <button
+          onClick={toggleTheme}
+          className="ml-auto rounded px-3 py-1 text-sm bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+        >
+          {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+        </button>
       </div>
+
       <button
         type="button"
         className="group absolute top-0 right-0 flex h-14 items-center gap-x-2 px-4 lg:hidden"
@@ -52,29 +77,24 @@ export function GlobalNav({ items }: { items: DemoCategory[] }) {
         })}
       >
         <nav className="space-y-6 px-2 pt-5 pb-24">
-          {items.map((section) => {
-            return (
-              <div key={section.name}>
-                <div className="mb-2 px-3 font-mono text-xs font-semibold tracking-wide text-gray-600 uppercase">
-                  <div>{section.name}</div>
-                </div>
-
-                <div className="flex flex-col gap-1">
-                  {section.items.map((item) => (
-                    // `useSelectedLayoutSegment` suspends, so we place
-                    // a Suspense boundary as deep as possible to allow
-                    // the route's fallback shell to include these elements
-                    <Suspense
-                      key={item.slug}
-                      fallback={<NavItem item={item} close={close} />}
-                    >
-                      <DynamicNavItem item={item} close={close} />
-                    </Suspense>
-                  ))}
-                </div>
+          {items.map((section) => (
+            <div key={section.name}>
+              <div className="mb-2 px-3 font-mono text-xs font-semibold tracking-wide text-gray-600 uppercase">
+                <div>{section.name}</div>
               </div>
-            );
-          })}
+
+              <div className="flex flex-col gap-1">
+                {section.items.map((item) => (
+                  <Suspense
+                    key={item.slug}
+                    fallback={<NavItem item={item} close={close} />}
+                  >
+                    <DynamicNavItem item={item} close={close} />
+                  </Suspense>
+                ))}
+              </div>
+            </div>
+          ))}
         </nav>
       </div>
     </>
