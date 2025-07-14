@@ -23,7 +23,7 @@ export default function Home() {
   const next = () => setStep(step + 1);
   const back = () => setStep(step - 1);
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await fetch('https://formspree.io/f/xnnzagjb', {
       method: 'POST',
