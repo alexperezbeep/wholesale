@@ -1,15 +1,21 @@
-import CredibilitySection from '../components/CredibilitySection';
+'use client';
+
 import Link from 'next/link';
+import CredibilitySection from '../components/CredibilitySection';
 
 export default function HomePage() {
   return (
-    <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-6 py-20">
-      {/* Hero */}
+    <main
+      id="top"
+      className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-6 py-20"
+    >
+      {/* Hero Section */}
       <section className="text-center max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-4">Sell Your House for Cash</h1>
         <p className="mb-6 text-lg">
           Luna Haven helps homeowners sell directly — no fees, no agents, no repairs.
         </p>
+
         <form className="flex flex-col gap-4 items-center mb-6">
           <input
             type="text"
@@ -58,7 +64,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Credibility Testimonials */}
+      {/* Credibility Section */}
       <CredibilitySection />
 
       {/* Final CTA */}
