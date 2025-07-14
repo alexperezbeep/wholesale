@@ -15,7 +15,7 @@ export default function Home() {
     concern: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -33,172 +33,127 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 px-6 py-12">
-      <section className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <h1 className="text-4xl font-bold text-blue-700">Sell Your House for Cash</h1>
-        <p className="text-lg text-gray-600">We buy houses fast in any condition. No fees. No agents. No hassle.</p>
+    <main className="bg-gray-50">
+      {/* Hero Banner */}
+      <section className="relative w-full h-[500px] bg-cover bg-center" style={{ backgroundImage: 'url("/80ffc70157d62f19bcc5e6c4fff957da-uncropped_scaled_within_1536_1152.jpg")' }}>
+        <div className="bg-black/60 w-full h-full flex flex-col justify-center items-center text-white px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Sell Your House for Cash</h1>
+          <p className="text-lg md:text-xl mb-6 text-center max-w-xl">We buy houses fast in any condition. No fees. No agents. No hassle.</p>
+          <button onClick={next} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded shadow text-lg">Get My Cash Offer</button>
+        </div>
+      </section>
+
+      {/* Multi-step Form */}
+      <section className="max-w-xl mx-auto py-16 px-4 text-center">
         {step === 0 && (
-          <button
-            onClick={next}
-            className="bg-blue-600 text-white px-6 py-3 mt-4 font-semibold rounded shadow hover:bg-blue-700 transition"
-          >
-            Get My Cash Offer
-          </button>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Why are you looking to sell?</h2>
+            <input className="border p-2 w-full" name="motivation" onChange={handleChange} />
+            <button onClick={next} className="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+          </div>
+        )}
+        {step === 1 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Does the property need repairs?</h2>
+            <input className="border p-2 w-full" name="repairs" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back} className="text-blue-600">Back</button>
+              <button onClick={next} className="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+          </div>
+        )}
+        {step === 2 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's your timeline to sell?</h2>
+            <input className="border p-2 w-full" name="timeline" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back} className="text-blue-600">Back</button>
+              <button onClick={next} className="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+          </div>
+        )}
+        {step === 3 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's the property address?</h2>
+            <input className="border p-2 w-full" name="address" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back} className="text-blue-600">Back</button>
+              <button onClick={next} className="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+          </div>
+        )}
+        {step === 4 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's your name?</h2>
+            <input className="border p-2 w-full" name="name" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back} className="text-blue-600">Back</button>
+              <button onClick={next} className="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+          </div>
+        )}
+        {step === 5 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's your email?</h2>
+            <input className="border p-2 w-full" type="email" name="email" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back} className="text-blue-600">Back</button>
+              <button onClick={next} className="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+          </div>
+        )}
+        {step === 6 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's your phone number?</h2>
+            <input className="border p-2 w-full" name="phone" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back} className="text-blue-600">Back</button>
+              <button onClick={next} className="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+          </div>
+        )}
+        {step === 7 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">How did you hear about us?</h2>
+            <input className="border p-2 w-full" name="how" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back} className="text-blue-600">Back</button>
+              <button onClick={next} className="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+            </div>
+          </div>
+        )}
+        {step === 8 && (
+          <form onSubmit={handleSubmit}>
+            <h2 className="text-2xl font-bold mb-4">Any concerns about working with a homebuyer?</h2>
+            <input className="border p-2 w-full" name="concern" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button type="button" onClick={back} className="text-blue-600">Back</button>
+              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+            </div>
+          </form>
+        )}
+        {step === 9 && (
+          <div>
+            <h2 className="text-2xl font-bold">Hang tight… we're reviewing your info!</h2>
+          </div>
         )}
       </section>
 
-      {step > 0 && (
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-6">
-          {step === 1 && (
-            <>
-              <label className="block text-lg font-medium mb-2">Why are you looking to sell?</label>
-              <select name="motivation" onChange={handleChange} className="w-full border p-2 rounded">
-                <option value="">Select one</option>
-                <option value="Job relocation">Job relocation</option>
-                <option value="Downsizing">Downsizing</option>
-                <option value="Inherited property">Inherited property</option>
-                <option value="Facing foreclosure">Facing foreclosure</option>
-                <option value="Other">Other</option>
-              </select>
-              <button onClick={next} type="button" className="btn-primary">Next</button>
-            </>
-          )}
-
-          {step === 2 && (
-            <>
-              <label className="block text-lg font-medium mb-2">Does the property need repairs?</label>
-              <select name="repairs" onChange={handleChange} className="w-full border p-2 rounded">
-                <option value="">Select one</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-                <option value="Not sure">Not sure</option>
-              </select>
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button onClick={next} type="button" className="btn-primary">Next</button>
+      {/* Testimonials */}
+      <section className="bg-white py-16 px-6">
+        <h2 className="text-3xl font-bold text-center mb-10">What Our Sellers Say</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {["9b38c5535dc030aaa80d043c0db5f9fb", "2796207fec2adaa303207a6c02112010", "791d35843fdfe28a51337985e8a43d47"].map((img, idx) => (
+            <div key={idx} className="shadow rounded overflow-hidden">
+              <img src={`/${img}-uncropped_scaled_within_1536_1152.jpg`} className="w-full h-64 object-cover" />
+              <div className="p-4 text-sm">
+                <p>"Great experience working with this team!"</p>
+                <p className="font-semibold mt-2">— Happy Seller</p>
               </div>
-            </>
-          )}
-
-          {step === 3 && (
-            <>
-              <label className="block text-lg font-medium mb-2">What's your timeline to sell?</label>
-              <select name="timeline" onChange={handleChange} className="w-full border p-2 rounded">
-                <option value="">Select one</option>
-                <option value="ASAP">ASAP</option>
-                <option value="1-3 months">1-3 months</option>
-                <option value="3+ months">3+ months</option>
-              </select>
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button onClick={next} type="button" className="btn-primary">Next</button>
-              </div>
-            </>
-          )}
-
-          {step === 4 && (
-            <>
-              <label className="block text-lg font-medium mb-2">What's the property address?</label>
-              <input name="address" onChange={handleChange} className="w-full border p-2 rounded" />
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button onClick={next} type="button" className="btn-primary">Next</button>
-              </div>
-            </>
-          )}
-
-          {step === 5 && (
-            <>
-              <label className="block text-lg font-medium mb-2">What's your name?</label>
-              <input name="name" onChange={handleChange} className="w-full border p-2 rounded" />
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button onClick={next} type="button" className="btn-primary">Next</button>
-              </div>
-            </>
-          )}
-
-          {step === 6 && (
-            <>
-              <label className="block text-lg font-medium mb-2">What's your email?</label>
-              <input type="email" name="email" onChange={handleChange} className="w-full border p-2 rounded" />
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button onClick={next} type="button" className="btn-primary">Next</button>
-              </div>
-            </>
-          )}
-
-          {step === 7 && (
-            <>
-              <label className="block text-lg font-medium mb-2">What's your phone number?</label>
-              <input name="phone" onChange={handleChange} className="w-full border p-2 rounded" />
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button onClick={next} type="button" className="btn-primary">Next</button>
-              </div>
-            </>
-          )}
-
-          {step === 8 && (
-            <>
-              <label className="block text-lg font-medium mb-2">How did you hear about us?</label>
-              <select name="how" onChange={handleChange} className="w-full border p-2 rounded">
-                <option value="">Select one</option>
-                <option value="Google">Google</option>
-                <option value="Facebook">Facebook</option>
-                <option value="Referral">Referral</option>
-                <option value="Other">Other</option>
-              </select>
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button onClick={next} type="button" className="btn-primary">Next</button>
-              </div>
-            </>
-          )}
-
-          {step === 9 && (
-            <>
-              <label className="block text-lg font-medium mb-2">Any concerns working with a homebuyer?</label>
-              <input name="concern" onChange={handleChange} className="w-full border p-2 rounded" />
-              <div className="flex justify-between">
-                <button type="button" onClick={back} className="btn-secondary">Back</button>
-                <button type="submit" className="btn-primary">Submit</button>
-              </div>
-            </>
-          )}
-        </form>
-      )}
-
-      {step === 10 && (
-        <section className="text-center mt-16">
-          <h2 className="text-3xl font-semibold text-green-600">Thanks! We'll review and reach out shortly.</h2>
-        </section>
-      )}
-
-      <style jsx>{`
-        .btn-primary {
-          background-color: #2563eb;
-          color: white;
-          padding: 0.5rem 1.25rem;
-          border-radius: 0.375rem;
-          font-weight: 600;
-          transition: background-color 0.2s;
-        }
-        .btn-primary:hover {
-          background-color: #1d4ed8;
-        }
-        .btn-secondary {
-          background-color: #e5e7eb;
-          color: #111827;
-          padding: 0.5rem 1.25rem;
-          border-radius: 0.375rem;
-          font-weight: 600;
-        }
-        .btn-secondary:hover {
-          background-color: #d1d5db;
-        }
-      `}</style>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
