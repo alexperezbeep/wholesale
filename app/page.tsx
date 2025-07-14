@@ -1,4 +1,4 @@
-import CredibilitySection from '@/components/CredibilitySection';
+import CredibilitySection from '../components/CredibilitySection';
 import Link from 'next/link';
 
 export default function HomePage() {
