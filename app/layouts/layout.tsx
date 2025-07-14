@@ -1,3 +1,4 @@
+import '../styles/globals.css'
 'use cache';
 
 import React from 'react';
