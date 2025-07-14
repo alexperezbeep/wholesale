@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styling */
+/* Set base theme styles */
 body {
   @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white;
 }
 
-/* Optional: Spinner animation */
+/* Example animation utility */
 @keyframes spin {
   to {
     transform: rotate(360deg);
