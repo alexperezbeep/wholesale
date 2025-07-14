@@ -31,15 +31,34 @@ export default function Home() {
 
       {/* Testimonials */}
       <section className="py-16 px-6">
-        <h2 className="text-2xl font-bold text-center mb-10">Happy Sellers</h2>
+        <h2 className="text-2xl font-bold text-center mb-10">Real Inquiries We've Received</h2>
         <div className="space-y-6 max-w-2xl mx-auto">
           <blockquote className="bg-gray-50 p-4 rounded shadow">
-            “I needed to sell fast. These guys closed in 7 days!” – Sarah P.
+            “Your place isn't too far from our job site so we were hoping to stay in it.”<br />
+            <span className="font-semibold">— Anthony, 3-Month Stay</span>
           </blockquote>
           <blockquote className="bg-gray-50 p-4 rounded shadow">
-            “Easiest experience ever. No agents. No hassle.” – Mark R.
+            “We’re excited to stay at your place!”<br />
+            <span className="font-semibold">— Tony, Contractor Guest</span>
+          </blockquote>
+          <blockquote className="bg-gray-50 p-4 rounded shadow">
+            “I would like to rent it for 2 months. Thank you.”<br />
+            <span className="font-semibold">— Fanny & Julien, Relocation Guests</span>
+          </blockquote>
+          <blockquote className="bg-gray-50 p-4 rounded shadow">
+            “It's not showing up as available but we would love to stay there if you can confirm.”<br />
+            <span className="font-semibold">— Karina, Long-Term Inquiry</span>
           </blockquote>
         </div>
+      </section>
+
+      {/* Strategic Message */}
+      <section className="bg-blue-50 py-12 px-6 text-center">
+        <h3 className="text-xl font-semibold mb-2">💡 Why This Matters to You</h3>
+        <p className="max-w-2xl mx-auto">
+          These are real inquiries we’ve received — proving demand for homes just like yours.
+          If you're ready to sell, we’re ready to buy, with buyers waiting.
+        </p>
       </section>
 
       {/* Footer */}
