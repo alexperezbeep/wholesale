@@ -1,63 +1,72 @@
-// app/page.tsx
-import Link from "next/link";
+import CredibilitySection from '@/components/CredibilitySection';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-20 text-center">
-      {/* Hero Section */}
-      <h1 className="text-5xl font-bold mb-4">
-        Sell Your House Without the Hassle
-      </h1>
-      <p className="text-lg text-gray-600 mb-6">
-        Luna Haven helps property owners sell directly to real estate investors — fast, simple, and on your terms.
-      </p>
-      <Link href="/sell">
-        <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
-          Get My Offer
-        </button>
-      </Link>
+    <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-6 py-20">
+      {/* Hero */}
+      <section className="text-center max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-4">Sell Your House for Cash</h1>
+        <p className="mb-6 text-lg">
+          Luna Haven helps homeowners sell directly — no fees, no agents, no repairs.
+        </p>
+        <form className="flex flex-col gap-4 items-center mb-6">
+          <input
+            type="text"
+            placeholder="Property Address"
+            className="px-4 py-2 rounded border w-full max-w-md"
+          />
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="px-4 py-2 rounded border w-full max-w-md"
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            className="px-4 py-2 rounded border w-full max-w-md"
+          />
+          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            Get My Cash Offer
+          </button>
+        </form>
+      </section>
 
       {/* Value Props */}
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-gray-700">
+      <section className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-gray-700 dark:text-gray-300 py-10">
         <div>No agent commissions</div>
-        <div>No repair requirements</div>
-        <div>You choose the timeline</div>
-      </div>
+        <div>No repairs needed</div>
+        <div>Choose your closing date</div>
+      </section>
 
-      {/* How It Works Preview */}
-      <section className="mt-16">
-        <h2 className="text-3xl font-semibold mb-6">How It Works</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left text-gray-700">
+      {/* How It Works */}
+      <section className="bg-gray-100 dark:bg-gray-800 py-16 px-6 text-center">
+        <h2 className="text-2xl font-semibold mb-6">How It Works</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
           <div>
-            <h3 className="font-bold text-xl mb-2">1. Share Your Property</h3>
-            <p>Fill out a quick form so we can understand your situation.</p>
+            <h3 className="font-bold text-xl mb-2">1. Submit Your Info</h3>
+            <p>Tell us about the property you’re looking to sell.</p>
           </div>
           <div>
-            <h3 className="font-bold text-xl mb-2">2. We'll Connect You</h3>
-            <p>You’ll hear from an investor or acquisition rep with a potential offer.</p>
+            <h3 className="font-bold text-xl mb-2">2. Get an Offer</h3>
+            <p>We’ll review your property and send a cash offer ASAP.</p>
           </div>
           <div>
             <h3 className="font-bold text-xl mb-2">3. Close on Your Terms</h3>
-            <p>If it’s a fit, you pick a closing date that works for you.</p>
+            <p>You decide when we close. We handle everything else.</p>
           </div>
         </div>
-        <Link href="/cash-offer-process">
-          <p className="mt-4 text-blue-600 hover:underline text-sm">Learn more</p>
-        </Link>
       </section>
 
-      {/* Situational Callouts */}
-      <section className="mt-20 text-left">
-        <h2 className="text-2xl font-semibold mb-4">This Might Be a Fit If You're...</h2>
-        <ul className="list-disc pl-6 text-gray-700 space-y-1">
-          <li>Looking to sell quickly</li>
-          <li>Not interested in listing with an agent</li>
-          <li>Working with a tight timeline</li>
-          <li>Selling an inherited or rental property</li>
-          <li>Just exploring options</li>
-        </ul>
-        <Link href="/sell">
-          <button className="mt-6 bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">
+      {/* Credibility Testimonials */}
+      <CredibilitySection />
+
+      {/* Final CTA */}
+      <section className="text-center mt-20">
+        <h2 className="text-2xl font-semibold mb-4">Ready to Sell?</h2>
+        <p className="mb-6">Let us send you a no-obligation offer today.</p>
+        <Link href="#top">
+          <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
             Start My Offer
           </button>
         </Link>
