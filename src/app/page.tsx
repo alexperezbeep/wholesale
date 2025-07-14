@@ -33,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <main className="max-w-2xl mx-auto py-16 px-4 text-center space-y-16">
+    <main className="max-w-3xl mx-auto py-16 px-4 text-center space-y-20">
       {/* Hero Section */}
       <section className="space-y-4">
         <h1 className="text-3xl font-bold">Sell Your House for Cash</h1>
@@ -41,7 +41,7 @@ export default function Home() {
         <button onClick={next} className="bg-blue-600 text-white px-6 py-2 rounded">Get My Cash Offer</button>
       </section>
 
-      {/* Form */}
+      {/* Form Steps */}
       <section>
         {step === 0 && (
           <div>
@@ -140,11 +140,21 @@ export default function Home() {
       {/* Testimonials */}
       <section>
         <h2 className="text-2xl font-bold mb-6">What Our Sellers Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow p-4">
-            <img src="/SleaqDVQ.jpg" alt="Happy Seller" className="rounded-md mb-4 mx-auto h-40 object-cover" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <img src="/SleaqDVQ.jpg" alt="Happy Seller" className="rounded object-cover w-full h-48 mb-4" />
             <p className="italic">"Great experience working with this team!"</p>
-            <p className="text-sm">— Happy Seller</p>
+            <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <img src="/SleaqDVQ.jpg" alt="Happy Seller" className="rounded object-cover w-full h-48 mb-4" />
+            <p className="italic">"Fast and easy process!"</p>
+            <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <img src="/SleaqDVQ.jpg" alt="Happy Seller" className="rounded object-cover w-full h-48 mb-4" />
+            <p className="italic">"Would recommend to anyone!"</p>
+            <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
           </div>
         </div>
       </section>
