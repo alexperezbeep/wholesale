@@ -16,14 +16,13 @@ export default function Home() {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const next = () => setStep(step + 1);
   const back = () => setStep(step - 1);
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await fetch('https://formspree.io/f/xnnzagjb', {
       method: 'POST',
@@ -113,14 +112,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         </div>
       )}
       {step === 8 && (
-        <div>
+        <form onSubmit={handleSubmit}>
           <h1 className="text-2xl font-bold mb-4">Do you have any concerns working with a homebuyer?</h1>
           <input className="border p-2 w-full" name="concern" onChange={handleChange} />
           <div className="flex justify-between mt-4">
-            <button onClick={back}>Back</button>
-            <button onClick={handleSubmit}>Submit</button>
+            <button type="button" onClick={back}>Back</button>
+            <button type="submit">Submit</button>
           </div>
-        </div>
+        </form>
       )}
       {step === 9 && (
         <div>
