@@ -140,20 +140,25 @@ export default function Home() {
       {/* Testimonials */}
       <section>
         <h2 className="text-2xl font-bold mb-6">What Our Sellers Say</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/SleaqDVQ.jpg" alt="Happy Seller" className="rounded object-cover w-full h-48 mb-4" />
-            <p className="italic">"Great experience working with this team!"</p>
+            <img src="/brent.jpg" alt="Brent" className="rounded object-cover w-full h-48 mb-4" />
+            <p className="italic">"Brent was awesome to work with. Highly recommend!"</p>
+            <p className="text-sm mt-2 text-gray-600">— Brent</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <img src="/darryl.png" alt="Darryl" className="rounded object-cover w-full h-48 mb-4" />
+            <p className="italic">"Darryl sold fast and easy. Smooth process!"</p>
+            <p className="text-sm mt-2 text-gray-600">— Darryl</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <img src="/109.png" alt="Seller" className="rounded object-cover w-full h-48 mb-4" />
+            <p className="italic">"Quick close and no hassle. Amazing!"</p>
             <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/SleaqDVQ.jpg" alt="Happy Seller" className="rounded object-cover w-full h-48 mb-4" />
-            <p className="italic">"Fast and easy process!"</p>
-            <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/SleaqDVQ.jpg" alt="Happy Seller" className="rounded object-cover w-full h-48 mb-4" />
-            <p className="italic">"Would recommend to anyone!"</p>
+            <img src="/516.518.jpg" alt="Seller" className="rounded object-cover w-full h-48 mb-4" />
+            <p className="italic">"Appreciate how smooth it all went!"</p>
             <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
           </div>
         </div>
