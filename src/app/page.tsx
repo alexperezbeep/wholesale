@@ -157,7 +157,7 @@ export default function Home() {
             <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/516.518.jpg" alt="Seller" className="rounded object-cover w-full h-48 mb-4" />
+            <img src="/516-518.jpg" alt="Seller" className="rounded object-cover w-full h-48 mb-4" />
             <p className="italic">"Appreciate how smooth it all went!"</p>
             <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
           </div>
