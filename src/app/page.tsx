@@ -39,51 +39,78 @@ export default function Home() {
 
   const StepCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <div style={{
-      maxWidth: '700px',
+      maxWidth: '600px',
       margin: '2rem auto',
       padding: '2rem',
-      background: '#ffffff',
-      borderRadius: '10px',
-      boxShadow: '0 10px 20px rgba(0,0,0,0.05)',
-      fontFamily: 'Arial, sans-serif'
+      background: 'white',
+      borderRadius: '12px',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+      fontFamily: 'Inter, sans-serif'
     }}>
-      <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>{title}</h2>
+      <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>{title}</h2>
       {children}
     </div>
   );
 
   const Button = (props: any) => (
     <button {...props} style={{
+      display: 'block',
       width: '100%',
-      padding: '1rem',
-      marginTop: '1rem',
+      padding: '0.75rem 1rem',
+      marginBottom: '0.75rem',
+      background: '#eff6ff',
       border: 'none',
-      backgroundColor: '#007aff',
-      color: '#fff',
-      fontSize: '1rem',
-      fontWeight: 'bold',
       borderRadius: '8px',
+      color: '#1e3a8a',
+      fontWeight: 500,
       cursor: 'pointer'
     }}>
       {props.children}
     </button>
   );
 
+  const testimonials = [
+    {
+      name: 'Brent',
+      image: '/brent.jpg',
+      quote: 'Brent was awesome to work with. Highly recommend!',
+      location: 'VA'
+    },
+    {
+      name: 'Darryl',
+      image: '/darryl.png',
+      quote: 'Darryl sold fast and easy. Smooth process!',
+      location: 'MD'
+    },
+    {
+      name: 'Happy Seller',
+      image: '/109.png',
+      quote: 'Quick close and no hassle. Amazing!',
+      location: 'DC'
+    },
+    {
+      name: 'Happy Seller',
+      image: '/516-518.jpg',
+      quote: 'Appreciate how smooth it all went!',
+      location: 'NC'
+    }
+  ];
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
   return (
-    <main style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', background: '#f5f6f7' }}>
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>Need to sell your home fast?</h1>
-        <p style={{ fontSize: '1.2rem', marginTop: '0.5rem' }}>Get a cash offer in just 7 days</p>
+    <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
+      <section style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Need to sell your home fast?</h1>
+        <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
         {step === 0 && (
           <button onClick={next} style={{
-            marginTop: '1.5rem',
-            padding: '1rem 2rem',
-            backgroundColor: '#007aff',
+            background: '#2563eb',
             color: '#fff',
-            fontSize: '1.1rem',
-            fontWeight: 'bold',
+            padding: '1rem 2rem',
             borderRadius: '8px',
-            border: 'none',
+            fontWeight: 500,
+            marginTop: '1.5rem',
             cursor: 'pointer'
           }}>
             Get My Cash Offer
@@ -91,6 +118,7 @@ export default function Home() {
         )}
       </section>
 
+      {/* Multi-step form */}
       <section>
         {step === 1 && (
           <StepCard title="Why are you looking to sell?">
@@ -116,13 +144,15 @@ export default function Home() {
         {step === 4 && (
           <StepCard title="What’s the property address?">
             <input name="address" onChange={handleChange} placeholder="123 Main St" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <Button onClick={next}>Next</Button>
+            <div style={{ textAlign: 'right', marginTop: '1rem' }}>
+              <Button onClick={next}>Next</Button>
+            </div>
           </StepCard>
         )}
         {step === 5 && (
           <StepCard title="What's your name?">
             <input name="name" onChange={handleChange} placeholder="Full Name" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
               <Button onClick={back}>Back</Button>
               <Button onClick={next}>Next</Button>
             </div>
@@ -131,7 +161,7 @@ export default function Home() {
         {step === 6 && (
           <StepCard title="What's your email?">
             <input type="email" name="email" onChange={handleChange} placeholder="you@example.com" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
               <Button onClick={back}>Back</Button>
               <Button onClick={next}>Next</Button>
             </div>
@@ -140,7 +170,7 @@ export default function Home() {
         {step === 7 && (
           <StepCard title="What's your phone number?">
             <input name="phone" onChange={handleChange} placeholder="(555) 555-5555" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
               <Button onClick={back}>Back</Button>
               <Button onClick={next}>Next</Button>
             </div>
@@ -149,7 +179,7 @@ export default function Home() {
         {step === 8 && (
           <StepCard title="How did you hear about us?">
             <input name="how" onChange={handleChange} placeholder="Google, Friend, etc." style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
               <Button onClick={back}>Back</Button>
               <Button onClick={next}>Next</Button>
             </div>
@@ -159,7 +189,7 @@ export default function Home() {
           <form onSubmit={handleSubmit}>
             <StepCard title="Any concerns working with a homebuyer?">
               <input name="concern" onChange={handleChange} placeholder="Optional..." style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
                 <Button type="button" onClick={back}>Back</Button>
                 <Button type="submit">Submit</Button>
               </div>
@@ -168,9 +198,37 @@ export default function Home() {
         )}
         {step === 10 && (
           <StepCard title="Hang tight… we're reviewing your info!">
-            <p style={{ marginTop: '1rem', color: '#4b5563' }}>We’ll get back to you shortly with a cash offer.</p>
+            <p style={{ color: '#6b7280', marginTop: '1rem' }}>We’ll get back to you shortly with a cash offer.</p>
           </StepCard>
         )}
+      </section>
+
+      {/* Testimonials Carousel Style */}
+      <section style={{ marginTop: '5rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>What Our Clients Say</h2>
+        <div style={{
+          maxWidth: '600px',
+          margin: '0 auto',
+          padding: '2rem',
+          background: '#f9fafb',
+          borderRadius: '12px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+          position: 'relative'
+        }}>
+          <img src={testimonials[currentTestimonial].image} alt="testimonial" style={{
+            width: '80px',
+            height: '80px',
+            borderRadius: '9999px',
+            objectFit: 'cover',
+            marginBottom: '1rem'
+          }} />
+          <p style={{ fontStyle: 'italic', fontSize: '1.125rem' }}>"{testimonials[currentTestimonial].quote}"</p>
+          <p style={{ marginTop: '1rem', fontWeight: 'bold' }}>{testimonials[currentTestimonial].name}</p>
+          <div style={{ marginTop: '1rem' }}>
+            <button onClick={() => setCurrentTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length)}>&larr;</button>
+            <button onClick={() => setCurrentTestimonial((currentTestimonial + 1) % testimonials.length)} style={{ marginLeft: '1rem' }}>&rarr;</button>
+          </div>
+        </div>
       </section>
     </main>
   );
