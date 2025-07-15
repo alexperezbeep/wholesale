@@ -1,6 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import '@fontsource/inter/variable.css';
 
 export default function Home() {
   const [step, setStep] = useState(0);
@@ -16,17 +15,12 @@ export default function Home() {
     concern: ''
   });
 
-  const next = () => setStep((s) => s + 1);
-  const back = () => setStep((s) => s - 1);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleOption = (name: string, value: string) => {
-    setFormData({ ...formData, [name]: value });
-    next();
-  };
+  const next = () => setStep(step + 1);
+  const back = () => setStep(step - 1);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,200 +29,142 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     });
-    next();
+    setStep(step + 1);
   };
 
-  const StepCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow-md">
-      <h2 className="text-2xl font-semibold mb-6">{title}</h2>
-      {children}
-    </div>
-  );
-
   return (
-    <main className="max-w-3xl mx-auto py-16 px-4 space-y-20 font-sans">
+    <main className="max-w-4xl mx-auto py-16 px-4 text-center space-y-20 font-sans">
       {/* Hero Section */}
-      <section className="text-center space-y-4">
+      <section className="space-y-4">
         <h1 className="text-4xl font-bold">Sell Your House for Cash</h1>
-        <p className="text-gray-600">We buy houses fast in any condition. No fees. No agents. No hassle.</p>
-        {step === 0 && (
-          <button onClick={next} className="bg-blue-600 text-white px-6 py-3 rounded-xl font-medium">
-            Get My Cash Offer
-          </button>
-        )}
+        <p className="text-gray-600 text-lg">We buy houses fast in any condition. No fees. No agents. No hassle.</p>
+        <button onClick={next} className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Get My Cash Offer</button>
       </section>
 
-      {/* Multi-step Form */}
+      {/* Form Steps */}
       <section>
+        {step === 0 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Why are you looking to sell?</h2>
+            <input className="border p-2 w-full" name="motivation" onChange={handleChange} />
+            <button onClick={next} className="mt-4 bg-blue-600 text-white px-4 py-2">Next</button>
+          </div>
+        )}
         {step === 1 && (
-          <StepCard title="Why are you looking to sell?">
-            <div className="space-y-3">
-              {['Job relocation', 'Inherited property', 'Facing foreclosure', 'Too many repairs', 'Other'].map(option => (
-                <button
-                  key={option}
-                  onClick={() => handleOption('motivation', option)}
-                  className="w-full bg-blue-100 hover:bg-blue-200 text-blue-900 py-3 px-4 rounded-lg"
-                >
-                  {option}
-                </button>
-              ))}
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Does the property need repairs?</h2>
+            <input className="border p-2 w-full" name="repairs" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back}>Back</button>
+              <button onClick={next}>Next</button>
             </div>
-          </StepCard>
+          </div>
         )}
-
         {step === 2 && (
-          <StepCard title="Does the property need repairs?">
-            <div className="space-y-3">
-              {['Excellent', 'Minor repairs', 'Major repairs', 'Needs full rehab'].map(option => (
-                <button
-                  key={option}
-                  onClick={() => handleOption('repairs', option)}
-                  className="w-full bg-blue-100 hover:bg-blue-200 text-blue-900 py-3 px-4 rounded-lg"
-                >
-                  {option}
-                </button>
-              ))}
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What’s your timeline to sell?</h2>
+            <input className="border p-2 w-full" name="timeline" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back}>Back</button>
+              <button onClick={next}>Next</button>
             </div>
-          </StepCard>
+          </div>
         )}
-
         {step === 3 && (
-          <StepCard title="What’s your timeline to sell?">
-            <div className="space-y-3">
-              {['Immediately', 'Within 30 days', '1–3 months', 'Just exploring'].map(option => (
-                <button
-                  key={option}
-                  onClick={() => handleOption('timeline', option)}
-                  className="w-full bg-blue-100 hover:bg-blue-200 text-blue-900 py-3 px-4 rounded-lg"
-                >
-                  {option}
-                </button>
-              ))}
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What’s the property address?</h2>
+            <input className="border p-2 w-full" name="address" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back}>Back</button>
+              <button onClick={next}>Next</button>
             </div>
-          </StepCard>
+          </div>
         )}
-
         {step === 4 && (
-          <StepCard title="What’s the property address?">
-            <input
-              name="address"
-              onChange={handleChange}
-              className="w-full p-3 border rounded-lg"
-              placeholder="123 Main St, City, State"
-            />
-            <div className="flex justify-end mt-6">
-              <button onClick={next} className="bg-blue-600 text-white px-6 py-2 rounded-xl">
-                Next
-              </button>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's your name?</h2>
+            <input className="border p-2 w-full" name="name" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back}>Back</button>
+              <button onClick={next}>Next</button>
             </div>
-          </StepCard>
+          </div>
         )}
-
         {step === 5 && (
-          <StepCard title="What's your name?">
-            <input
-              name="name"
-              onChange={handleChange}
-              className="w-full p-3 border rounded-lg"
-              placeholder="Full Name"
-            />
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-blue-600 font-medium">Back</button>
-              <button onClick={next} className="bg-blue-600 text-white px-6 py-2 rounded-xl">Next</button>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's your email?</h2>
+            <input className="border p-2 w-full" name="email" type="email" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back}>Back</button>
+              <button onClick={next}>Next</button>
             </div>
-          </StepCard>
+          </div>
         )}
-
         {step === 6 && (
-          <StepCard title="What's your email?">
-            <input
-              name="email"
-              type="email"
-              onChange={handleChange}
-              className="w-full p-3 border rounded-lg"
-              placeholder="you@example.com"
-            />
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-blue-600 font-medium">Back</button>
-              <button onClick={next} className="bg-blue-600 text-white px-6 py-2 rounded-xl">Next</button>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">What's your phone number?</h2>
+            <input className="border p-2 w-full" name="phone" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back}>Back</button>
+              <button onClick={next}>Next</button>
             </div>
-          </StepCard>
+          </div>
         )}
-
         {step === 7 && (
-          <StepCard title="What's your phone number?">
-            <input
-              name="phone"
-              onChange={handleChange}
-              className="w-full p-3 border rounded-lg"
-              placeholder="(555) 555-5555"
-            />
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-blue-600 font-medium">Back</button>
-              <button onClick={next} className="bg-blue-600 text-white px-6 py-2 rounded-xl">Next</button>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">How did you hear about us?</h2>
+            <input className="border p-2 w-full" name="how" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button onClick={back}>Back</button>
+              <button onClick={next}>Next</button>
             </div>
-          </StepCard>
+          </div>
         )}
-
         {step === 8 && (
-          <StepCard title="How did you hear about us?">
-            <input
-              name="how"
-              onChange={handleChange}
-              className="w-full p-3 border rounded-lg"
-              placeholder="Google, friend, etc."
-            />
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-blue-600 font-medium">Back</button>
-              <button onClick={next} className="bg-blue-600 text-white px-6 py-2 rounded-xl">Next</button>
-            </div>
-          </StepCard>
-        )}
-
-        {step === 9 && (
           <form onSubmit={handleSubmit}>
-            <StepCard title="Any concerns working with a homebuyer?">
-              <input
-                name="concern"
-                onChange={handleChange}
-                className="w-full p-3 border rounded-lg"
-                placeholder="Your concern (optional)"
-              />
-              <div className="flex justify-between mt-6">
-                <button type="button" onClick={back} className="text-blue-600 font-medium">Back</button>
-                <button type="submit" className="bg-green-600 text-white px-6 py-2 rounded-xl">
-                  Submit
-                </button>
-              </div>
-            </StepCard>
+            <h2 className="text-2xl font-bold mb-4">Do you have any concerns working with a homebuyer?</h2>
+            <input className="border p-2 w-full" name="concern" onChange={handleChange} />
+            <div className="flex justify-between mt-4">
+              <button type="button" onClick={back}>Back</button>
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">Submit</button>
+            </div>
           </form>
         )}
-
-        {step === 10 && (
-          <StepCard title="Hang tight… we're reviewing your info!">
-            <p className="text-gray-600 mt-4">We’ll get back to you shortly with a cash offer.</p>
-          </StepCard>
+        {step === 9 && (
+          <div>
+            <h2 className="text-2xl font-bold">Hang tight… we're reviewing your info!</h2>
+          </div>
         )}
       </section>
 
       {/* Testimonials */}
       <section>
-        <h2 className="text-2xl font-bold mb-6 text-center">What Our Sellers Say</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <h2 className="text-3xl font-bold mb-6 font-sans">What Our Sellers Say</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {[
-            { src: '/brent.jpg', quote: 'Brent was awesome to work with. Highly recommend!', name: 'Brent' },
-            { src: '/darryl.png', quote: 'Darryl sold fast and easy. Smooth process!', name: 'Darryl' },
-            { src: '/109.png', quote: 'Quick close and no hassle. Amazing!', name: 'Happy Seller' },
-            { src: '/516-518.jpg', quote: 'Appreciate how smooth it all went!', name: 'Happy Seller' }
-          ].map(({ src, quote, name }, i) => (
-            <div
-              key={i}
-              className="bg-white p-4 rounded-lg shadow-md animate-fadeIn"
-              style={{ animationDelay: `${i * 0.2}s`, animationFillMode: 'both' }}
-            >
-              <img src={src} alt={name} className="rounded object-cover w-full h-48 mb-4" />
-              <p className="italic">"{quote}"</p>
-              <p className="text-sm mt-2 text-gray-600">— {name}</p>
+            {
+              name: "Sarah Wilde",
+              date: "Nov 25, 2023",
+              text: "Our family enjoyed our stay... Nick was quick and easy, and was proactive and responsive... Very comfortable, cozy and stylish home. Entire home is spotless... Thanks Nick!",
+              image: "/test1.jpg"
+            },
+            {
+              name: "Nadine Lomakin",
+              date: "Dec 30, 2023",
+              text: "This was our third trip... peaceful, comfortable, and cozy... Nick is always a wonderful and responsive host... perfect post-Christmas break.",
+              image: "/test2.jpg"
+            },
+            {
+              name: "Meghan",
+              date: "Feb 6, 2024",
+              text: "Really enjoyed having them. Very responsive and tidy. Would definitely recommend them.",
+              image: "/test3.jpg"
+            }
+          ].map((review, idx) => (
+            <div key={idx} className="bg-white p-4 rounded-lg shadow-md animate-fade-in duration-700 delay-100">
+              <img src={review.image} alt="Seller" className="rounded object-cover w-full h-48 mb-4" />
+              <p className="italic text-gray-700">"{review.text}"</p>
+              <p className="text-sm mt-2 text-gray-600 font-medium">— {review.name}, {review.date}</p>
             </div>
           ))}
         </div>
