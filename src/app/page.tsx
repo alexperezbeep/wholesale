@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import '@fontsource/inter/variable.css';
 
 export default function Home() {
   const [step, setStep] = useState(0);
@@ -45,7 +46,7 @@ export default function Home() {
   );
 
   return (
-    <main className="max-w-3xl mx-auto py-16 px-4 space-y-20">
+    <main className="max-w-3xl mx-auto py-16 px-4 space-y-20 font-sans">
       {/* Hero Section */}
       <section className="text-center space-y-4">
         <h1 className="text-4xl font-bold">Sell Your House for Cash</h1>
@@ -214,26 +215,22 @@ export default function Home() {
       <section>
         <h2 className="text-2xl font-bold mb-6 text-center">What Our Sellers Say</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/brent.jpg" alt="Brent" className="rounded object-cover w-full h-48 mb-4" />
-            <p className="italic">"Brent was awesome to work with. Highly recommend!"</p>
-            <p className="text-sm mt-2 text-gray-600">— Brent</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/darryl.png" alt="Darryl" className="rounded object-cover w-full h-48 mb-4" />
-            <p className="italic">"Darryl sold fast and easy. Smooth process!"</p>
-            <p className="text-sm mt-2 text-gray-600">— Darryl</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/109.png" alt="Seller" className="rounded object-cover w-full h-48 mb-4" />
-            <p className="italic">"Quick close and no hassle. Amazing!"</p>
-            <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <img src="/516-518.jpg" alt="Seller" className="rounded object-cover w-full h-48 mb-4" />
-            <p className="italic">"Appreciate how smooth it all went!"</p>
-            <p className="text-sm mt-2 text-gray-600">— Happy Seller</p>
-          </div>
+          {[
+            { src: '/brent.jpg', quote: 'Brent was awesome to work with. Highly recommend!', name: 'Brent' },
+            { src: '/darryl.png', quote: 'Darryl sold fast and easy. Smooth process!', name: 'Darryl' },
+            { src: '/109.png', quote: 'Quick close and no hassle. Amazing!', name: 'Happy Seller' },
+            { src: '/516-518.jpg', quote: 'Appreciate how smooth it all went!', name: 'Happy Seller' }
+          ].map(({ src, quote, name }, i) => (
+            <div
+              key={i}
+              className="bg-white p-4 rounded-lg shadow-md animate-fadeIn"
+              style={{ animationDelay: `${i * 0.2}s`, animationFillMode: 'both' }}
+            >
+              <img src={src} alt={name} className="rounded object-cover w-full h-48 mb-4" />
+              <p className="italic">"{quote}"</p>
+              <p className="text-sm mt-2 text-gray-600">— {name}</p>
+            </div>
+          ))}
         </div>
       </section>
     </main>
