@@ -242,17 +242,19 @@ export default function Home() {
         }}>
           {['/tony.png', '/nicholas.png', '/enrique.png', '/grace.png', '/laurie.png', '/mark.png'].map((img, i) => (
             <img
-              key={i}
-              src={img}
-              alt={`testimonial-${i}`}
-              style={{
-                width: '100%',
-                maxWidth: '700px',
-                height: 'auto',
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}
-            />
+  key={i}
+  src={img}
+  alt={`testimonial-${i}`}
+  style={{
+    width: '100%',
+    maxWidth: '500px',
+    height: 'auto',
+    borderRadius: '12px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    margin: '0 auto'
+  }}
+/>
+
           ))}
         </div>
       </section>
