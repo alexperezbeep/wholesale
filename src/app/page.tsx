@@ -17,16 +17,13 @@ export default function Home() {
 
   const next = () => setStep((s) => s + 1);
   const back = () => setStep((s) => s - 1);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleOption = (name: string, value: string) => {
     setFormData({ ...formData, [name]: value });
     next();
   };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await fetch('https://formspree.io/f/xnnzagjb', {
@@ -69,35 +66,6 @@ export default function Home() {
     </button>
   );
 
-  const testimonials = [
-    {
-      name: 'Brent',
-      image: '/brent.jpg',
-      quote: 'Brent was awesome to work with. Highly recommend!',
-      location: 'VA'
-    },
-    {
-      name: 'Darryl',
-      image: '/darryl.png',
-      quote: 'Darryl sold fast and easy. Smooth process!',
-      location: 'MD'
-    },
-    {
-      name: 'Happy Seller',
-      image: '/109.png',
-      quote: 'Quick close and no hassle. Amazing!',
-      location: 'DC'
-    },
-    {
-      name: 'Happy Seller',
-      image: '/516-518.jpg',
-      quote: 'Appreciate how smooth it all went!',
-      location: 'NC'
-    }
-  ];
-
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
   return (
     <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
       <section style={{ textAlign: 'center', marginBottom: '4rem' }}>
@@ -118,7 +86,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* Multi-step form */}
+      {/* Multi-Step Form */}
       <section>
         {step === 1 && (
           <StepCard title="Why are you looking to sell?">
@@ -203,58 +171,46 @@ export default function Home() {
         )}
       </section>
 
-      {/* Text-based testimonial carousel */}
+      {/* New Image-Based Testimonials */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>What Our Clients Say</h2>
-        <div style={{
-          maxWidth: '600px',
-          margin: '0 auto',
-          padding: '2rem',
-          background: '#f9fafb',
-          borderRadius: '12px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-          position: 'relative'
-        }}>
-          <img src={testimonials[currentTestimonial].image} alt="testimonial" style={{
-            width: '80px',
-            height: '80px',
-            borderRadius: '9999px',
-            objectFit: 'cover',
-            marginBottom: '1rem'
-          }} />
-          <p style={{ fontStyle: 'italic', fontSize: '1.125rem' }}>"{testimonials[currentTestimonial].quote}"</p>
-          <p style={{ marginTop: '1rem', fontWeight: 'bold' }}>{testimonials[currentTestimonial].name}</p>
-          <div style={{ marginTop: '1rem' }}>
-            <button onClick={() => setCurrentTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length)}>&larr;</button>
-            <button onClick={() => setCurrentTestimonial((currentTestimonial + 1) % testimonials.length)} style={{ marginLeft: '1rem' }}>&rarr;</button>
-          </div>
-        </div>
-      </section>
-
-      {/* Property photos */}
-      <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>Recent Properties</h2>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>What Our Sellers Say</h2>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
           gap: '2rem',
-          maxWidth: '1000px',
+          maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          {['/brent.jpg', '/darryl.png', '/109.png', '/516-518.jpg'].map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={`property-${i}`}
-              style={{
-                width: '100%',
-                maxWidth: '500px',
-                height: 'auto',
-                borderRadius: '12px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-              }}
-            />
+          {['mark.png', 'tony.png', 'enrique.png', 'grace.png', 'laurie.png', 'nicholas.png'].map((src, i) => (
+            <img key={i} src={`/${src}`} alt={`testimonial-${i}`} style={{
+              width: '100%',
+              maxWidth: '500px',
+              borderRadius: '12px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+            }} />
+          ))}
+        </div>
+      </section>
+
+      {/* Proudly Display Property Images */}
+      <section style={{ marginTop: '5rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>Recent Properties We've Worked With</h2>
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '2rem',
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          {['brent.jpg', 'darryl.png', '109.png', '516-518.jpg'].map((src, i) => (
+            <img key={i} src={`/${src}`} alt={`property-${i}`} style={{
+              width: '100%',
+              maxWidth: '500px',
+              borderRadius: '12px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+            }} />
           ))}
         </div>
       </section>
