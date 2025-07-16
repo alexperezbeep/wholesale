@@ -247,7 +247,7 @@ export default function Home() {
               alt={`testimonial-${i}`}
               style={{
                 width: '100%',
-                maxWidth: '300px',
+                maxWidth: '700px',
                 height: 'auto',
                 borderRadius: '12px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
