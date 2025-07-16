@@ -68,9 +68,12 @@ export default function Home() {
 
   return (
     <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
-      <section style={{ textAlign: 'center', marginBottom: '4rem' }}>
+      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Need to sell your home fast?</h1>
         <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
+        <p style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '0.5rem' }}>
+          Operating since June 2023 — 11 homeowners helped and counting.
+        </p>
         {step === 0 && (
           <button onClick={next} style={{
             background: '#2563eb',
@@ -86,6 +89,7 @@ export default function Home() {
         )}
       </section>
 
+      {/* FORM */}
       <section>
         {step === 1 && (
           <StepCard title="Why are you looking to sell?">
@@ -170,57 +174,52 @@ export default function Home() {
         )}
       </section>
 
-      {/* Trust Section Using Guest-Based Testimonials */}
+      {/* VISUAL TESTIMONIALS */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>People Trust Us With Their Homes — And That Means Everything</h2>
-        <p style={{ maxWidth: '600px', margin: '0 auto 2rem', color: '#4b5563' }}>
-          Before we started buying homes, we were helping people feel safe, respected, and cared for in their spaces.
-          That same mindset is what we bring when working with sellers — it’s all about trust and peace of mind.
-        </p>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>People We’ve Served — And Why It Matters</h2>
         <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: '2rem',
-          maxWidth: '1000px',
-          margin: '0 auto'
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '1.5rem',
+          justifyItems: 'center'
         }}>
-          {['mark.png', 'tony.png', 'enrique.png', 'grace.png', 'laurie.png', 'nicholas.png'].map((img, i) => (
-            <div key={i} style={{ maxWidth: '300px', flex: '1 1 auto' }}>
-              <img src={`/${img}`} alt={`testimonial-${i}`} style={{
-                width: '100%',
-                height: 'auto',
-                borderRadius: '12px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-              }} />
-            </div>
+          {['/mark.png', '/tony.png', '/enrique.png', '/grace.png', '/laurie.png', '/nicholas.png'].map((src, i) => (
+            <img key={i} src={src} alt={`testimonial ${i}`} style={{ width: '100%', maxWidth: '350px', borderRadius: '12px' }} />
           ))}
         </div>
       </section>
 
-      {/* Property Image Section */}
-      <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>Homes We've Handled With Care</h2>
+      {/* PROPERTY PHOTOS */}
+      <section style={{ marginTop: '4rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '2rem' }}>We’ve Helped with Real Properties Like These</h2>
         <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: '2rem',
-          maxWidth: '1000px',
-          margin: '0 auto'
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '1.5rem'
         }}>
-          {['brent.jpg', 'darryl.png', '109.png', '516-518.jpg'].map((img, i) => (
-            <div key={i} style={{ maxWidth: '300px', flex: '1 1 auto' }}>
-              <img src={`/${img}`} alt={`property-${i}`} style={{
-                width: '100%',
-                height: 'auto',
-                borderRadius: '12px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-              }} />
-            </div>
+          {['/brent.jpg', '/darryl.png', '/109.png', '/516-518.jpg'].map((src, i) => (
+            <img key={i} src={src} alt={`property ${i}`} style={{ width: '100%', borderRadius: '10px' }} />
           ))}
         </div>
       </section>
+
+      {/* TRUST BLOCK */}
+      <section style={{ marginTop: '5rem', background: '#f9fafb', padding: '2rem', borderRadius: '12px' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, textAlign: 'center', marginBottom: '1.5rem' }}>Why Sellers Trust Us</h2>
+        <ul style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'left', lineHeight: '1.75' }}>
+          <li>✅ Cancel anytime before signing</li>
+          <li>✅ You pay $0 in hidden fees</li>
+          <li>✅ Closing is contingent on clean title</li>
+          <li>✅ You choose your timeline</li>
+          <li>✅ Everything is explained clearly — no pressure</li>
+        </ul>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={{ marginTop: '5rem', textAlign: 'center', fontSize: '0.9rem', color: '#6b7280' }}>
+        Luna Haven LLC is a legally registered homebuyer based in [Your State].<br />
+        &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
+      </footer>
     </main>
   );
 }
