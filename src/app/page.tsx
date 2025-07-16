@@ -86,7 +86,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* Multi-Step Form */}
       <section>
         {step === 1 && (
           <StepCard title="Why are you looking to sell?">
@@ -171,46 +170,54 @@ export default function Home() {
         )}
       </section>
 
-      {/* New Image-Based Testimonials */}
+      {/* Trust Section Using Guest-Based Testimonials */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>What Our Sellers Say</h2>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>People Trust Us With Their Homes — And That Means Everything</h2>
+        <p style={{ maxWidth: '600px', margin: '0 auto 2rem', color: '#4b5563' }}>
+          Before we started buying homes, we were helping people feel safe, respected, and cared for in their spaces.
+          That same mindset is what we bring when working with sellers — it’s all about trust and peace of mind.
+        </p>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
           gap: '2rem',
-          maxWidth: '1200px',
+          maxWidth: '1000px',
           margin: '0 auto'
         }}>
-          {['mark.png', 'tony.png', 'enrique.png', 'grace.png', 'laurie.png', 'nicholas.png'].map((src, i) => (
-            <img key={i} src={`/${src}`} alt={`testimonial-${i}`} style={{
-              width: '100%',
-              maxWidth: '500px',
-              borderRadius: '12px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }} />
+          {['mark.png', 'tony.png', 'enrique.png', 'grace.png', 'laurie.png', 'nicholas.png'].map((img, i) => (
+            <div key={i} style={{ maxWidth: '300px', flex: '1 1 auto' }}>
+              <img src={`/${img}`} alt={`testimonial-${i}`} style={{
+                width: '100%',
+                height: 'auto',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+              }} />
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Proudly Display Property Images */}
+      {/* Property Image Section */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>Recent Properties We've Worked With</h2>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>Homes We've Handled With Care</h2>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
           gap: '2rem',
-          maxWidth: '1200px',
+          maxWidth: '1000px',
           margin: '0 auto'
         }}>
-          {['brent.jpg', 'darryl.png', '109.png', '516-518.jpg'].map((src, i) => (
-            <img key={i} src={`/${src}`} alt={`property-${i}`} style={{
-              width: '100%',
-              maxWidth: '500px',
-              borderRadius: '12px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }} />
+          {['brent.jpg', 'darryl.png', '109.png', '516-518.jpg'].map((img, i) => (
+            <div key={i} style={{ maxWidth: '300px', flex: '1 1 auto' }}>
+              <img src={`/${img}`} alt={`property-${i}`} style={{
+                width: '100%',
+                height: 'auto',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+              }} />
+            </div>
           ))}
         </div>
       </section>
