@@ -96,15 +96,6 @@ export default function Home() {
     }
   ];
 
-  const testimonialImages = [
-    '/mark.png',
-    '/tony.png',
-    '/enrique.png',
-    '/grace.png',
-    '/laurie.png',
-    '/nicholas.png'
-  ];
-
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   return (
@@ -212,7 +203,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* Text carousel testimonial */}
+      {/* Text-based testimonial carousel */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>What Our Clients Say</h2>
         <div style={{
@@ -240,9 +231,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Image testimonial gallery */}
-      <section style={{ marginTop: '4rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>See Real Seller Experiences</h2>
+      {/* Property photos */}
+      <section style={{ marginTop: '5rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>Recent Properties</h2>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -251,18 +242,17 @@ export default function Home() {
           maxWidth: '1000px',
           margin: '0 auto'
         }}>
-          {testimonialImages.map((img, i) => (
+          {['/brent.jpg', '/darryl.png', '/109.png', '/516-518.jpg'].map((src, i) => (
             <img
               key={i}
-              src={img}
-              alt={`testimonial-${i}`}
+              src={src}
+              alt={`property-${i}`}
               style={{
                 width: '100%',
                 maxWidth: '500px',
                 height: 'auto',
                 borderRadius: '12px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                margin: '0 auto'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
               }}
             />
           ))}
