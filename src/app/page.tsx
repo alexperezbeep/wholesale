@@ -203,7 +203,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* Testimonials Carousel Style */}
+      {/* Carousel Section */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>What Our Clients Say</h2>
         <div style={{
@@ -228,6 +228,32 @@ export default function Home() {
             <button onClick={() => setCurrentTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length)}>&larr;</button>
             <button onClick={() => setCurrentTestimonial((currentTestimonial + 1) % testimonials.length)} style={{ marginLeft: '1rem' }}>&rarr;</button>
           </div>
+        </div>
+      </section>
+
+      {/* Image Testimonial Wall */}
+      <section style={{ marginTop: '4rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '2rem' }}>Verified Results</h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '1.5rem',
+          justifyItems: 'center'
+        }}>
+          {['/tony.png', '/nicholas.png', '/enrique.png', '/grace.png', '/laurie.png', '/mark.png'].map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={`testimonial-${i}`}
+              style={{
+                width: '100%',
+                maxWidth: '300px',
+                height: 'auto',
+                borderRadius: '12px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+              }}
+            />
+          ))}
         </div>
       </section>
     </main>
