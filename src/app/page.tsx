@@ -89,7 +89,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* FORM */}
+      {/* MULTI-STEP FORM */}
       <section>
         {step === 1 && (
           <StepCard title="Why are you looking to sell?">
@@ -174,60 +174,52 @@ export default function Home() {
         )}
       </section>
 
-      {/* VISUAL TESTIMONIALS */}
+      {/* HOW IT WORKS */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>People We’ve Served — And Why It Matters</h2>
+        <h2 style={{ fontSize: '2rem', fontWeight: 700 }}>How It Works</h2>
+        <p style={{ fontSize: '1.2rem', color: '#4b5563', marginBottom: '2rem' }}>Our Simple 3 Step Process</p>
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1.5rem',
-          justifyItems: 'center'
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '2rem',
+          justifyContent: 'center'
         }}>
-          {['/mark.png', '/tony.png', '/enrique.png', '/grace.png', '/laurie.png', '/nicholas.png'].map((src, i) => (
-            <img key={i} src={src} alt={`testimonial ${i}`} style={{ width: '100%', maxWidth: '350px', borderRadius: '12px' }} />
+          {[
+            {
+              img: '/s1.jpg',
+              step: '01',
+              title: 'Fill Out the Online Form',
+              desc: 'One of our home buying specialists will call with your offer.'
+            },
+            {
+              img: '/s2.jpg',
+              step: '02',
+              title: 'Pick Your Closing Date',
+              desc: 'There’s no financing fall-through risk so you can confidently buy your next home.'
+            },
+            {
+              img: '/s3.jpg',
+              step: '03',
+              title: 'Get Paid and Move On',
+              desc: 'We pay more. Get cash in your pocket and move on to the next chapter in your life.'
+            }
+          ].map(({ img, step, title, desc }, i) => (
+            <div key={i} style={{
+              maxWidth: '300px',
+              background: '#fff',
+              borderRadius: '12px',
+              padding: '1rem',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
+              textAlign: 'center'
+            }}>
+              <p style={{ fontSize: '1.5rem', fontWeight: 700, color: '#3b82f6' }}>{step}</p>
+              <img src={img} alt={`step-${i}`} style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+              <p style={{ fontWeight: 600 }}>{title}</p>
+              <p style={{ color: '#4b5563', fontSize: '0.95rem', marginTop: '0.5rem' }}>{desc}</p>
+            </div>
           ))}
         </div>
       </section>
-
-      {/* PROPERTY PHOTOS */}
-      <section style={{ marginTop: '4rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '2rem' }}>We’ve Helped with Real Properties Like These</h2>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {['/brent.jpg',
-  '/darryl.png',
-  '/109.png',
-  '/516-518.jpg',
-  '/zv.png',
-  '/zw.png',
-  '/zx.png',
-  '/zy.png',
-  '/zz.jpg'].map((src, i) => (
-            <img key={i} src={src} alt={`property ${i}`} style={{ width: '100%', borderRadius: '10px' }} />
-          ))}
-        </div>
-      </section>
-
-      {/* TRUST BLOCK */}
-      <section style={{ marginTop: '5rem', background: '#f9fafb', padding: '2rem', borderRadius: '12px' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, textAlign: 'center', marginBottom: '1.5rem' }}>Why Sellers Trust Us</h2>
-        <ul style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'left', lineHeight: '1.75' }}>
-          <li>✅ Cancel anytime before signing</li>
-          <li>✅ You pay $0 in hidden fees</li>
-          <li>✅ Closing is contingent on clean title</li>
-          <li>✅ You choose your timeline</li>
-          <li>✅ Everything is explained clearly — no pressure</li>
-        </ul>
-      </section>
-
-      {/* FOOTER */}
-      <footer style={{ marginTop: '5rem', textAlign: 'center', fontSize: '0.9rem', color: '#6b7280' }}>
-        Luna Haven LLC is a legally registered homebuyer based in [Your State].<br />
-        &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
-      </footer>
     </main>
   );
 }
