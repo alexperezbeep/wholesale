@@ -197,7 +197,15 @@ export default function Home() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
           gap: '1.5rem'
         }}>
-          {['/brent.jpg', '/darryl.png', '/109.png', '/516-518.jpg'].map((src, i) => (
+          {['/brent.jpg',
+  '/darryl.png',
+  '/109.png',
+  '/516-518.jpg',
+  '/zv.png',
+  '/zw.png',
+  '/zx.png',
+  '/zy.png',
+  '/zz.jpg'].map((src, i) => (
             <img key={i} src={src} alt={`property ${i}`} style={{ width: '100%', borderRadius: '10px' }} />
           ))}
         </div>
