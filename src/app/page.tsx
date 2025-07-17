@@ -173,7 +173,8 @@ export default function Home() {
           </StepCard>
         )}
       </section>
-
+        
+        
       {/* VISUAL TESTIMONIALS */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>People We’ve Served — And Why It Matters</h2>
