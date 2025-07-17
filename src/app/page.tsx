@@ -72,7 +72,7 @@ export default function Home() {
         <h1 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Need to sell your home fast?</h1>
         <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
         <p style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '0.5rem' }}>
-          Operating since June 2023 — 11 homeowners helped and counting.
+          Operating since June 2023 — 10+ homeowners helped.
         </p>
         {step === 0 && (
           <button onClick={next} style={{
