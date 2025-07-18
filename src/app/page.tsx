@@ -173,6 +173,56 @@ export default function Home() {
           </StepCard>
         )}
       </section>
+{/* HOW IT WORKS */}
+<section style={{ marginTop: '4rem', textAlign: 'center' }}>
+  <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>How It Works</h2>
+  <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Our Simple 3 Step Process</p>
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '1.5rem',
+    justifyItems: 'center'
+  }}>
+    {/* STEP 1 */}
+    <div style={{
+      background: '#fff',
+      borderRadius: '12px',
+      padding: '1.5rem',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+      maxWidth: '320px'
+    }}>
+      <img src="/s1.jpg" alt="Step 1" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+      <h3 style={{ fontWeight: 600 }}>Fill Out the Online Form</h3>
+      <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>One of our home buying specialists will call with your offer.</p>
+    </div>
+
+    {/* STEP 2 */}
+    <div style={{
+      background: '#fff',
+      borderRadius: '12px',
+      padding: '1.5rem',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+      maxWidth: '320px'
+    }}>
+      <img src="/s2.jpg" alt="Step 2" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+      <h3 style={{ fontWeight: 600 }}>Pick Your Closing Date</h3>
+      <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>There’s no financing fall-through risk so you can confidently buy your next home.</p>
+    </div>
+
+    {/* STEP 3 */}
+    <div style={{
+      background: '#fff',
+      borderRadius: '12px',
+      padding: '1.5rem',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+      maxWidth: '320px'
+    }}>
+      <img src="/s3.jpg" alt="Step 3" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+      <h3 style={{ fontWeight: 600 }}>Get Paid and Move On</h3>
+      <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>We pay more. Get cash in your pocket and move on to the next chapter in your life.</p>
+    </div>
+  </div>
+</section>
 
       {/* VISUAL TESTIMONIALS */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
