@@ -67,27 +67,45 @@ export default function Home() {
   );
 
   return (
-    <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Need to sell your home fast?</h1>
-        <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
-        <p style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '0.5rem' }}>
-          Operating since June 2023 — 10+ homeowners helped.
-        </p>
-        {step === 0 && (
-          <button onClick={next} style={{
-            background: '#2563eb',
-            color: '#fff',
-            padding: '1rem 2rem',
-            borderRadius: '8px',
-            fontWeight: 500,
-            marginTop: '1.5rem',
-            cursor: 'pointer'
-          }}>
-            Get My Cash Offer
-          </button>
-        )}
-      </section>
+  <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
+    {/* HEADER NAVIGATION */}
+    <header style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: '3rem',
+      paddingBottom: '1rem',
+      borderBottom: '1px solid #e5e7eb'
+    }}>
+      <div style={{ fontWeight: 700, fontSize: '1.5rem' }}>Luna Haven</div>
+      <nav>
+        <a href="/" style={{ marginRight: '1.5rem', color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>Home</a>
+        <a href="/about-us" style={{ color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
+      </nav>
+    </header>
+
+    {/* HERO SECTION */}
+    <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+      <h1 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Need to sell your home fast?</h1>
+      <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
+      <p style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '0.5rem' }}>
+        Operating since June 2023 — 10+ homeowners helped.
+      </p>
+      {step === 0 && (
+        <button onClick={next} style={{
+          background: '#2563eb',
+          color: '#fff',
+          padding: '1rem 2rem',
+          borderRadius: '8px',
+          fontWeight: 500,
+          marginTop: '1.5rem',
+          cursor: 'pointer'
+        }}>
+          Get My Cash Offer
+        </button>
+      )}
+    </section>
+
 
       {/* FORM */}
       <section>
