@@ -50,20 +50,22 @@ export default function Home() {
   );
 
   const Button = (props: any) => (
-    <button {...props} style={{
-      display: 'block',
-      width: '100%',
-      padding: '0.75rem 1rem',
-      marginBottom: '0.75rem',
-      background: '#eff6ff',
-      border: 'none',
-      borderRadius: '8px',
-      color: '#1e3a8a',
-      fontWeight: 500,
-      cursor: 'pointer'
-    }}>
-      {props.children}
-    </button>
+  <button {...props} style={{
+    display: 'block',
+    width: '100%',
+    padding: '0.75rem 1rem',
+    marginBottom: '0.75rem',
+    background: '#eff6ff',
+    border: 'none',
+    borderRadius: '8px',
+    color: '#1e3a8a',
+    fontWeight: 500,
+    cursor: 'pointer'
+  }}>
+    {props.children}
+  </button>
+); // <-- make sure this line is here!
+
 
   return (
     <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
