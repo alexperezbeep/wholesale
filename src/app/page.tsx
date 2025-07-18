@@ -190,14 +190,16 @@ export default function Home() {
             <p style={{ color: '#6b7280' }}>Fill out a quick form or call us. We’ll get details and schedule a walk-through.</p>
           </div>
           <div>
-            <img src="/s2.jpg" alt="Step 2" style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
-            <h3 style={{ fontWeight: 600 }}>Pick Your Closing Date</h3>
-            <p style={{ color: '#6b7280' }}>No financing fall-through risk — feel confident planning your next move.</p>
-                    <div>
-            <img src="/s3.jpg" alt="Step 3" style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
-            <h3 style={{ fontWeight: 600 }}>Get Paid & Move On</h3>
-            <p style={{ color: '#6b7280' }}>We handle everything — you get cash, we take care of the paperwork.</p>
-          </div>
+  <img src="/s2.jpg" alt="Step 2" style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
+  <h3 style={{ fontWeight: 600 }}>Pick Your Closing Date</h3>
+  <p style={{ color: '#6b7280' }}>No financing fall-through risk — feel confident planning your next move.</p>
+</div>
+<div>
+  <img src="/s3.jpg" alt="Step 3" style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
+  <h3 style={{ fontWeight: 600 }}>Get Paid & Move On</h3>
+  <p style={{ color: '#6b7280' }}>We handle everything — you get cash, we take care of the paperwork.</p>
+</div>
+
     
       </section>
 
