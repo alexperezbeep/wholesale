@@ -1,5 +1,4 @@
 'use client';
-export default function AboutPage() { return <div>About Page Live Test</div>; }
 import React from 'react';
 
 export default function AboutPage() {
