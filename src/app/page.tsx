@@ -64,7 +64,6 @@ export default function Home() {
     }}>
       {props.children}
     </button>
-  );
 
   return (
     <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
