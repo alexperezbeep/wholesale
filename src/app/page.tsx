@@ -50,26 +50,24 @@ export default function Home() {
   );
 
   const Button = (props: any) => (
-  <button {...props} style={{
-    display: 'block',
-    width: '100%',
-    padding: '0.75rem 1rem',
-    marginBottom: '0.75rem',
-    background: '#eff6ff',
-    border: 'none',
-    borderRadius: '8px',
-    color: '#1e3a8a',
-    fontWeight: 500,
-    cursor: 'pointer'
-  }}>
-    {props.children}
-  </button>
-); // <-- make sure this line is here!
-
+    <button {...props} style={{
+      display: 'block',
+      width: '100%',
+      padding: '0.75rem 1rem',
+      marginBottom: '0.75rem',
+      background: '#eff6ff',
+      border: 'none',
+      borderRadius: '8px',
+      color: '#1e3a8a',
+      fontWeight: 500,
+      cursor: 'pointer'
+    }}>
+      {props.children}
+    </button>
+  );
 
   return (
     <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
-      {/* HERO */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Need to sell your home fast?</h1>
         <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
@@ -176,34 +174,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* HOW IT WORKS */}
-      <section style={{ marginTop: '6rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>How It Works</h2>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2rem',
-          justifyItems: 'center'
-        }}>
-          <div>
-            <img src="/s1.jpg" alt="Step 1" style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
-            <h3 style={{ fontWeight: 600 }}>Tell Us About Your Home</h3>
-            <p style={{ color: '#6b7280' }}>Fill out a quick form or call us. We’ll get details and schedule a walk-through.</p>
-          </div>
-          <div>
-  <img src="/s2.jpg" alt="Step 2" style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
-  <h3 style={{ fontWeight: 600 }}>Pick Your Closing Date</h3>
-  <p style={{ color: '#6b7280' }}>No financing fall-through risk — feel confident planning your next move.</p>
-</div>
-<div>
-  <img src="/s3.jpg" alt="Step 3" style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
-  <h3 style={{ fontWeight: 600 }}>Get Paid & Move On</h3>
-  <p style={{ color: '#6b7280' }}>We handle everything — you get cash, we take care of the paperwork.</p>
-</div>
-
-    
-      </section>
-
       {/* VISUAL TESTIMONIALS */}
       <section style={{ marginTop: '5rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>People We’ve Served — And Why It Matters</h2>
@@ -227,10 +197,15 @@ export default function Home() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
           gap: '1.5rem'
         }}>
-          {[
-            '/brent.jpg', '/darryl.png', '/109.png', '/516-518.jpg',
-            '/zv.png', '/zw.png', '/zx.png', '/zy.png', '/zz.jpg'
-          ].map((src, i) => (
+          {['/brent.jpg',
+  '/darryl.png',
+  '/109.png',
+  '/516-518.jpg',
+  '/zv.png',
+  '/zw.png',
+  '/zx.png',
+  '/zy.png',
+  '/zz.jpg'].map((src, i) => (
             <img key={i} src={src} alt={`property ${i}`} style={{ width: '100%', borderRadius: '10px' }} />
           ))}
         </div>
