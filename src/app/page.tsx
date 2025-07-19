@@ -1,7 +1,9 @@
 'use client';
 import React, { useState } from 'react';
+import { useTheme } from './ThemeProvider';
 
 export default function Home() {
+  const { theme, toggleTheme } = useTheme();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
     motivation: '',
@@ -35,77 +37,58 @@ export default function Home() {
   };
 
   const StepCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div style={{
-      maxWidth: '600px',
-      margin: '2rem auto',
-      padding: '2rem',
-      background: 'white',
-      borderRadius: '12px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-      fontFamily: 'Inter, sans-serif'
-    }}>
-      <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>{title}</h2>
+    <div className="card">
+      <h2>{title}</h2>
       {children}
     </div>
   );
 
   const Button = (props: any) => (
-    <button {...props} style={{
-      display: 'block',
-      width: '100%',
-      padding: '0.75rem 1rem',
-      marginBottom: '0.75rem',
-      background: '#eff6ff',
-      border: 'none',
-      borderRadius: '8px',
-      color: '#1e3a8a',
-      fontWeight: 500,
-      cursor: 'pointer'
-    }}>
+    <button {...props} className="btn-option">
       {props.children}
     </button>
   );
 
   return (
-  <main style={{ fontFamily: 'Inter, sans-serif', padding: '2rem' }}>
-    {/* HEADER NAVIGATION */}
-    <header style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: '3rem',
-      paddingBottom: '1rem',
-      borderBottom: '1px solid #e5e7eb'
-    }}>
-      <div style={{ fontWeight: 700, fontSize: '1.5rem' }}>Luna Haven</div>
-      <nav>
-        <a href="/" style={{ marginRight: '1.5rem', color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>Home</a>
-        <a href="/about-us" style={{ color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
-      </nav>
-    </header>
+    <main>
+      <header style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '3rem',
+        paddingBottom: '1rem',
+        borderBottom: '1px solid #e5e7eb'
+      }}>
+        <div style={{ fontWeight: 700, fontSize: '1.5rem' }}>Luna Haven</div>
+        <nav style={{ display: 'flex', alignItems: 'center' }}>
+          <a href="/" style={{ marginRight: '1.5rem', color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>Home</a>
+          <a href="/about-us" style={{ color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
+          <button
+            onClick={toggleTheme}
+            className="btn-primary"
+            style={{
+              marginLeft: '1rem',
+              background: theme === 'dark' ? '#334155' : '#2563eb'
+            }}
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
+          </button>
+        </nav>
+      </header>
 
-    {/* HERO SECTION */}
-    <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
-      <h1 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Need to sell your home fast?</h1>
-      <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
-      <p style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '0.5rem' }}>
-        Operating since June 2023 — 10+ homeowners helped.
-      </p>
-      {step === 0 && (
-        <button onClick={next} style={{
-          background: '#2563eb',
-          color: '#fff',
-          padding: '1rem 2rem',
-          borderRadius: '8px',
-          fontWeight: 500,
-          marginTop: '1.5rem',
-          cursor: 'pointer'
-        }}>
-          Get My Cash Offer
-        </button>
-      )}
-    </section>
-
+      <section className="hero">
+        <h1>Need to sell your home fast?</h1>
+        <p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
+        <p style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '0.5rem' }}>
+          Operating since June 2023 — 10+ homeowners helped.
+        </p>
+        {step === 0 && (
+          <button onClick={next} className="btn-primary" style={{ marginTop: '1.5rem' }}>
+            Get My Cash Offer
+          </button>
+        )}
+      </section>
 
       {/* FORM */}
       <section>
@@ -132,55 +115,55 @@ export default function Home() {
         )}
         {step === 4 && (
           <StepCard title="What’s the property address?">
-            <input name="address" onChange={handleChange} placeholder="123 Main St" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ textAlign: 'right', marginTop: '1rem' }}>
-              <Button onClick={next}>Next</Button>
+            <input name="address" onChange={handleChange} placeholder="123 Main St" />
+            <div className="nav-btns">
+              <button className="btn-primary" onClick={next}>Next</button>
             </div>
           </StepCard>
         )}
         {step === 5 && (
           <StepCard title="What's your name?">
-            <input name="name" onChange={handleChange} placeholder="Full Name" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-              <Button onClick={back}>Back</Button>
-              <Button onClick={next}>Next</Button>
+            <input name="name" onChange={handleChange} placeholder="Full Name" />
+            <div className="nav-btns">
+              <button className="btn-primary" onClick={back}>Back</button>
+              <button className="btn-primary" onClick={next}>Next</button>
             </div>
           </StepCard>
         )}
         {step === 6 && (
           <StepCard title="What's your email?">
-            <input type="email" name="email" onChange={handleChange} placeholder="you@example.com" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-              <Button onClick={back}>Back</Button>
-              <Button onClick={next}>Next</Button>
+            <input type="email" name="email" onChange={handleChange} placeholder="you@example.com" />
+            <div className="nav-btns">
+              <button className="btn-primary" onClick={back}>Back</button>
+              <button className="btn-primary" onClick={next}>Next</button>
             </div>
           </StepCard>
         )}
         {step === 7 && (
           <StepCard title="What's your phone number?">
-            <input name="phone" onChange={handleChange} placeholder="(555) 555-5555" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-              <Button onClick={back}>Back</Button>
-              <Button onClick={next}>Next</Button>
+            <input name="phone" onChange={handleChange} placeholder="(555) 555-5555" />
+            <div className="nav-btns">
+              <button className="btn-primary" onClick={back}>Back</button>
+              <button className="btn-primary" onClick={next}>Next</button>
             </div>
           </StepCard>
         )}
         {step === 8 && (
           <StepCard title="How did you hear about us?">
-            <input name="how" onChange={handleChange} placeholder="Google, Friend, etc." style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-              <Button onClick={back}>Back</Button>
-              <Button onClick={next}>Next</Button>
+            <input name="how" onChange={handleChange} placeholder="Google, Friend, etc." />
+            <div className="nav-btns">
+              <button className="btn-primary" onClick={back}>Back</button>
+              <button className="btn-primary" onClick={next}>Next</button>
             </div>
           </StepCard>
         )}
         {step === 9 && (
           <form onSubmit={handleSubmit}>
             <StepCard title="Any concerns working with a homebuyer?">
-              <input name="concern" onChange={handleChange} placeholder="Optional..." style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-                <Button type="button" onClick={back}>Back</Button>
-                <Button type="submit">Submit</Button>
+              <input name="concern" onChange={handleChange} placeholder="Optional..." />
+              <div className="nav-btns">
+                <button type="button" className="btn-primary" onClick={back}>Back</button>
+                <button type="submit" className="btn-submit">Submit</button>
               </div>
             </StepCard>
           </form>
@@ -191,68 +174,54 @@ export default function Home() {
           </StepCard>
         )}
       </section>
-{/* HOW IT WORKS */}
-<section style={{ marginTop: '4rem', textAlign: 'center' }}>
-  <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>How It Works</h2>
-  <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Our Simple 3 Step Process</p>
-  <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '1.5rem',
-    justifyItems: 'center'
-  }}>
-    {/* STEP 1 */}
-    <div style={{
-      background: '#fff',
-      borderRadius: '12px',
-      padding: '1.5rem',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-      maxWidth: '320px'
-    }}>
-      <img src="/s1.jpg" alt="Step 1" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
-      <h3 style={{ fontWeight: 600 }}>Fill Out the Online Form</h3>
-      <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>One of our home buying specialists will call with your offer.</p>
-    </div>
 
-    {/* STEP 2 */}
-    <div style={{
-      background: '#fff',
-      borderRadius: '12px',
-      padding: '1.5rem',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-      maxWidth: '320px'
-    }}>
-      <img src="/s2.jpg" alt="Step 2" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
-      <h3 style={{ fontWeight: 600 }}>Pick Your Closing Date</h3>
-      <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>There’s no financing fall-through risk so you can confidently buy your next home.</p>
-    </div>
-
-    {/* STEP 3 */}
-    <div style={{
-      background: '#fff',
-      borderRadius: '12px',
-      padding: '1.5rem',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-      maxWidth: '320px'
-    }}>
-      <img src="/s3.jpg" alt="Step 3" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
-      <h3 style={{ fontWeight: 600 }}>Get Paid and Move On</h3>
-      <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>We pay more. Get cash in your pocket and move on to the next chapter in your life.</p>
-    </div>
-  </div>
-</section>
-
-      {/* VISUAL TESTIMONIALS */}
-      <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>People We’ve Served — And Why It Matters</h2>
+      {/* HOW IT WORKS */}
+      <section style={{ marginTop: '4rem', textAlign: 'center' }}>
+        <h2>How It Works</h2>
+        <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Our Simple 3 Step Process</p>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
           gap: '1.5rem',
           justifyItems: 'center'
         }}>
-          {['/mark.png', '/tony.png', '/enrique.png', '/grace.png', '/laurie.png', '/nicholas.png'].map((src, i) => (
-            <img key={i} src={src} alt={`testimonial ${i}`} style={{ width: '100%', maxWidth: '350px', borderRadius: '12px' }} />
+          {/* STEP 1 */}
+          <div className="card" style={{ maxWidth: '320px' }}>
+            <img src="/s1.jpg" alt="Step 1" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+            <h3 style={{ fontWeight: 600 }}>Fill Out the Online Form</h3>
+            <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>One of our home buying specialists will call with your offer.</p>
+          </div>
+          {/* STEP 2 */}
+          <div className="card" style={{ maxWidth: '320px' }}>
+            <img src="/s2.jpg" alt="Step 2" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+            <h3 style={{ fontWeight: 600 }}>Pick Your Closing Date</h3>
+            <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>There’s no financing fall-through risk so you can confidently buy your next home.</p>
+          </div>
+          {/* STEP 3 */}
+          <div className="card" style={{ maxWidth: '320px' }}>
+            <img src="/s3.jpg" alt="Step 3" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+            <h3 style={{ fontWeight: 600 }}>Get Paid and Move On</h3>
+            <p style={{ color: '#6b7280', marginTop: '0.5rem' }}>We pay more. Get cash in your pocket and move on to the next chapter in your life.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* VISUAL TESTIMONIALS */}
+      <section style={{ marginTop: '5rem', textAlign: 'center' }}>
+        <h2 className="testimonial-title">People We’ve Served — And Why It Matters</h2>
+        <div className="testimonial-grid">
+          {[
+            { src: '/mark.png', name: 'Mark' },
+            { src: '/tony.png', name: 'Tony' },
+            { src: '/enrique.png', name: 'Enrique' },
+            { src: '/grace.png', name: 'Grace' },
+            { src: '/laurie.png', name: 'Laurie' },
+            { src: '/nicholas.png', name: 'Nicholas' }
+          ].map((t, i) => (
+            <div className="testimonial" key={i}>
+              <img src={t.src} alt={t.name} />
+              <div style={{ fontWeight: 600, marginTop: '0.5rem' }}>{t.name}</div>
+            </div>
           ))}
         </div>
       </section>
@@ -266,14 +235,14 @@ export default function Home() {
           gap: '1.5rem'
         }}>
           {['/brent.jpg',
-  '/darryl.png',
-  '/109.png',
-  '/516-518.jpg',
-  '/zv.png',
-  '/zw.png',
-  '/zx.png',
-  '/zy.png',
-  '/zz.jpg'].map((src, i) => (
+            '/darryl.png',
+            '/109.png',
+            '/516-518.jpg',
+            '/zv.png',
+            '/zw.png',
+            '/zx.png',
+            '/zy.png',
+            '/zz.jpg'].map((src, i) => (
             <img key={i} src={src} alt={`property ${i}`} style={{ width: '100%', borderRadius: '10px' }} />
           ))}
         </div>

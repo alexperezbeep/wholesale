@@ -1,121 +1,50 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import '@fontsource/inter/variable.css';
+/* ...existing code... */
 
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f8fafc;
-  color: #222;
+/* === DARK MODE OVERRIDES === */
+.dark body {
+  background: #18181b;
+  color: #f3f4f6;
 }
 
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem;
+.dark .container {
+  background: transparent;
+  color: #f3f4f6;
 }
 
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+.dark .card,
+.dark .testimonial {
+  background: #23232a;
+  color: #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.dark input {
+  background: #23232a;
+  color: #f3f4f6;
+  border: 1px solid #444;
 }
 
-.hero {
-  text-align: center;
-  margin-bottom: 3rem;
+.dark .btn-primary,
+.dark .btn-submit {
+  background: #1e293b;
+  color: #f3f4f6;
 }
 
-.card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  margin-bottom: 2rem;
+.dark .btn-option {
+  background: #334155;
+  color: #f3f4f6;
 }
 
-input {
-  width: 100%;
-  padding: 0.8rem;
-  margin-top: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
+.dark .testimonial-title {
+  color: #f3f4f6;
 }
 
-button {
-  cursor: pointer;
+.dark section,
+.dark h1,
+.dark h2 {
+  color: #f3f4f6;
 }
 
-.btn-primary, .btn-submit {
-  background: #2563eb;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  margin-top: 1rem;
-  font-weight: 600;
-}
-
-.btn-option {
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: #e0f2fe;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.nav-btns {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-.testimonial-title {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-.testimonial {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-  text-align: center;
-  animation: fadeIn 0.6s ease-out both;
-}
-
-.testimonial img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.dark a {
+  color: #60a5fa;
 }
