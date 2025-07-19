@@ -50,7 +50,7 @@ export default function Home() {
   );
 
   return (
-    <main>
+    <main style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
       <header style={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -249,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* TRUST BLOCK */}
-      <section style={{ marginTop: '5rem', background: '#f9fafb', padding: '2rem', borderRadius: '12px' }}>
+      <section style={{ marginTop: '5rem', background: 'var(--card)', padding: '2rem', borderRadius: '12px' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 600, textAlign: 'center', marginBottom: '1.5rem' }}>Why Sellers Trust Us</h2>
         <ul style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'left', lineHeight: '1.75' }}>
           <li>✅ Cancel anytime before signing</li>
