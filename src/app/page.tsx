@@ -261,11 +261,8 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ marginTop: '5rem', textAlign: 'center', fontSize: '0.9rem', color: '#6b7280' }}>
-        Luna Haven LLC is a legally registered homebuyer based in [Your State].<br />
-        &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
-        {/* FAQ SECTION */}
-<section style={{ marginTop: '5rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+      {/* FAQ SECTION */}
+      <section style={{ marginTop: '5rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
   <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
   <p style={{ textAlign: 'center', color: '#6b7280', marginBottom: '2rem' }}>We Have The Answers</p>
   {[
@@ -312,6 +309,10 @@ export default function Home() {
     </details>
   ))}
 </section>
+      <footer style={{ marginTop: '5rem', textAlign: 'center', fontSize: '0.9rem', color: '#6b7280' }}>
+        Luna Haven LLC is a legally registered homebuyer based in [Your State].<br />
+        &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
+
 
       </footer>
     </main>
