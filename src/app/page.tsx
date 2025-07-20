@@ -264,6 +264,55 @@ export default function Home() {
       <footer style={{ marginTop: '5rem', textAlign: 'center', fontSize: '0.9rem', color: '#6b7280' }}>
         Luna Haven LLC is a legally registered homebuyer based in [Your State].<br />
         &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
+        {/* FAQ SECTION */}
+<section style={{ marginTop: '5rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+  <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
+  <p style={{ textAlign: 'center', color: '#6b7280', marginBottom: '2rem' }}>We Have The Answers</p>
+  {[
+    {
+      q: "What do you do with my information?",
+      a: "We only use your information to prepare and deliver your cash offer. We never sell or share your data."
+    },
+    {
+      q: "Do I need to clean or fix anything?",
+      a: "Nope. We buy houses as-is — no cleaning or repairs needed."
+    },
+    {
+      q: "But my house is in REALLY bad shape…",
+      a: "That’s fine! We specialize in buying properties in any condition."
+    },
+    {
+      q: "Can I leave anything behind?",
+      a: "Yes. Leave behind anything you don’t want. We’ll handle the rest."
+    },
+    {
+      q: "Do I pay any fees or commissions?",
+      a: "None at all! We cover all title and escrow costs. You pay nothing."
+    },
+    {
+      q: "What happens when I call you?",
+      a: "We’ll ask a few quick questions about the property and walk you through next steps."
+    },
+    {
+      q: "Why should I work with a cash buyer?",
+      a: "It’s faster, simpler, and there’s no risk of deals falling through from financing issues."
+    }
+  ].map(({ q, a }, i) => (
+    <details key={i} style={{
+      background: 'var(--card)',
+      color: 'var(--text)',
+      borderRadius: '8px',
+      marginBottom: '1rem',
+      padding: '1rem',
+      boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+      cursor: 'pointer'
+    }}>
+      <summary style={{ fontWeight: 600, fontSize: '1rem', listStyle: 'none' }}>{q}</summary>
+      <p style={{ marginTop: '0.75rem', lineHeight: '1.6', color: 'var(--text)' }}>{a}</p>
+    </details>
+  ))}
+</section>
+
       </footer>
     </main>
   );
