@@ -316,6 +316,7 @@ Luna Haven LLC is a legally registered homebuyer based in [Your State].<br />
 &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
 
 
-</footer>
-</main>
+    </footer>
+  </main>
+);
 }
