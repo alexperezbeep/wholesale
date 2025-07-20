@@ -265,7 +265,7 @@ export default function Home() {
       {/* FAQ SECTION */}
       <section style={{ marginTop: '5rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
   <h2 style={{ fontSize: '2rem', fontWeight: 700, fontFamily: 'Inter, sans-serif', textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
-  <p style={{ textAlign: 'center', color: '#6b7280', marginBottom: '2rem' }}>We Have The Answers</p>
+  <p style={{ textAlign: 'center', color: '#6b7280', fontFamily: 'Inter, sans-serif', marginBottom: '2rem' }}>We Have The Answers</p>
   {[
     {
       q: "What do you do with my information?",
