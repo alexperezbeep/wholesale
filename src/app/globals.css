@@ -118,3 +118,7 @@ button {
 .dark a {
   color: #60a5fa;
 }
+
+html, body, * {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
+}
