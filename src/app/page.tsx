@@ -55,7 +55,6 @@ return (
 display: 'flex',
 justifyContent: 'space-between',
 alignItems: 'center',
-        fontFamily: 'Inter, sans-serif' 
         fontFamily: 'Inter, sans-serif',
 marginBottom: '3rem',
 paddingBottom: '1rem',
