@@ -299,6 +299,7 @@ export default function Home() {
     <details key={i} style={{
       background: 'var(--card)',
       color: 'var(--text)',
+      fontFamily: 'Inter, sans-serif'
       borderRadius: '8px',
       marginBottom: '1rem',
       padding: '1rem',
