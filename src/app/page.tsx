@@ -55,7 +55,8 @@ return (
 display: 'flex',
 justifyContent: 'space-between',
 alignItems: 'center',
-fontFamily: 'Inter, sans-serif',
+        fontFamily: 'Inter, sans-serif' 
+        fontFamily: 'Inter, sans-serif',
 marginBottom: '3rem',
 paddingBottom: '1rem',
 borderBottom: '1px solid #e5e7eb'
@@ -264,8 +265,7 @@ gap: '1.5rem'
 {/* FOOTER */}
 {/* FAQ SECTION */}
 <section style={{ marginTop: '5rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
-  <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
-  <h2 style={{ fontSize: '2rem', fontWeight: 700, fontFamily: 'Inter, sans-serif', textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
+<h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
 <p style={{ textAlign: 'center', color: '#6b7280', marginBottom: '2rem' }}>We Have The Answers</p>
 {[
 {
@@ -318,4 +318,4 @@ Luna Haven LLC is a legally registered homebuyer based in [Your State].<br />
 
 </footer>
 </main>
-);
+}
