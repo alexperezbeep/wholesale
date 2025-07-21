@@ -322,7 +322,7 @@ gap: '1.5rem'
   }}>
     {/* Logo */}
     <div style={{ flex: '1', minWidth: '250px', marginBottom: '1.5rem' }}>
-      <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '60px', marginBottom: '1rem' }} />
+      <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '200px', marginBottom: '1rem' }} />
     </div>
 
     {/* Quick Links */}
@@ -335,10 +335,10 @@ gap: '1.5rem'
     <div style={{ flex: '1', minWidth: '250px', marginBottom: '1.5rem' }}>
       <h4 style={{ color: '#1e3a8a', fontWeight: 600, marginBottom: '1rem', borderBottom: '2px solid #e11d48', display: 'inline-block' }}>CONTACT US</h4>
       <div style={{ marginBottom: '0.5rem' }}>
-        📞 <a href="tel:6788295495" style={{ color: '#1e40af', textDecoration: 'underline' }}>(678) 829-5495</a>
+        📞 <a href="tel:9152747574" style={{ color: '#1e40af', textDecoration: 'underline' }}>(915) 274-7574</a>
       </div>
       <div>
-        📧 <a href="mailto:info@homecashofferpro.com" style={{ color: '#1e40af', textDecoration: 'underline' }}>info@homecashofferpro.com</a>
+        📧 <a href="mailto:info@homecashofferpro.com" style={{ color: '#1e40af', textDecoration: 'underline' }}>support@lunahaven.net</a>
       </div>
     </div>
   </div>
