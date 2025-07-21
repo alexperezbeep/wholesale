@@ -206,25 +206,39 @@ justifyItems: 'center'
 </div>
 </div>
 </section>
-
 {/* VISUAL TESTIMONIALS */}
 <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-<h2 className="testimonial-title">People We’ve Served — And Why It Matters</h2>
-<div className="testimonial-grid">
-{[
-{ src: '/mark.png', name: 'Mark' },
-{ src: '/tony.png', name: 'Tony' },
-{ src: '/enrique.png', name: 'Enrique' },
-{ src: '/grace.png', name: 'Grace' },
-{ src: '/laurie.png', name: 'Laurie' },
-{ src: '/nicholas.png', name: 'Nicholas' }
-].map((t, i) => (
-<div className="testimonial" key={i}>
-<img src={t.src} alt={t.name} />
-<div style={{ fontWeight: 600, marginTop: '0.5rem' }}>{t.name}</div>
-</div>
-))}
-</div>
+  <h2 className="testimonial-title">People We’ve Served — And Why It Matters</h2>
+  <div className="testimonial-grid" style={{
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: '2rem'
+  }}>
+    {[
+      { src: '/mark.png', name: 'Mark' },
+      { src: '/tony.png', name: 'Tony' },
+      { src: '/enrique.png', name: 'Enrique' },
+      { src: '/grace.png', name: 'Grace' },
+      { src: '/laurie.png', name: 'Laurie' },
+      { src: '/nicholas.png', name: 'Nicholas' }
+    ].map((t, i) => (
+      <div className="testimonial" key={i} style={{ textAlign: 'center' }}>
+        <img
+          src={t.src}
+          alt={t.name}
+          style={{
+            maxWidth: '140px',
+            height: '140px',
+            objectFit: 'cover',
+            borderRadius: '12px',
+            boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
+          }}
+        />
+        <div style={{ fontWeight: 600, marginTop: '0.5rem' }}>{t.name}</div>
+      </div>
+    ))}
+  </div>
 </section>
 
 {/* PROPERTY PHOTOS */}
