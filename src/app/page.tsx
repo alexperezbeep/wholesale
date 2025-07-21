@@ -208,12 +208,13 @@ justifyItems: 'center'
 </section>
 {/* VISUAL TESTIMONIALS */}
 <section style={{ marginTop: '5rem', textAlign: 'center' }}>
-  <h2 className="testimonial-title">People We’ve Served — And Why It Matters</h2>
-  <div className="testimonial-grid" style={{
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: '2rem'
+  <h2 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '2rem' }}>
+    People We’ve Served — And Why It Matters
+  </h2>
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '1.5rem'
   }}>
     {[
       { src: '/mark.png', name: 'Mark' },
@@ -223,18 +224,8 @@ justifyItems: 'center'
       { src: '/laurie.png', name: 'Laurie' },
       { src: '/nicholas.png', name: 'Nicholas' }
     ].map((t, i) => (
-      <div className="testimonial" key={i} style={{ textAlign: 'center' }}>
-        <img
-          src={t.src}
-          alt={t.name}
-          style={{
-            maxWidth: '140px',
-            height: '140px',
-            objectFit: 'cover',
-            borderRadius: '12px',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
-          }}
-        />
+      <div key={i}>
+        <img src={t.src} alt={t.name} style={{ width: '100%', borderRadius: '10px' }} />
         <div style={{ fontWeight: 600, marginTop: '0.5rem' }}>{t.name}</div>
       </div>
     ))}
