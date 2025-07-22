@@ -1,43 +1,40 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import "./globals.css";
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider, useTheme } from "./ThemeProvider";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [step, setStep] = useState<number>(0);
-
-  function toggleTheme(event: React.MouseEvent<HTMLButtonElement>): void {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  }
-
-  function next(): void {
-    setStep((prev) => prev + 1);
-  }
-
   return (
-    <html lang="en">
+    <ThemeProvider>
+      <LayoutContent>{children}</LayoutContent>
+    </ThemeProvider>
+  );
+}
+
+function LayoutContent({ children }: { children: React.ReactNode }) {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <html lang="en" className={theme === "dark" ? "dark" : ""}>
       <body className="antialiased" style={{ margin: 0 }}>
-        <ThemeProvider>
-          <header
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "1.5rem 2rem",
-              background: "var(--card)",
-              boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
-              borderBottom: "none",
-              position: "sticky",
-              top: 0,
-              zIndex: 100,
-            }}
-          >
+        <header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "1.5rem 2rem",
+            background: "var(--card)",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+            borderBottom: "none",
+            position: "sticky",
+            top: 0,
+            zIndex: 100,
+          }}
+        >
             <a
               href="/"
               style={{
@@ -126,11 +123,8 @@ export default function RootLayout({
               alignItems: "center",
               justifyContent: "center",
               padding: "4rem 1rem 2rem 1rem",
-              background: "linear-gradient(90deg, #e0e7ff 0%, #f8fafc 100%)",
-              borderRadius: "16px",
               margin: "2rem auto 3rem auto",
               maxWidth: "700px",
-              boxShadow: "0 4px 24px rgba(37,99,235,0.07)",
             }}
           >
             <h1
@@ -166,23 +160,7 @@ export default function RootLayout({
             >
               Operating since June 2023 — 10+ homeowners helped.
             </p>
-            {step === 0 && (
-              <button
-                onClick={next}
-                className="btn-primary"
-                style={{
-                  marginTop: "1.5rem",
-                  fontSize: "1.15rem",
-                  padding: "1rem 2.5rem",
-                  borderRadius: "8px",
-                  background:
-                    "linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%)",
-                  boxShadow: "0 2px 8px rgba(37,99,235,0.12)",
-                }}
-              >
-                Get My Cash Offer
-              </button>
-            )}
+          {/* Removed step/next button for layout-level hero */}
           </section>
           {children}
           {/* Place at the bottom of every page */}
@@ -319,7 +297,6 @@ export default function RootLayout({
               reserved.
             </div>
           </footer>
-        </ThemeProvider>
       </body>
     </html>
   );

@@ -50,7 +50,7 @@ export default function Home() {
   );
 
   return (
-    <main style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
+    <main style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh', transition: 'background 0.3s, color 0.3s' }}>
       <header
   style={{
     display: 'flex',
@@ -100,16 +100,16 @@ export default function Home() {
 </header>
 
 <section className="hero">
-<h1>Need to sell your home fast?</h1>
-<p style={{ color: '#4b5563', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
-<p style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '0.5rem' }}>
-Operating since June 2023 — 10+ homeowners helped.
-</p>
-{step === 0 && (
-<button onClick={next} className="btn-primary" style={{ marginTop: '1.5rem' }}>
-Get My Cash Offer
-</button>
-)}
+  <h1>Need to sell your home fast?</h1>
+  <p style={{ color: 'var(--text)', marginTop: '1rem' }}>Get a cash offer in just 7 days</p>
+  <p style={{ fontSize: '0.9rem', color: 'var(--text)', opacity: 0.8, marginTop: '0.5rem' }}>
+    Operating since June 2023 — 10+ homeowners helped.
+  </p>
+  {step === 0 && (
+    <button onClick={next} className="btn-primary" style={{ marginTop: '1.5rem' }}>
+      Get My Cash Offer
+    </button>
+  )}
 </section>
 
 {/* FORM */}
@@ -322,15 +322,7 @@ gap: '1.5rem'
       a: "It’s faster, simpler, and there’s no risk of deals falling through from financing issues."
     }
   ].map(({ q, a }, i) => (
-    <details key={i} style={{
-      background: 'var(--card)',
-      color: 'var(--text)',
-      borderRadius: '8px',
-      marginBottom: '1rem',
-      padding: '1rem',
-      boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
-      cursor: 'pointer'
-    }}>
+    <details key={i} className="faq" style={{ cursor: 'pointer' }}>
       <summary style={{ fontWeight: 600, fontSize: '1rem', listStyle: 'none' }}>{q}</summary>
       <p style={{ marginTop: '0.75rem', lineHeight: '1.6', color: 'var(--text)' }}>{a}</p>
     </details>
