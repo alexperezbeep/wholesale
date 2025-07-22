@@ -51,8 +51,12 @@ export default function Home() {
   );
 
 
-  // Modern Option Button
+  // Improved Option Button with theme variables and contrast
   const Button = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+    // Use theme variables for background/text for AA contrast
+    const btnBg = theme === 'dark' ? 'var(--primary)' : 'var(--accent)';
+    const btnText = theme === 'dark' ? '#fff' : '#111';
+    const btnShadow = theme === 'dark' ? 'rgba(123,92,245,0.18)' : 'rgba(123,92,245,0.10)';
     return (
       <button
         {...props}
@@ -61,25 +65,27 @@ export default function Home() {
           fontSize: '1.13rem',
           marginBottom: 18,
           padding: '12px 24px',
-          fontWeight: 600,
-          borderRadius: 8,
-          boxShadow: '0 2px 10px rgba(124,58,237,0.10)',
-          background: theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)',
-          color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
-          border: '1.5px solid var(--faq-border)',
+          fontWeight: 700,
+          borderRadius: 10,
+          boxShadow: `0 2px 10px ${btnShadow}`,
+          background: btnBg,
+          color: btnText,
+          border: '2px solid var(--primary)',
           width: '100%',
           textAlign: 'left',
-          transition: 'background 0.2s, color 0.2s, border 0.2s',
+          transition: 'background 0.2s, color 0.2s, border 0.2s, transform 0.13s',
           outline: 'none',
           cursor: 'pointer',
         }}
         onMouseOver={e => {
-          e.currentTarget.style.background = theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)';
+          e.currentTarget.style.background = 'var(--primary)';
           e.currentTarget.style.color = '#fff';
+          e.currentTarget.style.transform = 'scale(1.03)';
         }}
         onMouseOut={e => {
-          e.currentTarget.style.background = theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)';
-          e.currentTarget.style.color = theme === 'dark' ? '#f3f4f6' : 'var(--text)';
+          e.currentTarget.style.background = btnBg;
+          e.currentTarget.style.color = btnText;
+          e.currentTarget.style.transform = 'scale(1)';
         }}
       >
         {props.children}
@@ -96,13 +102,16 @@ export default function Home() {
         transition: 'background 0.4s',
       }}
     >
-      {/* HERO - single, merged, above the fold, with CTA */}
-      <section className="hero" style={{ marginTop: 0, marginBottom: 40, paddingTop: 48, paddingBottom: 40 }}>
-        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center", fontFamily: "Inter, system-ui, sans-serif", color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>
-          Need to Sell Your Home <span style={{ color: "var(--primary)" }}>Fast</span> &amp; <span style={{ color: "var(--accent)" }}>Easy</span>?
+      {/* HERO - single, centered, with CTA (cleaned) */}
+      <section className="hero" style={{ marginTop: 0, marginBottom: 40, paddingTop: 48, paddingBottom: 40, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center", fontFamily: "Inter, system-ui, sans-serif", color: 'var(--primary-dark)' }}>
+          Need to sell your home fast?
         </h1>
-        <p style={{ color: theme === 'dark' ? '#e5e7eb' : 'var(--text)' , fontSize: "1.25rem", opacity: 0.92, marginBottom: 8, textAlign: "center", fontWeight: 500, fontFamily: 'Inter, system-ui, sans-serif' }}>
-          Get a <b>cash offer in just 7 days</b> — no repairs, no fees, no stress. Trusted by 10+ homeowners since June 2023.
+        <p style={{ color: 'var(--text)', fontSize: "1.25rem", opacity: 0.92, marginBottom: 8, textAlign: "center", fontWeight: 500, fontFamily: 'Inter, system-ui, sans-serif' }}>
+          Get a <b>cash offer in just 7 days</b>
+        </p>
+        <p style={{ color: 'var(--text)', fontSize: "1.08rem", opacity: 0.85, marginBottom: 0, textAlign: "center", fontWeight: 500, fontFamily: 'Inter, system-ui, sans-serif' }}>
+          Operating since June 2023 — 10+ homeowners helped.
         </p>
         {step === 0 && (
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -115,24 +124,35 @@ export default function Home() {
                 padding: '1.1rem 2.5rem',
                 minWidth: 220,
                 borderRadius: '1.2rem',
-                fontWeight: 800,
-                boxShadow: '0 4px 16px rgba(124,58,237,0.13)',
-                border: 'none',
-                background: 'linear-gradient(90deg, var(--primary), var(--accent))',
-                color: '#fff',
+                fontWeight: 900,
+                boxShadow: '0 6px 24px var(--btn-shadow)',
+                border: '2.5px solid var(--primary)',
+                background: 'var(--accent)',
+                color: 'var(--btn-text)',
                 letterSpacing: '0.01em',
-                textShadow: '0 1px 2px rgba(0,0,0,0.07)',
-                transition: 'background 0.2s, box-shadow 0.2s, transform 0.1s',
+                textShadow: 'none',
+                transition: 'background 0.2s, box-shadow 0.2s, color 0.2s, border 0.2s, transform 0.1s',
                 outline: 'none',
                 cursor: 'pointer',
+                opacity: 1,
               }}
               onMouseOver={e => {
-                e.currentTarget.style.background = 'linear-gradient(90deg, var(--primary-dark), var(--primary))';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
+                e.currentTarget.style.background = 'var(--primary)';
+                e.currentTarget.style.color = '#fff';
+                e.currentTarget.style.boxShadow = '0 10px 32px var(--btn-shadow-hover)';
+                e.currentTarget.style.transform = 'scale(1.04)';
               }}
               onMouseOut={e => {
-                e.currentTarget.style.background = 'linear-gradient(90deg, var(--primary), var(--accent))';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.13)';
+                e.currentTarget.style.background = 'var(--accent)';
+                e.currentTarget.style.color = 'var(--btn-text)';
+                e.currentTarget.style.boxShadow = '0 6px 24px var(--btn-shadow)';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+              onFocus={e => {
+                e.currentTarget.style.boxShadow = '0 0 0 3px var(--primary), 0 6px 24px var(--btn-shadow)';
+              }}
+              onBlur={e => {
+                e.currentTarget.style.boxShadow = '0 6px 24px var(--btn-shadow)';
               }}
             >
               Get My Cash Offer
