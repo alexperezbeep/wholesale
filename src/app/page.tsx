@@ -42,6 +42,7 @@ export default function Home() {
   };
 
   // Modern Card
+
   const StepCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <div className="card" style={{ margin: "2.5rem auto", maxWidth: 520 }}>
       <h2 style={{ fontWeight: 800, fontSize: "2rem", marginBottom: 24, letterSpacing: "0.01em", textAlign: "center" }}>{title}</h2>
@@ -49,41 +50,42 @@ export default function Home() {
     </div>
   );
 
+
   // Modern Option Button
-  const Button = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
-    <button
-      {...props}
-      className="btn-option"
-      style={{
-        fontSize: '1.13rem',
-        marginBottom: 18,
-        padding: '12px 24px',
-        fontWeight: 600,
-        borderRadius: 8,
-        boxShadow: '0 2px 10px rgba(124,58,237,0.10)',
-        background: theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)',
-        color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
-        border: '1.5px solid var(--faq-border)',
-        width: '100%',
-        textAlign: 'left',
-        transition: 'background 0.2s, color 0.2s, border 0.2s',
-        outline: 'none',
-        cursor: 'pointer',
-      }}
-      onMouseOver={e => {
-        e.currentTarget.style.background = theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)';
-        e.currentTarget.style.color = '#fff';
-        e.currentTarget.style.borderColor = 'var(--primary)';
-      }}
-      onMouseOut={e => {
-        e.currentTarget.style.background = theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)';
-        e.currentTarget.style.color = theme === 'dark' ? '#f3f4f6' : 'var(--text)';
-        e.currentTarget.style.borderColor = 'var(--faq-border)';
-      }}
-    >
-      {props.children}
-    </button>
-  );
+  const Button = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+    return (
+      <button
+        {...props}
+        className="btn-option"
+        style={{
+          fontSize: '1.13rem',
+          marginBottom: 18,
+          padding: '12px 24px',
+          fontWeight: 600,
+          borderRadius: 8,
+          boxShadow: '0 2px 10px rgba(124,58,237,0.10)',
+          background: theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)',
+          color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+          border: '1.5px solid var(--faq-border)',
+          width: '100%',
+          textAlign: 'left',
+          transition: 'background 0.2s, color 0.2s, border 0.2s',
+          outline: 'none',
+          cursor: 'pointer',
+        }}
+        onMouseOver={e => {
+          e.currentTarget.style.background = theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)';
+          e.currentTarget.style.color = '#fff';
+        }}
+        onMouseOut={e => {
+          e.currentTarget.style.background = theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)';
+          e.currentTarget.style.color = theme === 'dark' ? '#f3f4f6' : 'var(--text)';
+        }}
+      >
+        {props.children}
+      </button>
+    );
+  };
 
   return (
     <main
@@ -110,24 +112,26 @@ export default function Home() {
               style={{
                 marginTop: 18,
                 fontSize: '1.13rem',
-                padding: '12px 24px',
+                padding: '1.1rem 2.5rem',
                 minWidth: 220,
-                borderRadius: 8,
-                fontWeight: 600,
+                borderRadius: '1.2rem',
+                fontWeight: 800,
                 boxShadow: '0 4px 16px rgba(124,58,237,0.13)',
                 border: 'none',
-                background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
+                background: 'linear-gradient(90deg, var(--primary), var(--accent))',
                 color: '#fff',
+                letterSpacing: '0.01em',
+                textShadow: '0 1px 2px rgba(0,0,0,0.07)',
                 transition: 'background 0.2s, box-shadow 0.2s, transform 0.1s',
                 outline: 'none',
                 cursor: 'pointer',
               }}
               onMouseOver={e => {
-                e.currentTarget.style.background = 'var(--primary-dark)';
+                e.currentTarget.style.background = 'linear-gradient(90deg, var(--primary-dark), var(--primary))';
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
               }}
               onMouseOut={e => {
-                e.currentTarget.style.background = theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)';
+                e.currentTarget.style.background = 'linear-gradient(90deg, var(--primary), var(--accent))';
                 e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.13)';
               }}
             >
@@ -136,7 +140,6 @@ export default function Home() {
           </div>
         )}
       </section>
-
       {/* FORM STEPS */}
       <section style={{ margin: "0 auto", maxWidth: 540 }}>
         {step === 1 && (
@@ -180,7 +183,7 @@ export default function Home() {
               }}
             />
             <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 18 }}>
-              <button className="btn-primary" onClick={next} style={{ minWidth: 120, borderRadius: 8, fontWeight: 700, fontSize: '1.13rem' }}>Next</button>
+              <button className="btn-primary" onClick={next} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 800, fontSize: '1.13rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(90deg, var(--primary), var(--accent))', color: '#fff', border: 'none', boxShadow: '0 4px 16px rgba(124,58,237,0.13)' }}>Next</button>
             </div>
           </StepCard>
         )}
@@ -188,8 +191,8 @@ export default function Home() {
           <StepCard title="What's your name?">
             <input name="name" onChange={handleChange} placeholder="Full Name" autoFocus />
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
-              <button className="btn-option" onClick={back} style={{ minWidth: 120 }}>Back</button>
-              <button className="btn-primary" onClick={next} style={{ minWidth: 120 }}>Next</button>
+              <button className="btn-option" onClick={back} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 700, fontSize: '1.13rem' }}>Back</button>
+              <button className="btn-primary" onClick={next} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 800, fontSize: '1.13rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(90deg, var(--primary), var(--accent))', color: '#fff', border: 'none', boxShadow: '0 4px 16px rgba(124,58,237,0.13)' }}>Next</button>
             </div>
           </StepCard>
         )}
@@ -197,8 +200,8 @@ export default function Home() {
           <StepCard title="What's your email?">
             <input type="email" name="email" onChange={handleChange} placeholder="you@example.com" autoFocus />
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
-              <button className="btn-option" onClick={back} style={{ minWidth: 120 }}>Back</button>
-              <button className="btn-primary" onClick={next} style={{ minWidth: 120 }}>Next</button>
+              <button className="btn-option" onClick={back} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 700, fontSize: '1.13rem' }}>Back</button>
+              <button className="btn-primary" onClick={next} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 800, fontSize: '1.13rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(90deg, var(--primary), var(--accent))', color: '#fff', border: 'none', boxShadow: '0 4px 16px rgba(124,58,237,0.13)' }}>Next</button>
             </div>
           </StepCard>
         )}
@@ -206,8 +209,8 @@ export default function Home() {
           <StepCard title="What's your phone number?">
             <input name="phone" onChange={handleChange} placeholder="(555) 555-5555" autoFocus />
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
-              <button className="btn-option" onClick={back} style={{ minWidth: 120 }}>Back</button>
-              <button className="btn-primary" onClick={next} style={{ minWidth: 120 }}>Next</button>
+              <button className="btn-option" onClick={back} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 700, fontSize: '1.13rem' }}>Back</button>
+              <button className="btn-primary" onClick={next} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 800, fontSize: '1.13rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(90deg, var(--primary), var(--accent))', color: '#fff', border: 'none', boxShadow: '0 4px 16px rgba(124,58,237,0.13)' }}>Next</button>
             </div>
           </StepCard>
         )}
@@ -215,8 +218,8 @@ export default function Home() {
           <StepCard title="How did you hear about us?">
             <input name="how" onChange={handleChange} placeholder="Google, Friend, etc." autoFocus />
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
-              <button className="btn-option" onClick={back} style={{ minWidth: 120 }}>Back</button>
-              <button className="btn-primary" onClick={next} style={{ minWidth: 120 }}>Next</button>
+              <button className="btn-option" onClick={back} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 700, fontSize: '1.13rem' }}>Back</button>
+              <button className="btn-primary" onClick={next} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 800, fontSize: '1.13rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(90deg, var(--primary), var(--accent))', color: '#fff', border: 'none', boxShadow: '0 4px 16px rgba(124,58,237,0.13)' }}>Next</button>
             </div>
           </StepCard>
         )}
@@ -225,18 +228,11 @@ export default function Home() {
             <StepCard title="Any concerns working with a homebuyer?">
               <input name="concern" onChange={handleChange} placeholder="Optional..." autoFocus />
               <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
-                <button className="btn-option" onClick={back} style={{ minWidth: 120 }}>Back</button>
-                <button type="submit" className="btn-primary" style={{ minWidth: 120 }}>Submit</button>
+                <button className="btn-option" onClick={back} style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 700, fontSize: '1.13rem' }}>Back</button>
+                <button type="submit" className="btn-primary" style={{ minWidth: 120, borderRadius: '1.2rem', fontWeight: 800, fontSize: '1.13rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(90deg, var(--primary), var(--accent))', color: '#fff', border: 'none', boxShadow: '0 4px 16px rgba(124,58,237,0.13)' }}>Submit</button>
               </div>
             </StepCard>
           </form>
-        )}
-        {step === 10 && (
-          <StepCard title="Hang tight… we're reviewing your info!">
-            <p style={{ color: "var(--primary)", marginTop: 18, textAlign: "center" }}>
-              We’ll get back to you shortly with a cash offer.
-            </p>
-          </StepCard>
         )}
       </section>
 
@@ -270,6 +266,7 @@ export default function Home() {
             <div
               key={i}
               className="card how-card"
+              tabIndex={0}
               style={{
                 width: 320,
                 minHeight: 360,
@@ -281,19 +278,23 @@ export default function Home() {
                 padding: '2rem 1.5rem',
                 margin: 0,
                 boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
-                transition: 'transform 0.18s, box-shadow 0.18s',
-                cursor: 'pointer',
-                background: theme === 'dark' ? '#232336' : 'var(--card)',
-                color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
-                fontFamily: 'Inter, system-ui, sans-serif',
-                borderRadius: 12,
+                background: theme === 'dark' ? 'rgba(35,39,47,0.92)' : 'rgba(255,255,255,0.98)',
+                borderRadius: 16,
+                transition: 'box-shadow 0.18s, transform 0.18s',
+                outline: 'none',
               }}
               onMouseOver={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.02)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.03)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.22)';
               }}
               onMouseOut={e => {
                 (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
+              }}
+              onFocus={e => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 0 3px var(--primary)';
+              }}
+              onBlur={e => {
                 (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
               }}
             >
@@ -331,6 +332,7 @@ export default function Home() {
             <div
               key={i}
               className="card testimonial-card"
+              tabIndex={0}
               style={{
                 padding: 0,
                 overflow: "hidden",
@@ -342,13 +344,29 @@ export default function Home() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'flex-end',
-                background: theme === 'dark' ? '#232336' : '#fff',
+                background: theme === 'dark' ? 'rgba(35,39,47,0.92)' : 'rgba(255,255,255,0.98)',
                 boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
                 margin: '0 auto',
                 wordBreak: 'break-word',
                 color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
                 fontFamily: 'Inter, system-ui, sans-serif',
-                borderRadius: 12,
+                borderRadius: 16,
+                transition: 'box-shadow 0.18s, transform 0.18s',
+                outline: 'none',
+              }}
+              onMouseOver={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.03)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.22)';
+              }}
+              onMouseOut={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
+              }}
+              onFocus={e => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 0 3px var(--primary)';
+              }}
+              onBlur={e => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
               }}
             >
               <Image
@@ -402,6 +420,7 @@ export default function Home() {
             <div
               key={i}
               className="card property-card"
+              tabIndex={0}
               style={{
                 padding: 0,
                 overflow: "hidden",
@@ -411,19 +430,26 @@ export default function Home() {
                 height: 200,
                 margin: '0 auto',
                 boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
-                transition: 'transform 0.16s, box-shadow 0.16s',
-                cursor: 'pointer',
-                borderRadius: 10,
-                background: theme === 'dark' ? '#232336' : '#fff',
+                background: theme === 'dark' ? 'rgba(35,39,47,0.92)' : 'rgba(255,255,255,0.98)',
+                borderRadius: 16,
+                transition: 'box-shadow 0.18s, transform 0.18s',
+                outline: 'none',
                 color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
                 fontFamily: 'Inter, system-ui, sans-serif',
+                cursor: 'pointer',
               }}
               onMouseOver={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.02)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.03)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.22)';
               }}
               onMouseOut={e => {
                 (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
+              }}
+              onFocus={e => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 0 3px var(--primary)';
+              }}
+              onBlur={e => {
                 (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
               }}
             >
@@ -432,7 +458,7 @@ export default function Home() {
                 alt={`property ${i}`}
                 width={260}
                 height={180}
-                style={{ width: "100%", height: 180, objectFit: 'cover', borderRadius: "1.2rem" }}
+                style={{ width: "100%", height: 180, objectFit: 'cover', borderRadius: "1.2rem 1.2rem 0 0" }}
                 loading="lazy"
               />
             </div>
@@ -442,23 +468,43 @@ export default function Home() {
 
       {/* TRUST BLOCK */}
       <section style={{ marginTop: 80, textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
-        <div style={{
-          background: theme === 'dark'
-            ? 'linear-gradient(120deg, #232336 60%, #18181b 100%)'
-            : 'linear-gradient(120deg, #f9f9ff 60%, #f3f4f6 100%)',
-          borderRadius: 28,
-          padding: '2.7rem 2.2rem',
-          maxWidth: 700,
-          width: '100%',
-          boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.10)',
-          border: '2.5px solid var(--primary)',
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
-          fontFamily: 'Inter, system-ui, sans-serif',
-        }}>
+        <div
+          className="card trust-block"
+          tabIndex={0}
+          style={{
+            background: theme === 'dark'
+              ? 'rgba(35,39,47,0.92)'
+              : 'rgba(255,255,255,0.98)',
+            borderRadius: 28,
+            padding: '2.7rem 2.2rem',
+            maxWidth: 700,
+            width: '100%',
+            boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.10)',
+            border: '2.5px solid var(--primary)',
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+            fontFamily: 'Inter, system-ui, sans-serif',
+            transition: 'box-shadow 0.18s, transform 0.18s',
+            outline: 'none',
+          }}
+          onMouseOver={e => {
+            (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.02)';
+            (e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 40px rgba(124,58,237,0.22)';
+          }}
+          onMouseOut={e => {
+            (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+            (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.10)';
+          }}
+          onFocus={e => {
+            (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 0 3px var(--primary)';
+          }}
+          onBlur={e => {
+            (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.10)';
+          }}
+        >
           <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24, fontFamily: 'Inter, system-ui, sans-serif', color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>Why Sellers Trust Us</h2>
           <ul style={{
             maxWidth: 600,
@@ -494,6 +540,7 @@ export default function Home() {
                   fontSize: '1.09rem',
                   color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
                   fontWeight: 600,
+                  transition: 'background 0.18s',
                 }}
               >
                 <span style={{ fontSize: 22, color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 28 }}>✔️</span>
@@ -540,15 +587,31 @@ export default function Home() {
         ].map(({ q, a }, i) => (
           <div
             key={i}
-            className="faq"
+            className="faq card"
+            tabIndex={0}
             style={{
               marginBottom: 28,
               border: theme === 'dark' ? '2px solid #7c3aed' : '1.5px solid var(--faq-border)',
               borderRadius: '1.5rem',
-              background: theme === 'dark' ? 'linear-gradient(120deg, #232336 60%, #18181b 100%)' : 'var(--faq-bg)',
+              background: theme === 'dark' ? 'rgba(35,39,47,0.92)' : 'rgba(255,255,255,0.98)',
               boxShadow: faqOpen === i ? (theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.13)') : (theme === 'dark' ? '0 4px 24px rgba(31,38,135,0.10)' : '0 4px 24px rgba(31,38,135,0.07)'),
               transition: 'box-shadow 0.25s, border 0.18s, background 0.18s',
               overflow: 'hidden',
+              outline: 'none',
+            }}
+            onMouseOver={e => {
+              (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.01)';
+              (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.22)';
+            }}
+            onMouseOut={e => {
+              (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+              (e.currentTarget as HTMLDivElement).style.boxShadow = faqOpen === i ? (theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.13)') : (theme === 'dark' ? '0 4px 24px rgba(31,38,135,0.10)' : '0 4px 24px rgba(31,38,135,0.07)');
+            }}
+            onFocus={e => {
+              (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 0 3px var(--primary)';
+            }}
+            onBlur={e => {
+              (e.currentTarget as HTMLDivElement).style.boxShadow = faqOpen === i ? (theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.13)') : (theme === 'dark' ? '0 4px 24px rgba(31,38,135,0.10)' : '0 4px 24px rgba(31,38,135,0.07)');
             }}
           >
             <button
