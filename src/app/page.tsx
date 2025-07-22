@@ -57,10 +57,17 @@ export default function Home() {
   );
 
   return (
-    <main>
+    <main
+      style={{
+        background: theme === 'dark' ? 'linear-gradient(120deg, #18181b 60%, #232336 100%)' : 'linear-gradient(120deg, #f9f9ff 60%, #f3f4f6 100%)',
+        minHeight: '100vh',
+        fontFamily: 'Inter, system-ui, sans-serif',
+        transition: 'background 0.4s',
+      }}
+    >
       {/* HERO - single, merged, above the fold, with CTA */}
       <section className="hero" style={{ marginTop: 0, marginBottom: 40, paddingTop: 48, paddingBottom: 40 }}>
-        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center", fontFamily: "Inter, sans-serif" }}>
+        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center", fontFamily: "Inter, system-ui, sans-serif" }}>
           Need to Sell Your Home <span style={{ color: "var(--primary)" }}>Fast</span> &amp; <span style={{ color: "var(--accent)" }}>Easy</span>?
         </h1>
         <p style={{ color: "var(--text)", fontSize: "1.25rem", opacity: 0.85, marginBottom: 8, textAlign: "center", fontWeight: 500 }}>
@@ -193,7 +200,7 @@ export default function Home() {
 
       {/* HOW IT WORKS */}
       <section style={{ marginTop: 64, textAlign: "center" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: 18, fontFamily: "Inter, sans-serif" }}>How It Works</h2>
+        <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: 18, fontFamily: "Inter, system-ui, sans-serif" }}>How It Works</h2>
         <p style={{ color: "var(--text)", opacity: 0.7, marginBottom: 32, fontSize: "1.15rem" }}>Our Simple 3 Step Process</p>
         <div style={{
           display: "grid",
@@ -230,10 +237,12 @@ export default function Home() {
                 justifyContent: 'flex-start',
                 padding: '2rem 1.5rem',
                 margin: 0,
-                boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
+                boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
                 transition: 'transform 0.18s, box-shadow 0.18s',
                 cursor: 'pointer',
-                background: 'var(--card)',
+                background: theme === 'dark' ? '#232336' : 'var(--card)',
+                color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+                fontFamily: 'Inter, system-ui, sans-serif',
               }}
               onMouseOver={e => {
                 (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.045)';
@@ -261,7 +270,7 @@ export default function Home() {
 
       {/* TESTIMONIALS */}
       <section style={{ marginTop: 80, textAlign: "center" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32 }}>People We’ve Served — And Why It Matters</h2>
+        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32, fontFamily: 'Inter, system-ui, sans-serif' }}>People We’ve Served — And Why It Matters</h2>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
@@ -288,10 +297,12 @@ export default function Home() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'flex-start',
-                background: '#fff',
-                boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
+                background: theme === 'dark' ? '#232336' : '#fff',
+                boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
                 margin: '0 auto',
                 wordBreak: 'break-word',
+                color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+                fontFamily: 'Inter, system-ui, sans-serif',
               }}
             >
               <Image
@@ -313,6 +324,7 @@ export default function Home() {
                 overflowWrap: 'break-word',
                 lineHeight: 1.3,
                 padding: '0 0.5rem',
+                fontFamily: 'Inter, system-ui, sans-serif',
               }}>{t.name}</div>
             </div>
           ))}
@@ -321,7 +333,7 @@ export default function Home() {
 
       {/* PROPERTY PHOTOS */}
       <section style={{ marginTop: 64, textAlign: "center" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32 }}>We’ve Helped with Real Properties Like These</h2>
+        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32, fontFamily: 'Inter, system-ui, sans-serif' }}>We’ve Helped with Real Properties Like These</h2>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
@@ -349,11 +361,13 @@ export default function Home() {
                 minWidth: 220,
                 minHeight: 200,
                 margin: '0 auto',
-                boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
+                boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
                 transition: 'transform 0.16s, box-shadow 0.16s',
                 cursor: 'pointer',
                 borderRadius: '1.2rem',
-                background: '#fff',
+                background: theme === 'dark' ? '#232336' : '#fff',
+                color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+                fontFamily: 'Inter, system-ui, sans-serif',
               }}
               onMouseOver={e => {
                 (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.045)';
@@ -380,19 +394,23 @@ export default function Home() {
       {/* TRUST BLOCK */}
       <section style={{ marginTop: 80, textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
         <div style={{
-          background: 'linear-gradient(120deg, #f9f9ff 60%, #f3f4f6 100%)',
+          background: theme === 'dark'
+            ? 'linear-gradient(120deg, #232336 60%, #18181b 100%)'
+            : 'linear-gradient(120deg, #f9f9ff 60%, #f3f4f6 100%)',
           borderRadius: 28,
           padding: '2.7rem 2.2rem',
           maxWidth: 700,
           width: '100%',
-          boxShadow: '0 8px 32px rgba(124,58,237,0.10)',
+          boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.10)',
           border: '2.5px solid var(--primary)',
           margin: '0 auto',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+          fontFamily: 'Inter, system-ui, sans-serif',
         }}>
-          <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24, fontFamily: 'Inter, sans-serif' }}>Why Sellers Trust Us</h2>
+          <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24, fontFamily: 'Inter, system-ui, sans-serif' }}>Why Sellers Trust Us</h2>
           <ul style={{
             maxWidth: 600,
             margin: '0 auto',
@@ -425,7 +443,7 @@ export default function Home() {
 
       {/* FAQ SECTION - interactive accordion, only one open at a time */}
       <section style={{ marginTop: 80, maxWidth: 800, marginLeft: "auto", marginRight: "auto" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2.1rem", textAlign: "center", marginBottom: 18 }}>Frequently Asked Questions</h2>
+        <h2 style={{ fontWeight: 900, fontSize: "2.1rem", textAlign: "center", marginBottom: 18, fontFamily: 'Inter, system-ui, sans-serif' }}>Frequently Asked Questions</h2>
         <p style={{ textAlign: "center", color: "var(--text)", opacity: 0.7, marginBottom: 32, fontSize: "1.13rem" }}>We Have The Answers</p>
         {[
           {
