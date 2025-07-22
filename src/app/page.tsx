@@ -3,55 +3,55 @@ import React, { useState } from 'react';
 import { useTheme } from './ThemeProvider';
 
 export default function Home() {
-const { theme, toggleTheme } = useTheme();
-const [step, setStep] = useState(0);
-const [formData, setFormData] = useState({
-motivation: '',
-repairs: '',
-timeline: '',
-address: '',
-name: '',
-email: '',
-phone: '',
-how: '',
-concern: ''
-});
+  const { theme, toggleTheme } = useTheme();
+  const [step, setStep] = useState(0);
+  const [formData, setFormData] = useState({
+    motivation: '',
+    repairs: '',
+    timeline: '',
+    address: '',
+    name: '',
+    email: '',
+    phone: '',
+    how: '',
+    concern: ''
+  });
 
-const next = () => setStep((s) => s + 1);
-const back = () => setStep((s) => s - 1);
-const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-setFormData({ ...formData, [e.target.name]: e.target.value });
-};
-const handleOption = (name: string, value: string) => {
-setFormData({ ...formData, [name]: value });
-next();
-};
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-e.preventDefault();
-await fetch('https://formspree.io/f/xnnzagjb', {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify(formData)
-});
-next();
-};
+  const next = () => setStep((s) => s + 1);
+  const back = () => setStep((s) => s - 1);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleOption = (name: string, value: string) => {
+    setFormData({ ...formData, [name]: value });
+    next();
+  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await fetch('https://formspree.io/f/xnnzagjb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    next();
+  };
 
-const StepCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
-<div className="card">
-<h2>{title}</h2>
-{children}
-</div>
-);
+  const StepCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <div className="card">
+      <h2>{title}</h2>
+      {children}
+    </div>
+  );
 
-const Button = (props: any) => (
-<button {...props} className="btn-option">
-{props.children}
-</button>
-);
+  const Button = (props: any) => (
+    <button {...props} className="btn-option">
+      {props.children}
+    </button>
+  );
 
-return (
-<main style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
-<header
+  return (
+    <main style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
+      <header
   style={{
     display: 'flex',
     justifyContent: 'space-between',
@@ -290,137 +290,7 @@ gap: '1.5rem'
 {/* FOOTER */}
 {/* FAQ SECTION */}
 <section style={{ marginTop: '5rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
-  <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>  @import '@fontsource/inter/variable.css';
-  
-  :root {
-    --bg: #f5f7fa;
-    --text: #18181b;
-    --card: #fff;
-    --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
-    --primary: #2563eb;
-    --primary-dark: #334155;
-    --accent: #e11d48;
-  }
-  
-  html, body, * {
-    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
-    color: var(--text);
-    background: var(--bg);
-    box-sizing: border-box;
-    transition: background 0.3s, color 0.3s;
-  }
-  
-  [data-theme='dark'], .dark {
-    --bg: #18181b;
-    --text: #f3f4f6;
-    --card: #23272f;
-    --card-shadow: 0 2px 16px rgba(0,0,0,0.18);
-    --primary: #60a5fa;
-    --primary-dark: #1e293b;
-    --accent: #f472b6;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-  }
-  
-  header, main, section, .card, footer {
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-  }
-  
-  .card {
-    background: var(--card);
-    border-radius: 1.25rem;
-    padding: 2.25rem 1.5rem;
-    box-shadow: var(--card-shadow);
-    margin-bottom: 2rem;
-  }
-  
-  .btn-primary, .btn-submit {
-    background: var(--primary);
-    color: #fff !important;
-    padding: 0.85rem 2rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1.08rem;
-    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
-    transition: background 0.2s, box-shadow 0.2s;
-  }
-  .btn-primary:hover, .btn-submit:hover {
-    background: var(--primary-dark);
-    box-shadow: 0 4px 16px rgba(37,99,235,0.13);
-  }
-  
-  .btn-option {
-    display: block;
-    width: 100%;
-    text-align: left;
-    background: #e0f2fe;
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text);
-    transition: background 0.2s;
-  }
-  [data-theme='dark'] .btn-option, .dark .btn-option {
-    background: #334155;
-    color: #f3f4f6;
-  }
-  
-  input {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: var(--card);
-    color: var(--text);
-    transition: background 0.3s, color 0.3s;
-  }
-  
-  a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-  a:hover {
-    color: var(--accent);
-    text-decoration: underline;
-  }
-  
-  details {
-    border: 1px solid #e5e7eb;
-    background: var(--card);
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    padding: 1rem 1.25rem;
-    box-shadow: var(--card-shadow);
-    transition: box-shadow 0.2s;
-  }
-  details[open] {
-    box-shadow: 0 4px 16px rgba(37,99,235,0.09);
-  }
-  details summary {
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  footer {
-    background: var(--card);
-    border-top: 1px solid #e5e7eb;
-    border-radius: 1.25rem 1.25rem 0 0;
-    color: var(--text);
-  }
+  <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
   <p style={{ textAlign: 'center', color: '#6b7280', marginBottom: '2rem' }}>We Have The Answers</p>
   {[
     {
