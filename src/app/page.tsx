@@ -58,18 +58,13 @@ export default function Home() {
 
   return (
     <main>
-      {/* HEADER is now only in layout, not here */}
-
       {/* HERO - single, merged, above the fold, with CTA */}
       <section className="hero" style={{ marginTop: 0, marginBottom: 40, paddingTop: 48, paddingBottom: 40 }}>
-        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center" }}>
-          Sell Your Home <span style={{ color: "var(--primary)" }}>Fast</span> &amp; <span style={{ color: "var(--accent)" }}>Easy</span>
+        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center", fontFamily: "Inter, sans-serif" }}>
+          Need to Sell Your Home <span style={{ color: "var(--primary)" }}>Fast</span> &amp; <span style={{ color: "var(--accent)" }}>Easy</span>?
         </h1>
-        <p style={{ color: "var(--text)", fontSize: "1.25rem", opacity: 0.85, marginBottom: 8, textAlign: "center" }}>
-          Get a cash offer in just <b>7 days</b> — no repairs, no fees, no stress.
-        </p>
-        <p style={{ fontSize: "1.05rem", color: "var(--text)", opacity: 0.7, marginBottom: 24, textAlign: "center" }}>
-          Operating since June 2023 — <b>10+ homeowners helped</b>.
+        <p style={{ color: "var(--text)", fontSize: "1.25rem", opacity: 0.85, marginBottom: 8, textAlign: "center", fontWeight: 500 }}>
+          Get a <b>cash offer in just 7 days</b> — no repairs, no fees, no stress. Trusted by 10+ homeowners since June 2023.
         </p>
         {step === 0 && (
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -198,11 +193,11 @@ export default function Home() {
 
       {/* HOW IT WORKS */}
       <section style={{ marginTop: 64, textAlign: "center" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: 18 }}>How It Works</h2>
+        <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: 18, fontFamily: "Inter, sans-serif" }}>How It Works</h2>
         <p style={{ color: "var(--text)", opacity: 0.7, marginBottom: 32, fontSize: "1.15rem" }}>Our Simple 3 Step Process</p>
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "2.2rem",
           justifyItems: "center"
         }}>
@@ -227,8 +222,8 @@ export default function Home() {
               key={i}
               className="card how-card"
               style={{
-                maxWidth: 340,
-                minHeight: 340,
+                width: 320,
+                minHeight: 360,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -236,11 +231,12 @@ export default function Home() {
                 padding: '2rem 1.5rem',
                 margin: 0,
                 boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
-                transition: 'transform 0.15s, box-shadow 0.15s',
+                transition: 'transform 0.18s, box-shadow 0.18s',
                 cursor: 'pointer',
+                background: 'var(--card)',
               }}
               onMouseOver={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.04)';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.045)';
                 (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
               }}
               onMouseOut={e => {
@@ -251,13 +247,13 @@ export default function Home() {
               <Image
                 src={step.img}
                 alt={step.title}
-                width={340}
+                width={320}
                 height={120}
                 style={{ width: "100%", height: 120, objectFit: 'cover', borderRadius: "1.2rem", marginBottom: 18 }}
                 priority={i === 0}
               />
-              <h3 style={{ fontWeight: 700, fontSize: "1.18rem", marginBottom: 8, textAlign: 'center' }}>{step.title}</h3>
-              <p style={{ color: "var(--text)", opacity: 0.7, marginTop: 8, textAlign: 'center', wordBreak: 'break-word' }}>{step.desc}</p>
+              <h3 style={{ fontWeight: 700, fontSize: "1.18rem", marginBottom: 8, textAlign: 'center', fontFamily: "Inter, sans-serif", letterSpacing: "0.01em" }}>{step.title}</h3>
+              <p style={{ color: "var(--text)", opacity: 0.7, marginTop: 8, textAlign: 'center', wordBreak: 'break-word', fontSize: '1.08rem', fontWeight: 500 }}>{step.desc}</p>
             </div>
           ))}
         </div>
@@ -268,7 +264,7 @@ export default function Home() {
         <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32 }}>People We’ve Served — And Why It Matters</h2>
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
           gap: "2rem"
         }}>
           {[
@@ -286,6 +282,7 @@ export default function Home() {
                 padding: 0,
                 overflow: "hidden",
                 maxWidth: 260,
+                minWidth: 220,
                 minHeight: 280,
                 display: 'flex',
                 flexDirection: 'column',
@@ -294,6 +291,7 @@ export default function Home() {
                 background: '#fff',
                 boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
                 margin: '0 auto',
+                wordBreak: 'break-word',
               }}
             >
               <Image
@@ -304,7 +302,18 @@ export default function Home() {
                 style={{ width: "100%", height: 180, objectFit: 'cover', borderRadius: "1.2rem 1.2rem 0 0" }}
                 loading="lazy"
               />
-              <div style={{ fontWeight: 700, marginTop: 10, marginBottom: 10, textAlign: 'center', width: '100%' }}>{t.name}</div>
+              <div style={{
+                fontWeight: 700,
+                marginTop: 10,
+                marginBottom: 10,
+                textAlign: 'center',
+                width: '100%',
+                fontSize: '1.08rem',
+                whiteSpace: 'pre-line',
+                overflowWrap: 'break-word',
+                lineHeight: 1.3,
+                padding: '0 0.5rem',
+              }}>{t.name}</div>
             </div>
           ))}
         </div>
@@ -316,7 +325,8 @@ export default function Home() {
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "2rem"
+          gap: "2rem",
+          justifyItems: "center"
         }}>
           {[
             "/brent.jpg",
@@ -336,14 +346,17 @@ export default function Home() {
                 padding: 0,
                 overflow: "hidden",
                 maxWidth: 260,
+                minWidth: 220,
                 minHeight: 200,
                 margin: '0 auto',
                 boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
-                transition: 'transform 0.15s, box-shadow 0.15s',
+                transition: 'transform 0.16s, box-shadow 0.16s',
                 cursor: 'pointer',
+                borderRadius: '1.2rem',
+                background: '#fff',
               }}
               onMouseOver={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.04)';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.045)';
                 (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
               }}
               onMouseOut={e => {
@@ -356,7 +369,7 @@ export default function Home() {
                 alt={`property ${i}`}
                 width={260}
                 height={180}
-                style={{ width: "100%", height: 180, objectFit: 'cover', borderRadius: "10px" }}
+                style={{ width: "100%", height: 180, objectFit: 'cover', borderRadius: "1.2rem" }}
                 loading="lazy"
               />
             </div>
@@ -367,25 +380,32 @@ export default function Home() {
       {/* TRUST BLOCK */}
       <section style={{ marginTop: 80, textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
         <div style={{
-          background: '#f9f9ff',
-          borderRadius: 24,
-          padding: '2.5rem 2rem',
+          background: 'linear-gradient(120deg, #f9f9ff 60%, #f3f4f6 100%)',
+          borderRadius: 28,
+          padding: '2.7rem 2.2rem',
           maxWidth: 700,
           width: '100%',
           boxShadow: '0 8px 32px rgba(124,58,237,0.10)',
-          border: '2px solid var(--primary)',
+          border: '2.5px solid var(--primary)',
           margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}>
-          <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24 }}>Why Sellers Trust Us</h2>
+          <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24, fontFamily: 'Inter, sans-serif' }}>Why Sellers Trust Us</h2>
           <ul style={{
             maxWidth: 600,
             margin: '0 auto',
             textAlign: 'left',
-            lineHeight: 1.75,
+            lineHeight: 1.7,
             fontSize: '1.13rem',
             fontWeight: 600,
             padding: 0,
             listStyle: 'none',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 12,
           }}>
             {[
               'Cancel anytime before signing',
@@ -394,9 +414,9 @@ export default function Home() {
               'You choose your timeline',
               'Everything is explained clearly — no pressure',
             ].map((item, i) => (
-              <li key={i} style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
-                <span style={{ fontSize: 22, marginRight: 12, color: 'var(--primary)' }}>✔️</span>
-                <span>{item}</span>
+              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'rgba(124,58,237,0.04)', borderRadius: 12, padding: '0.85rem 1.1rem', margin: 0 }}>
+                <span style={{ fontSize: 22, color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 28 }}>✔️</span>
+                <span style={{ fontWeight: 600, fontSize: '1.09rem', color: 'var(--text)', lineHeight: 1.5 }}>{item}</span>
               </li>
             ))}
           </ul>
@@ -459,6 +479,16 @@ export default function Home() {
                   e.preventDefault();
                   setFaqOpen(faqOpen === i ? null : i);
                 }
+                if (e.key === 'ArrowDown') {
+                  e.preventDefault();
+                  const next = document.getElementById(`faq-btn-${(i + 1) % 7}`);
+                  next && (next as HTMLButtonElement).focus();
+                }
+                if (e.key === 'ArrowUp') {
+                  e.preventDefault();
+                  const prev = document.getElementById(`faq-btn-${(i + 6) % 7}`);
+                  prev && (prev as HTMLButtonElement).focus();
+                }
               }}
               style={{
                 width: '100%',
@@ -474,20 +504,46 @@ export default function Home() {
                 textAlign: 'left',
                 cursor: 'pointer',
                 transition: 'color 0.2s, border 0.2s',
+                boxShadow: faqOpen === i ? '0 0 0 2.5px var(--primary)' : 'none',
+                // outline removed (duplicate)
+                outlineOffset: 0,
+              }}
+              tabIndex={0}
+              onFocus={e => {
+                e.currentTarget.style.boxShadow = '0 0 0 2.5px var(--primary)';
+              }}
+              onBlur={e => {
+                e.currentTarget.style.boxShadow = faqOpen === i ? '0 0 0 2.5px var(--primary)' : 'none';
               }}
             >
               {q}
             </button>
-            {faqOpen === i && (
-              <p
-                id={`faq-panel-${i}`}
-                role="region"
-                aria-labelledby={`faq-btn-${i}`}
-                style={{ marginTop: 14, lineHeight: 1.6, color: 'var(--text)', fontWeight: 500 }}
-              >
-                {a}
-              </p>
-            )}
+            <div
+              id={`faq-panel-${i}`}
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+              style={{
+                maxHeight: faqOpen === i ? 400 : 0,
+                overflow: 'hidden',
+                opacity: faqOpen === i ? 1 : 0,
+                marginTop: faqOpen === i ? 14 : 0,
+                transition: 'max-height 0.35s cubic-bezier(.4,0,.2,1), opacity 0.25s, margin-top 0.25s',
+                lineHeight: 1.6,
+                color: 'var(--text)',
+                fontWeight: 500,
+                fontSize: '1.08rem',
+                padding: faqOpen === i ? '0.7rem 0 0.7rem 0' : '0 0',
+                background: 'none',
+                border: 'none',
+                boxSizing: 'border-box',
+                willChange: 'max-height, opacity, margin-top',
+              }}
+              aria-hidden={faqOpen !== i}
+            >
+              {faqOpen === i && (
+                <span style={{ display: 'block', paddingRight: 4 }}>{a}</span>
+              )}
+            </div>
           </div>
         ))}
       </section>
