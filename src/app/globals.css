@@ -5,80 +5,65 @@
 
 /* Light/Dark Mode Variables */
 :root {
-  --bg: #f8fafc;
-  --text: #222;
-  --card: #ffffff;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-[data-theme='dark'] {
-  --bg: #111827;
-  --text: #f9fafb;
-  --card: #1f2937;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --bg: #f5f7fa;
+  --text: #18181b;
+  --card: #fff;
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --primary: #2563eb;
+  --primary-dark: #334155;
+  --accent: #e11d48;
 }
 
 html, body, * {
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
-  color: var(--text) !important;
+  color: var(--text);
+  background: var(--bg);
+  box-sizing: border-box;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme='dark'], .dark {
+  --bg: #18181b;
+  --text: #f3f4f6;
+  --card: #23272f;
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  --primary: #60a5fa;
+  --primary-dark: #1e293b;
+  --accent: #f472b6;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
-  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
 }
 
-.dark .container {
-  background: transparent;
-  color: #f3f4f6 !important;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 3rem;
+header, main, section, .card, footer {
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .card {
   background: var(--card);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
+  border-radius: 1.25rem;
+  padding: 2.25rem 1.5rem;
+  box-shadow: var(--card-shadow);
   margin-bottom: 2rem;
 }
 
-input {
-  width: 100%;
-  padding: 0.8rem;
-  margin-top: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: var(--card);
-  color: var(--text) !important;
-}
-
-button {
-  cursor: pointer;
-  font-family: inherit !important;
-  color: inherit !important;
-}
-
-.btn-primary,
-.btn-submit {
-  background: #2563eb;
-  color: white !important;
-  padding: 0.75rem 1.5rem;
+.btn-primary, .btn-submit {
+  background: var(--primary);
+  color: #fff !important;
+  padding: 0.85rem 2rem;
   border: none;
   border-radius: 8px;
-  margin-top: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.08rem;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover, .btn-submit:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.13);
 }
 
 .btn-option {
@@ -91,35 +76,60 @@ button {
   padding: 0.75rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: background 0.2s;
+}
+[data-theme='dark'] .btn-option, .dark .btn-option {
+  background: #334155;
+  color: #f3f4f6;
 }
 
-.dark .testimonial-title {
-  color: #f3f4f6 !important;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-.testimonial {
-  background: var(--card);
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  text-align: center;
-  animation: fadeIn 0.6s ease-out both;
-}
-
-.testimonial img {
+input {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  background: var(--card);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }
 
-.dark a {
-  color: #60a5fa !important;
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+details {
+  border: 1px solid #e5e7eb;
+  background: var(--card);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.2s;
+}
+details[open] {
+  box-shadow: 0 4px 16px rgba(37,99,235,0.09);
+}
+details summary {
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+footer {
+  background: var(--card);
+  border-top: 1px solid #e5e7eb;
+  border-radius: 1.25rem 1.25rem 0 0;
+  color: var(--text);
 }
