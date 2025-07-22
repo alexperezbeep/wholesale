@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { ThemeProvider } from "./ThemeProvider";
-
-export const metadata: Metadata = {
-  title: "Luna Haven",
-  description: "Fast cash home buying with care",
-};
+"use client";
 
 import React, { useState } from "react";
+import "./globals.css";
+import { ThemeProvider } from "./ThemeProvider";
 
 export default function RootLayout({
   children,
