@@ -1,3 +1,4 @@
+
 'use client';
 import React, { useState } from 'react';
 import { useTheme } from './ThemeProvider';
@@ -26,6 +27,7 @@ export default function Home() {
     setFormData({ ...formData, [name]: value });
     next();
   };
+
 "use client";
 import React, { useState } from "react";
 import { useTheme } from "./ThemeProvider";
