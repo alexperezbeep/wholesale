@@ -60,22 +60,25 @@ marginBottom: '3rem',
 paddingBottom: '1rem',
 borderBottom: '1px solid #e5e7eb'
 }}>
-<div style={{ fontWeight: 700, fontSize: '1.5rem' }}>Luna Haven</div>
-<nav style={{ display: 'flex', alignItems: 'center' }}>
-<a href="/" style={{ marginRight: '1.5rem', color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>Home</a>
-<a href="/about-us" style={{ color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
-<button
-onClick={toggleTheme}
-className="btn-primary"
-style={{
-marginLeft: '1rem',
-background: theme === 'dark' ? '#334155' : '#2563eb'
-}}
-aria-label="Toggle dark mode"
->
-{theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
-</button>
-</nav>
+  {/* Replace text with logo */}
+  <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+    <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '48px' }} />
+  </a>
+  <nav style={{ display: 'flex', alignItems: 'center' }}>
+    <a href="/" style={{ marginRight: '1.5rem', color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>Home</a>
+    <a href="/about-us" style={{ color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
+    <button
+      onClick={toggleTheme}
+      className="btn-primary"
+      style={{
+        marginLeft: '1rem',
+        background: theme === 'dark' ? '#334155' : '#2563eb'
+      }}
+      aria-label="Toggle dark mode"
+    >
+      {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
+    </button>
+  </nav>
 </header>
 
 <section className="hero">

@@ -16,7 +16,10 @@ export default function AboutPage() {
         paddingBottom: '1rem',
         borderBottom: '1px solid #e5e7eb'
       }}>
-        <div style={{ fontWeight: 700, fontSize: '1.5rem' }}>Luna Haven</div>
+        {/* Replace text with logo */}
+        <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '48px' }} />
+        </a>
         <nav style={{ display: 'flex', alignItems: 'center' }}>
           <a href="/" style={{ marginRight: '1.5rem', color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>Home</a>
           <a href="/about-us" style={{ color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
