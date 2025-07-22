@@ -95,21 +95,51 @@ export default function AboutPage() {
           borderRadius: '8px',
           border: '1px solid #ccc',
           background: theme === 'dark' ? '#18181b' : '#fff',
-          color: 'var(--text)'
+          color: 'var(--text)',
+          fontSize: '1.13rem',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.07)'
         }} />
         <button style={{
-          background: '#b91c1c',
+          background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
           color: 'white',
           padding: '0.75rem',
           width: '100%',
           border: 'none',
           borderRadius: '8px',
-          fontWeight: 600,
-          cursor: 'pointer'
+          fontWeight: 700,
+          fontSize: '1.13rem',
+          cursor: 'pointer',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.07)'
         }}>
           Get Offer!
         </button>
       </div>
+
+      {/* Floating theme toggle for extra prevalence */}
+      <button
+        onClick={toggleTheme}
+        style={{
+          position: 'fixed',
+          bottom: 24,
+          right: 24,
+          zIndex: 2000,
+          background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '50%',
+          width: 56,
+          height: 56,
+          boxShadow: '0 2px 12px rgba(0,0,0,0.13)',
+          fontSize: 28,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+        }}
+        aria-label="Toggle dark mode"
+      >
+        {theme === 'dark' ? '🌙' : '☀️'}
+      </button>
     </main>
   );
 }

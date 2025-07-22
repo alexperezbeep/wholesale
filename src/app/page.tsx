@@ -55,6 +55,47 @@ export default function Home() {
 
   return (
     <main>
+      {/* HEADER with theme toggle */}
+      <header style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '1.25rem 2rem',
+        background: 'var(--card)',
+        boxShadow: 'var(--card-shadow)',
+        borderRadius: '0 0 1.5rem 1.5rem',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        marginBottom: '2rem'
+      }}>
+        <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '44px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} />
+        </a>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <a href="/" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>Home</a>
+          <a href="/about-us" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>About Us</a>
+          <button
+            onClick={toggleTheme}
+            className="btn-primary"
+            style={{
+              marginLeft: '1.5rem',
+              background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
+              color: '#fff',
+              borderRadius: '8px',
+              fontWeight: 700,
+              fontSize: '1.15rem',
+              padding: '0.5rem 1.2rem',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.07)',
+              border: 'none'
+            }}
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
+          </button>
+        </nav>
+      </header>
+
       {/* HERO */}
       <section className="hero">
         <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center" }}>
@@ -66,8 +107,9 @@ export default function Home() {
         <p style={{ fontSize: "1.05rem", color: "var(--text)", opacity: 0.7, marginBottom: 24, textAlign: "center" }}>
           Operating since June 2023 — <b>10+ homeowners helped</b>.
         </p>
+        {/* Only show the button if not on the address step */}
         {step === 0 && (
-          <button onClick={next} className="btn-primary" style={{ marginTop: 18, fontSize: "1.18rem" }}>
+          <button onClick={next} className="btn-primary" style={{ marginTop: 18, fontSize: "1.18rem", minWidth: 220, borderRadius: 8 }}>
             Get My Cash Offer
           </button>
         )}
@@ -98,9 +140,25 @@ export default function Home() {
         )}
         {step === 4 && (
           <StepCard title="What’s the property address?">
-            <input name="address" onChange={handleChange} placeholder="123 Main St" autoFocus />
+            <input
+              name="address"
+              onChange={handleChange}
+              placeholder="123 Main St"
+              autoFocus
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                marginBottom: '1rem',
+                borderRadius: '8px',
+                border: '1px solid #ccc',
+                background: theme === 'dark' ? '#18181b' : '#fff',
+                color: 'var(--text)',
+                fontSize: '1.13rem',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.07)'
+              }}
+            />
             <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 18 }}>
-              <button className="btn-primary" onClick={next} style={{ minWidth: 120 }}>Next</button>
+              <button className="btn-primary" onClick={next} style={{ minWidth: 120, borderRadius: 8, fontWeight: 700, fontSize: '1.13rem' }}>Next</button>
             </div>
           </StepCard>
         )}
@@ -287,12 +345,54 @@ export default function Home() {
             a: "It’s faster, simpler, and there’s no risk of deals falling through from financing issues.",
           },
         ].map(({ q, a }, i: number) => (
-          <details key={i} className="faq" style={{ cursor: "pointer" }}>
-            <summary style={{ fontWeight: 800, fontSize: "1.13rem", listStyle: "none" }}>{q}</summary>
+          <details key={i} className="faq" style={{ cursor: "pointer", marginBottom: 24 }}>
+            <summary
+              style={{
+                fontWeight: 900,
+                fontSize: "1.18rem",
+                listStyle: "none",
+                outline: "none",
+                padding: "0.5rem 0",
+                color: "var(--primary)",
+                borderBottom: "1.5px solid var(--faq-border)",
+                borderRadius: "0.5rem",
+                background: "none",
+                transition: "color 0.2s, border 0.2s"
+              }}
+              tabIndex={0}
+              aria-expanded="false"
+            >
+              {q}
+            </summary>
             <p style={{ marginTop: 14, lineHeight: 1.6, color: "var(--text)", fontWeight: 500 }}>{a}</p>
           </details>
         ))}
       </section>
+      {/* Floating theme toggle for extra prevalence */}
+      <button
+        onClick={toggleTheme}
+        style={{
+          position: 'fixed',
+          bottom: 24,
+          right: 24,
+          zIndex: 2000,
+          background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '50%',
+          width: 56,
+          height: 56,
+          boxShadow: '0 2px 12px rgba(0,0,0,0.13)',
+          fontSize: 28,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+        }}
+        aria-label="Toggle dark mode"
+      >
+        {theme === 'dark' ? '🌙' : '☀️'}
+      </button>
     </main>
   );
 }
