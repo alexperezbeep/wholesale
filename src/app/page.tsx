@@ -1,32 +1,4 @@
 
-'use client';
-import React, { useState } from 'react';
-import { useTheme } from './ThemeProvider';
-
-export default function Home() {
-  const { theme, toggleTheme } = useTheme();
-  const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({
-    motivation: '',
-    repairs: '',
-    timeline: '',
-    address: '',
-    name: '',
-    email: '',
-    phone: '',
-    how: '',
-    concern: ''
-  });
-
-  const next = () => setStep((s) => s + 1);
-  const back = () => setStep((s) => s - 1);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const handleOption = (name: string, value: string) => {
-    setFormData({ ...formData, [name]: value });
-    next();
-  };
 
 "use client";
 import React, { useState } from "react";
@@ -324,4 +296,3 @@ export default function Home() {
     </main>
   );
 }
-    <details key={i} className="faq" style={{ cursor: 'pointer' }}>
