@@ -51,32 +51,50 @@ const Button = (props: any) => (
 
 return (
 <main style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
-<header style={{
-display: 'flex',
-justifyContent: 'space-between',
-alignItems: 'center',
-        fontFamily: 'Inter, sans-serif',
-marginBottom: '3rem',
-paddingBottom: '1rem',
-borderBottom: '1px solid #e5e7eb'
-}}>
-  {/* Replace text with logo */}
-  <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
-    <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '48px' }} />
+<header
+  style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '1.5rem 2rem',
+    background: 'var(--card)',
+    boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+    borderBottom: 'none',
+    position: 'sticky',
+    top: 0,
+    zIndex: 100,
+  }}
+>
+  <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+    <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '40px', width: 'auto', borderRadius: '8px' }} />
+    <span style={{
+      fontWeight: 700,
+      fontSize: '1.25rem',
+      color: 'var(--text)',
+      letterSpacing: '0.02em',
+      fontFamily: 'Inter, sans-serif'
+    }}>
+      Luna Haven
+    </span>
   </a>
-  <nav style={{ display: 'flex', alignItems: 'center' }}>
-    <a href="/" style={{ marginRight: '1.5rem', color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>Home</a>
-    <a href="/about-us" style={{ color: '#1e3a8a', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
+  <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+    <a href="/" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 500 }}>Home</a>
+    <a href="/about-us" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 500 }}>About Us</a>
     <button
       onClick={toggleTheme}
       className="btn-primary"
       style={{
         marginLeft: '1rem',
-        background: theme === 'dark' ? '#334155' : '#2563eb'
+        background: theme === 'dark' ? '#334155' : '#2563eb',
+        borderRadius: '8px',
+        fontWeight: 600,
+        fontSize: '1rem',
+        padding: '0.5rem 1rem',
+        boxShadow: '0 1px 4px rgba(0,0,0,0.04)'
       }}
       aria-label="Toggle dark mode"
     >
-      {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
+      {theme === 'dark' ? '🌙' : '☀️'}
     </button>
   </nav>
 </header>
