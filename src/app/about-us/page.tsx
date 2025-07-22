@@ -7,49 +7,10 @@ export default function AboutPage() {
 
   return (
     <main style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
-      {/* HEADER */}
-      <header style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1.25rem 2rem',
-        background: 'var(--card)',
-        boxShadow: 'var(--card-shadow)',
-        borderRadius: '0 0 1.5rem 1.5rem',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        marginBottom: '2rem'
-      }}>
-        <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '44px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} />
-        </a>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <a href="/" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>Home</a>
-          <a href="/about-us" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>About Us</a>
-          <button
-            onClick={toggleTheme}
-            className="btn-primary"
-            style={{
-              marginLeft: '1.5rem',
-              background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
-              color: '#fff',
-              borderRadius: '8px',
-              fontWeight: 700,
-              fontSize: '1.15rem',
-              padding: '0.5rem 1.2rem',
-              boxShadow: '0 1px 4px rgba(0,0,0,0.07)',
-              border: 'none'
-            }}
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
-          </button>
-        </nav>
-      </header>
+      {/* HEADER is now only in layout, not here */}
 
       {/* MAIN CONTENT */}
-      <section style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '3rem' }}>
+      <section style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '4rem' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: 700 }}>About Luna Haven</h1>
 
         <h2 style={{ fontSize: '1.25rem', marginTop: '2rem', fontWeight: 600 }}>Who Are We?</h2>

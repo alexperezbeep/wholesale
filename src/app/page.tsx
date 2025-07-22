@@ -2,6 +2,7 @@
 
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
 
 export default function Home() {
@@ -18,6 +19,8 @@ export default function Home() {
     how: "",
     concern: "",
   });
+  // FAQ accordion state (only one open at a time)
+  const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
   const next = () => setStep((s) => s + 1);
   const back = () => setStep((s) => s - 1);
@@ -55,49 +58,10 @@ export default function Home() {
 
   return (
     <main>
-      {/* HEADER with theme toggle */}
-      <header style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1.25rem 2rem',
-        background: 'var(--card)',
-        boxShadow: 'var(--card-shadow)',
-        borderRadius: '0 0 1.5rem 1.5rem',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        marginBottom: '2rem'
-      }}>
-        <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Luna Haven Logo" style={{ height: '44px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} />
-        </a>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <a href="/" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>Home</a>
-          <a href="/about-us" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}>About Us</a>
-          <button
-            onClick={toggleTheme}
-            className="btn-primary"
-            style={{
-              marginLeft: '1.5rem',
-              background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
-              color: '#fff',
-              borderRadius: '8px',
-              fontWeight: 700,
-              fontSize: '1.15rem',
-              padding: '0.5rem 1.2rem',
-              boxShadow: '0 1px 4px rgba(0,0,0,0.07)',
-              border: 'none'
-            }}
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
-          </button>
-        </nav>
-      </header>
+      {/* HEADER is now only in layout, not here */}
 
-      {/* HERO */}
-      <section className="hero">
+      {/* HERO - single, merged, above the fold, with CTA */}
+      <section className="hero" style={{ marginTop: 0, marginBottom: 40, paddingTop: 48, paddingBottom: 40 }}>
         <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center" }}>
           Sell Your Home <span style={{ color: "var(--primary)" }}>Fast</span> &amp; <span style={{ color: "var(--accent)" }}>Easy</span>
         </h1>
@@ -107,11 +71,25 @@ export default function Home() {
         <p style={{ fontSize: "1.05rem", color: "var(--text)", opacity: 0.7, marginBottom: 24, textAlign: "center" }}>
           Operating since June 2023 — <b>10+ homeowners helped</b>.
         </p>
-        {/* Only show the button if not on the address step */}
         {step === 0 && (
-          <button onClick={next} className="btn-primary" style={{ marginTop: 18, fontSize: "1.18rem", minWidth: 220, borderRadius: 8 }}>
-            Get My Cash Offer
-          </button>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <button
+              onClick={next}
+              className="btn-primary"
+              style={{
+                marginTop: 18,
+                fontSize: '1.25rem',
+                minWidth: 260,
+                borderRadius: 12,
+                border: '2.5px solid var(--primary-dark)',
+                fontWeight: 900,
+                boxShadow: '0 8px 32px rgba(124,58,237,0.13)',
+                transition: 'box-shadow 0.2s, transform 0.1s',
+              }}
+            >
+              Get My Cash Offer
+            </button>
+          </div>
         )}
       </section>
 
@@ -228,24 +206,60 @@ export default function Home() {
           gap: "2.2rem",
           justifyItems: "center"
         }}>
-          {/* STEP 1 */}
-          <div className="card" style={{ maxWidth: 340 }}>
-            <img src="/s1.jpg" alt="Step 1" style={{ width: "100%", borderRadius: "1.2rem", marginBottom: 18, boxShadow: "0 2px 12px rgba(124,58,237,0.08)" }} />
-            <h3 style={{ fontWeight: 700, fontSize: "1.18rem" }}>Fill Out the Online Form</h3>
-            <p style={{ color: "var(--text)", opacity: 0.7, marginTop: 8 }}>One of our home buying specialists will call with your offer.</p>
-          </div>
-          {/* STEP 2 */}
-          <div className="card" style={{ maxWidth: 340 }}>
-            <img src="/s2.jpg" alt="Step 2" style={{ width: "100%", borderRadius: "1.2rem", marginBottom: 18, boxShadow: "0 2px 12px rgba(124,58,237,0.08)" }} />
-            <h3 style={{ fontWeight: 700, fontSize: "1.18rem" }}>Pick Your Closing Date</h3>
-            <p style={{ color: "var(--text)", opacity: 0.7, marginTop: 8 }}>There’s no financing fall-through risk so you can confidently buy your next home.</p>
-          </div>
-          {/* STEP 3 */}
-          <div className="card" style={{ maxWidth: 340 }}>
-            <img src="/s3.jpg" alt="Step 3" style={{ width: "100%", borderRadius: "1.2rem", marginBottom: 18, boxShadow: "0 2px 12px rgba(124,58,237,0.08)" }} />
-            <h3 style={{ fontWeight: 700, fontSize: "1.18rem" }}>Get Paid and Move On</h3>
-            <p style={{ color: "var(--text)", opacity: 0.7, marginTop: 8 }}>We pay more. Get cash in your pocket and move on to the next chapter in your life.</p>
-          </div>
+          {[
+            {
+              img: "/s1.jpg",
+              title: "Fill Out the Online Form",
+              desc: "One of our home buying specialists will call with your offer."
+            },
+            {
+              img: "/s2.jpg",
+              title: "Pick Your Closing Date",
+              desc: "There’s no financing fall-through risk so you can confidently buy your next home."
+            },
+            {
+              img: "/s3.jpg",
+              title: "Get Paid and Move On",
+              desc: "We pay more. Get cash in your pocket and move on to the next chapter in your life."
+            }
+          ].map((step, i) => (
+            <div
+              key={i}
+              className="card how-card"
+              style={{
+                maxWidth: 340,
+                minHeight: 340,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                padding: '2rem 1.5rem',
+                margin: 0,
+                boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
+                transition: 'transform 0.15s, box-shadow 0.15s',
+                cursor: 'pointer',
+              }}
+              onMouseOver={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.04)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
+              }}
+              onMouseOut={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 24px rgba(124,58,237,0.10)';
+              }}
+            >
+              <Image
+                src={step.img}
+                alt={step.title}
+                width={340}
+                height={120}
+                style={{ width: "100%", height: 120, objectFit: 'cover', borderRadius: "1.2rem", marginBottom: 18 }}
+                priority={i === 0}
+              />
+              <h3 style={{ fontWeight: 700, fontSize: "1.18rem", marginBottom: 8, textAlign: 'center' }}>{step.title}</h3>
+              <p style={{ color: "var(--text)", opacity: 0.7, marginTop: 8, textAlign: 'center', wordBreak: 'break-word' }}>{step.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -265,9 +279,32 @@ export default function Home() {
             { src: "/laurie.png", name: "Laurie" },
             { src: "/nicholas.png", name: "Nicholas" },
           ].map((t, i) => (
-            <div key={i} className="card" style={{ padding: 0, overflow: "hidden", maxWidth: 260 }}>
-              <img src={t.src} alt={t.name} style={{ width: "100%", borderRadius: "1.2rem 1.2rem 0 0" }} />
-              <div style={{ fontWeight: 700, marginTop: 10, marginBottom: 10 }}>{t.name}</div>
+            <div
+              key={i}
+              className="card testimonial-card"
+              style={{
+                padding: 0,
+                overflow: "hidden",
+                maxWidth: 260,
+                minHeight: 280,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                background: '#fff',
+                boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
+                margin: '0 auto',
+              }}
+            >
+              <Image
+                src={t.src}
+                alt={t.name}
+                width={260}
+                height={180}
+                style={{ width: "100%", height: 180, objectFit: 'cover', borderRadius: "1.2rem 1.2rem 0 0" }}
+                loading="lazy"
+              />
+              <div style={{ fontWeight: 700, marginTop: 10, marginBottom: 10, textAlign: 'center', width: '100%' }}>{t.name}</div>
             </div>
           ))}
         </div>
@@ -292,26 +329,81 @@ export default function Home() {
             "/zy.png",
             "/zz.jpg",
           ].map((src, i) => (
-            <div key={i} className="card" style={{ padding: 0, overflow: "hidden", maxWidth: 260 }}>
-              <img src={src} alt={`property ${i}`} style={{ width: "100%", borderRadius: "1.2rem" }} />
+            <div
+              key={i}
+              className="card property-card"
+              style={{
+                padding: 0,
+                overflow: "hidden",
+                maxWidth: 260,
+                minHeight: 200,
+                margin: '0 auto',
+                boxShadow: '0 4px 24px rgba(124,58,237,0.10)',
+                transition: 'transform 0.15s, box-shadow 0.15s',
+                cursor: 'pointer',
+              }}
+              onMouseOver={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.04)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
+              }}
+              onMouseOut={e => {
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 24px rgba(124,58,237,0.10)';
+              }}
+            >
+              <Image
+                src={src}
+                alt={`property ${i}`}
+                width={260}
+                height={180}
+                style={{ width: "100%", height: 180, objectFit: 'cover', borderRadius: "10px" }}
+                loading="lazy"
+              />
             </div>
           ))}
         </div>
       </section>
 
       {/* TRUST BLOCK */}
-      <section className="card" style={{ marginTop: 80, background: "var(--glass-bg)", boxShadow: "0 8px 32px rgba(124,58,237,0.10)", border: "2px solid var(--primary)", maxWidth: 700, marginLeft: "auto", marginRight: "auto" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "1.7rem", textAlign: "center", marginBottom: 24 }}>Why Sellers Trust Us</h2>
-        <ul style={{ maxWidth: 600, margin: "0 auto", textAlign: "left", lineHeight: 1.75, fontSize: "1.13rem", fontWeight: 600 }}>
-          <li>✅ Cancel anytime before signing</li>
-          <li>✅ You pay $0 in hidden fees</li>
-          <li>✅ Closing is contingent on clean title</li>
-          <li>✅ You choose your timeline</li>
-          <li>✅ Everything is explained clearly — no pressure</li>
-        </ul>
+      <section style={{ marginTop: 80, textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
+        <div style={{
+          background: '#f9f9ff',
+          borderRadius: 24,
+          padding: '2.5rem 2rem',
+          maxWidth: 700,
+          width: '100%',
+          boxShadow: '0 8px 32px rgba(124,58,237,0.10)',
+          border: '2px solid var(--primary)',
+          margin: '0 auto',
+        }}>
+          <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24 }}>Why Sellers Trust Us</h2>
+          <ul style={{
+            maxWidth: 600,
+            margin: '0 auto',
+            textAlign: 'left',
+            lineHeight: 1.75,
+            fontSize: '1.13rem',
+            fontWeight: 600,
+            padding: 0,
+            listStyle: 'none',
+          }}>
+            {[
+              'Cancel anytime before signing',
+              'You pay $0 in hidden fees',
+              'Closing is contingent on clean title',
+              'You choose your timeline',
+              'Everything is explained clearly — no pressure',
+            ].map((item, i) => (
+              <li key={i} style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
+                <span style={{ fontSize: 22, marginRight: 12, color: 'var(--primary)' }}>✔️</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
-      {/* FAQ SECTION */}
+      {/* FAQ SECTION - interactive accordion, only one open at a time */}
       <section style={{ marginTop: 80, maxWidth: 800, marginLeft: "auto", marginRight: "auto" }}>
         <h2 style={{ fontWeight: 900, fontSize: "2.1rem", textAlign: "center", marginBottom: 18 }}>Frequently Asked Questions</h2>
         <p style={{ textAlign: "center", color: "var(--text)", opacity: 0.7, marginBottom: 32, fontSize: "1.13rem" }}>We Have The Answers</p>
@@ -344,55 +436,61 @@ export default function Home() {
             q: "Why should I work with a cash buyer?",
             a: "It’s faster, simpler, and there’s no risk of deals falling through from financing issues.",
           },
-        ].map(({ q, a }, i: number) => (
-          <details key={i} className="faq" style={{ cursor: "pointer", marginBottom: 24 }}>
-            <summary
-              style={{
-                fontWeight: 900,
-                fontSize: "1.18rem",
-                listStyle: "none",
-                outline: "none",
-                padding: "0.5rem 0",
-                color: "var(--primary)",
-                borderBottom: "1.5px solid var(--faq-border)",
-                borderRadius: "0.5rem",
-                background: "none",
-                transition: "color 0.2s, border 0.2s"
+        ].map(({ q, a }, i) => (
+          <div
+            key={i}
+            className="faq"
+            style={{
+              marginBottom: 24,
+              border: '1.5px solid var(--faq-border)',
+              borderRadius: '1.5rem',
+              background: 'var(--faq-bg)',
+              boxShadow: faqOpen === i ? '0 8px 32px rgba(124,58,237,0.13)' : '0 4px 24px rgba(31,38,135,0.07)',
+              transition: 'box-shadow 0.2s',
+            }}
+          >
+            <button
+              id={`faq-btn-${i}`}
+              aria-controls={`faq-panel-${i}`}
+              aria-expanded={faqOpen === i}
+              onClick={() => setFaqOpen(faqOpen === i ? null : i)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setFaqOpen(faqOpen === i ? null : i);
+                }
               }}
-              tabIndex={0}
-              aria-expanded="false"
+              style={{
+                width: '100%',
+                background: 'none',
+                border: 'none',
+                outline: 'none',
+                fontWeight: 900,
+                fontSize: '1.18rem',
+                color: 'var(--primary)',
+                borderBottom: '1.5px solid var(--faq-border)',
+                borderRadius: '0.5rem',
+                padding: '0.5rem 0',
+                textAlign: 'left',
+                cursor: 'pointer',
+                transition: 'color 0.2s, border 0.2s',
+              }}
             >
               {q}
-            </summary>
-            <p style={{ marginTop: 14, lineHeight: 1.6, color: "var(--text)", fontWeight: 500 }}>{a}</p>
-          </details>
+            </button>
+            {faqOpen === i && (
+              <p
+                id={`faq-panel-${i}`}
+                role="region"
+                aria-labelledby={`faq-btn-${i}`}
+                style={{ marginTop: 14, lineHeight: 1.6, color: 'var(--text)', fontWeight: 500 }}
+              >
+                {a}
+              </p>
+            )}
+          </div>
         ))}
       </section>
-      {/* Floating theme toggle for extra prevalence */}
-      <button
-        onClick={toggleTheme}
-        style={{
-          position: 'fixed',
-          bottom: 24,
-          right: 24,
-          zIndex: 2000,
-          background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '50%',
-          width: 56,
-          height: 56,
-          boxShadow: '0 2px 12px rgba(0,0,0,0.13)',
-          fontSize: 28,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-        }}
-        aria-label="Toggle dark mode"
-      >
-        {theme === 'dark' ? '🌙' : '☀️'}
-      </button>
     </main>
   );
 }

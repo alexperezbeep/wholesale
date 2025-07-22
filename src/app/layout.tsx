@@ -166,10 +166,16 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
           {/* Place at the bottom of every page */}
           <footer
             style={{
-              background: "var(--card)",
-              padding: "2rem 1rem",
+              background: "var(--glass-bg)",
+              padding: "2.5rem 1rem 1.5rem 1rem",
               marginTop: "5rem",
-              borderTop: "1px solid #e5e7eb",
+              borderTop: "2px solid var(--faq-border)",
+              borderRadius: "2rem 2rem 0 0",
+              color: "var(--text)",
+              boxShadow: "0 -4px 32px rgba(31,38,135,0.07)",
+              backdropFilter: "var(--glass-blur)",
+              WebkitBackdropFilter: "var(--glass-blur)",
+              transition: "background 0.5s, color 0.3s",
             }}
           >
             <div
@@ -180,121 +186,65 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
                 alignItems: "flex-start",
                 maxWidth: "1200px",
                 margin: "0 auto",
+                gap: "2rem",
               }}
             >
-              <div
-                style={{
-                  flex: "1",
-                  minWidth: "250px",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <img
-                  src="/logo.png"
-                  alt="Luna Haven Logo"
-                  style={{
-                    height: "56px",
-                    marginBottom: "1rem",
-                    borderRadius: "10px",
-                  }}
-                />
-                <div
-                  style={{
-                    fontWeight: 800,
-                    fontSize: "1.25rem",
-                    color: "var(--primary)",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  Luna Haven
+              <div style={{ flex: "1", minWidth: "220px", marginBottom: "1.5rem" }}>
+                <a href="/" style={{ display: "flex", alignItems: "center", gap: "0.7rem", textDecoration: "none" }}>
+                  <img
+                    src="/logo.png"
+                    alt="Luna Haven Logo"
+                    style={{ height: "48px", borderRadius: "10px", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+                  />
+                  <span style={{ fontWeight: 800, fontSize: "1.35rem", color: "var(--primary)", fontFamily: "Inter, sans-serif" }}>
+                    Luna Haven
+                  </span>
+                </a>
+                <div style={{ marginTop: "1.1rem", display: "flex", gap: "1.1rem" }}>
+                  <a href="https://facebook.com/lunahaven" aria-label="Facebook" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary)", fontSize: 22 }}>
+                    <span aria-hidden="true">&#x1F426;</span>
+                  </a>
+                  <a href="https://instagram.com/lunahaven" aria-label="Instagram" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary)", fontSize: 22 }}>
+                    <span aria-hidden="true">&#x1F33C;</span>
+                  </a>
+                  <a href="mailto:support@lunahaven.net" aria-label="Email" style={{ color: "var(--primary)", fontSize: 22 }}>
+                    <span aria-hidden="true">&#x2709;&#xFE0F;</span>
+                  </a>
                 </div>
               </div>
-              <div
-                style={{
-                  flex: "1",
-                  minWidth: "250px",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <h4
-                  style={{
-                    color: "var(--primary)",
-                    fontWeight: 600,
-                    marginBottom: "1rem",
-                    borderBottom: "2px solid var(--accent)",
-                    display: "inline-block",
-                  }}
-                >
+              <div style={{ flex: "1", minWidth: "180px", marginBottom: "1.5rem" }}>
+                <h4 style={{ color: "var(--primary)", fontWeight: 600, marginBottom: "1rem", borderBottom: "2px solid var(--accent)", display: "inline-block" }}>
                   QUICK LINKS
                 </h4>
                 <div>
-                  <a
-                    href="/privacy-policy"
-                    style={{
-                      color: "var(--primary)",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    Privacy Policy
-                  </a>
+                  <a href="/" style={{ color: "var(--primary)", textDecoration: "underline" }}>Home</a>
+                </div>
+                <div>
+                  <a href="/about-us" style={{ color: "var(--primary)", textDecoration: "underline" }}>About Us</a>
+                </div>
+                <div>
+                  <a href="/privacy-policy" style={{ color: "var(--primary)", textDecoration: "underline" }}>Privacy Policy</a>
                 </div>
               </div>
-              <div
-                style={{
-                  flex: "1",
-                  minWidth: "250px",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <h4
-                  style={{
-                    color: "var(--primary)",
-                    fontWeight: 600,
-                    marginBottom: "1rem",
-                    borderBottom: "2px solid var(--accent)",
-                    display: "inline-block",
-                  }}
-                >
+              <div style={{ flex: "1", minWidth: "220px", marginBottom: "1.5rem" }}>
+                <h4 style={{ color: "var(--primary)", fontWeight: 600, marginBottom: "1rem", borderBottom: "2px solid var(--accent)", display: "inline-block" }}>
                   CONTACT US
                 </h4>
                 <div style={{ marginBottom: "0.5rem" }}>
-                  📞{" "}
-                  <a
-                    href="tel:9152747574"
-                    style={{
-                      color: "var(--primary)",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    (915) 274-7574
+                  <a href="tel:9152747574" style={{ color: "var(--primary)", textDecoration: "underline", fontWeight: 600 }}>
+                    📞 (915) 274-7574
                   </a>
                 </div>
                 <div>
-                  📧{" "}
-                  <a
-                    href="mailto:info@homecashofferpro.com"
-                    style={{
-                      color: "var(--primary)",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    support@lunahaven.net
+                  <a href="mailto:support@lunahaven.net" style={{ color: "var(--primary)", textDecoration: "underline", fontWeight: 600 }}>
+                    📧 support@lunahaven.net
                   </a>
                 </div>
               </div>
             </div>
-            <div
-              style={{
-                textAlign: "center",
-                color: "#6b7280",
-                marginTop: "2rem",
-              }}
-            >
-              Luna Haven LLC is a legally registered homebuyer based in [Your
-              State].
-              <br />
-              &copy; {new Date().getFullYear()} Luna Haven LLC. All rights
-              reserved.
+            <div style={{ textAlign: "center", color: "#6b7280", marginTop: "2.5rem", fontSize: "1.05rem" }}>
+              Luna Haven LLC is a legally registered homebuyer based in Texas.<br />
+              &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
             </div>
           </footer>
       </body>
