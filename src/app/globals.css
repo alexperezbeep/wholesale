@@ -2,6 +2,7 @@
 
 /* NUCLEAR: Bold, Modern, Glassmorphic, and Visually Striking UI */
 
+
 :root {
   --bg: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
   --text: #18181b;
@@ -11,6 +12,7 @@
   --primary: #7c3aed;
   --primary-dark: #4c1d95;
   --accent: #f59e42;
+  --secondary: #64748b;
   --section-gradient: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
   --faq-bg: rgba(255,255,255,0.7);
   --faq-border: #e0e7ef;
@@ -29,6 +31,7 @@
   --primary: #a78bfa;
   --primary-dark: #7c3aed;
   --accent: #f472b6;
+  --secondary: #94a3b8;
   --section-gradient: linear-gradient(120deg, #23272f 0%, #18181b 100%);
   --faq-bg: rgba(35,39,47,0.7);
   --faq-border: #334155;
@@ -36,6 +39,19 @@
   --input-focus: #a78bfa33;
   --glass-bg: rgba(35,39,47,0.55);
   --glass-blur: blur(24px);
+}
+/* Max width container for all sections */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+}
+
+section {
+  margin-bottom: 4rem;
 }
 
 html, body {

@@ -1,68 +1,146 @@
 'use client';
-import React from 'react';
+import Image from 'next/image';
 
-export default function AboutPage() {
+export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-black dark:bg-zinc-900 dark:text-white font-sans" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <main className="bg-[var(--bg)] text-[var(--text)] font-inter min-h-screen">
       {/* HERO */}
-      <section className="w-full bg-[var(--card)] dark:bg-zinc-800 rounded-2xl shadow-sm mx-auto mt-12 mb-10 max-w-3xl p-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[var(--primary)]">About Luna Haven</h1>
-        <p className="text-lg font-medium text-[var(--text)] mb-6">We make selling your home simple, fast, and stress-free — even if your situation feels complex.</p>
-      </section>
-
-      {/* WHO WE ARE */}
-      <section className="max-w-5xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold mb-6">Who We Are</h2>
-        <p className="text-[var(--text)] leading-relaxed">
-          Luna Haven is a locally operated home buying service focused on helping homeowners sell quickly, without agent fees, repairs, or delays.
-          Whether you're facing foreclosure, inherited an unwanted property, or just want to sell fast — we're here to offer solutions that fit your needs.
-        </p>
-      </section>
-
-      {/* CTA BOX */}
-      <section className="max-w-5xl mx-auto px-4 pb-12">
-        <div className="bg-[var(--card)] dark:bg-zinc-800 rounded-2xl p-8 shadow text-center">
-          <h3 className="text-2xl font-bold mb-3 text-[var(--primary)]">Need to Sell a Property?</h3>
-          <p className="text-[var(--text)] mb-6">Fill out our quick form and we’ll reach out with your cash offer.</p>
-          <button className="bg-[var(--primary)] hover:bg-[var(--accent)] dark:bg-[var(--accent)] dark:hover:bg-[var(--primary)] text-white font-bold py-3 px-8 rounded-lg text-lg transition">Get an Offer</button>
+      <section>
+        <div className="container text-center py-16 md:py-24 lg:py-32">
+          <h1 className="text-[2.5rem] md:text-[3rem] lg:text-[3rem] font-extrabold mb-8 text-[var(--primary)] tracking-tight" style={{lineHeight:'1.1'}}>LUNA HAVEN</h1>
+          <p className="text-xl md:text-2xl text-[var(--secondary)] max-w-2xl mx-auto mb-8">Need to Sell Your Home Fast & Easy?</p>
+          <p className="text-lg text-[var(--text)] max-w-2xl mx-auto mb-8">Get a cash offer in just 7 days — no repairs, no fees, no stress.</p>
         </div>
       </section>
 
-      {/* CONTACT & LINKS */}
-      <footer className="bg-[var(--card)] text-[var(--text)] border-t border-[var(--primary)] py-10 mt-12">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-between gap-8">
-          <div className="min-w-[220px]">
-            <a href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Luna Haven Logo" className="h-12 rounded shadow" />
-              <span className="font-bold text-xl text-[var(--primary)]">Luna Haven</span>
-            </a>
-            <div className="mt-4 flex gap-4">
-              <a href="https://facebook.com/lunahaven" target="_blank" rel="noopener noreferrer">🐦</a>
-              <a href="https://instagram.com/lunahaven" target="_blank" rel="noopener noreferrer">🌼</a>
-              <a href="mailto:support@lunahaven.net">✉️</a>
+      {/* HOW IT WORKS */}
+      <section>
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">How It Works</h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            {[1, 2, 3].map((step) => (
+              <div
+                key={step}
+                className="bg-[var(--card)] text-[var(--text)] p-6 rounded-xl shadow hover:scale-105 transition flex flex-col h-full"
+              >
+                <Image
+                  src={`/s${step}.jpg`}
+                  alt={`Step ${step}`}
+                  width={500}
+                  height={300}
+                  className="rounded mb-4 w-full h-48 object-cover"
+                  style={{maxWidth:'100%'}}
+                />
+                <h3 className="font-semibold text-lg mb-2">Step {step}</h3>
+                <p className="flex-1">Brief description for step {step} goes here to explain process.</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section>
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">People We've Helped</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {[
+            { src: '/mark.png', name: 'Mark' },
+            { src: '/enrique.png', name: 'Enrique' },
+            { src: '/laurie.png', name: 'Laurie' },
+            { src: '/tony.png', name: 'Tony' },
+            { src: '/grace.png', name: 'Grace' },
+            { src: '/nicholas.png', name: 'Nicholas' },
+          ].map((t, i) => (
+            <div key={i} className="rounded-xl overflow-hidden shadow bg-[var(--card)] group transition-all">
+              <Image
+                src={t.src}
+                alt={`Testimonial from ${t.name}`}
+                width={300}
+                height={300}
+                className="object-cover w-full h-64 group-hover:scale-105 group-hover:ring-2 group-hover:ring-[var(--primary)] transition-all"
+                style={{maxWidth:'100%'}}
+              />
             </div>
-          </div>
-          <div>
-            <h4 className="text-[var(--primary)] font-semibold mb-2">Quick Links</h4>
-            <ul className="space-y-1 text-sm">
-              <li><a href="/" className="hover:underline">Home</a></li>
-              <li><a href="/about-us" className="hover:underline">About Us</a></li>
-              <li><a href="/privacy-policy" className="hover:underline">Privacy Policy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[var(--primary)] font-semibold mb-2">Contact</h4>
-            <ul className="space-y-1 text-sm">
-              <li><a href="tel:9152747574" className="hover:underline">📞 (915) 274-7574</a></li>
-              <li><a href="mailto:support@lunahaven.net" className="hover:underline">📧 support@lunahaven.net</a></li>
-            </ul>
+          ))}
           </div>
         </div>
-        <div className="text-center text-xs text-gray-500 dark:text-gray-400 mt-10">
-          Luna Haven LLC is a legally registered homebuyer based in Texas.<br />
-          &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
+      </section>
+
+      {/* PROPERTY PHOTOS */}
+      <section>
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">We’ve Helped with Real Properties Like These</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {[
+            { src: '/brent.jpg', label: 'Brent property' },
+            { src: '/darryl.png', label: 'Darryl property' },
+            { src: '/109.png', label: '109 property' },
+            { src: '/516-518.jpg', label: '516-518 property' },
+            { src: '/zv.png', label: 'ZV property' },
+            { src: '/zw.png', label: 'ZW property' },
+            { src: '/zx.png', label: 'ZX property' },
+            { src: '/zy.png', label: 'ZY property' },
+            { src: '/zz.jpg', label: 'ZZ property' },
+          ].map((img, i) => (
+            <div key={i} className="rounded-xl overflow-hidden shadow bg-[var(--card)] group transition-all">
+              <Image
+                src={img.src}
+                alt={img.label}
+                width={400}
+                height={300}
+                className="object-cover w-full h-64 group-hover:scale-105 group-hover:ring-2 group-hover:ring-[var(--primary)] transition-all"
+                style={{maxWidth:'100%'}}
+              />
+            </div>
+          ))}
+          </div>
         </div>
-      </footer>
+      </section>
+
+      {/* TRUST BLOCK */}
+      <section>
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Why Sellers Trust Us</h2>
+          <ul className="max-w-2xl mx-auto space-y-4 text-left">
+            {[
+              '✔️ Transparent process with no hidden fees.',
+              '✔️ We’re a registered LLC operating since 2023.',
+              '✔️ Flexible closing timelines to match your needs.',
+              '✔️ Preview the contract before you sign.',
+            ].map((item, i) => (
+              <li key={i} className="bg-[var(--card)] p-4 rounded-md shadow">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section>
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">We Have The Answers</h2>
+          <div className="space-y-4">
+            {[
+              'What do you do with my information?',
+              'Do I need to clean or fix anything?',
+              'But my house is in REALLY bad shape…',
+              'Can I leave anything behind?',
+              'Do I pay any fees or commissions?',
+              'What happens when I call you?',
+              'Why should I work with a cash buyer?',
+            ].map((q, i) => (
+              <details key={i} className="mb-4 rounded border border-[var(--accent)] p-4 bg-[var(--card)]">
+                <summary className="cursor-pointer font-semibold">{q}</summary>
+                <p className="mt-2 text-sm text-[var(--secondary)]">
+                  We’ll explain this clearly when we talk — but rest assured, we’ve handled it all before.
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
