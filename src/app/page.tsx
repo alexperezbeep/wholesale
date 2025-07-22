@@ -51,7 +51,36 @@ export default function Home() {
 
   // Modern Option Button
   const Button = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
-    <button {...props} className="btn-option" style={{ fontSize: "1.12rem", marginBottom: 18 }}>
+    <button
+      {...props}
+      className="btn-option"
+      style={{
+        fontSize: '1.13rem',
+        marginBottom: 18,
+        padding: '12px 24px',
+        fontWeight: 600,
+        borderRadius: 8,
+        boxShadow: '0 2px 10px rgba(124,58,237,0.10)',
+        background: theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)',
+        color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+        border: '1.5px solid var(--faq-border)',
+        width: '100%',
+        textAlign: 'left',
+        transition: 'background 0.2s, color 0.2s, border 0.2s',
+        outline: 'none',
+        cursor: 'pointer',
+      }}
+      onMouseOver={e => {
+        e.currentTarget.style.background = theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)';
+        e.currentTarget.style.color = '#fff';
+        e.currentTarget.style.borderColor = 'var(--primary)';
+      }}
+      onMouseOut={e => {
+        e.currentTarget.style.background = theme === 'dark' ? 'rgba(35,35,54,0.92)' : 'var(--glass-bg)';
+        e.currentTarget.style.color = theme === 'dark' ? '#f3f4f6' : 'var(--text)';
+        e.currentTarget.style.borderColor = 'var(--faq-border)';
+      }}
+    >
       {props.children}
     </button>
   );
@@ -67,10 +96,10 @@ export default function Home() {
     >
       {/* HERO - single, merged, above the fold, with CTA */}
       <section className="hero" style={{ marginTop: 0, marginBottom: 40, paddingTop: 48, paddingBottom: 40 }}>
-        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center", fontFamily: "Inter, system-ui, sans-serif" }}>
+        <h1 style={{ fontWeight: 900, fontSize: "2.8rem", marginBottom: 12, letterSpacing: "-0.02em", textAlign: "center", fontFamily: "Inter, system-ui, sans-serif", color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>
           Need to Sell Your Home <span style={{ color: "var(--primary)" }}>Fast</span> &amp; <span style={{ color: "var(--accent)" }}>Easy</span>?
         </h1>
-        <p style={{ color: "var(--text)", fontSize: "1.25rem", opacity: 0.85, marginBottom: 8, textAlign: "center", fontWeight: 500 }}>
+        <p style={{ color: theme === 'dark' ? '#e5e7eb' : 'var(--text)' , fontSize: "1.25rem", opacity: 0.92, marginBottom: 8, textAlign: "center", fontWeight: 500, fontFamily: 'Inter, system-ui, sans-serif' }}>
           Get a <b>cash offer in just 7 days</b> — no repairs, no fees, no stress. Trusted by 10+ homeowners since June 2023.
         </p>
         {step === 0 && (
@@ -80,13 +109,26 @@ export default function Home() {
               className="btn-primary"
               style={{
                 marginTop: 18,
-                fontSize: '1.25rem',
-                minWidth: 260,
-                borderRadius: 12,
-                border: '2.5px solid var(--primary-dark)',
-                fontWeight: 900,
-                boxShadow: '0 8px 32px rgba(124,58,237,0.13)',
-                transition: 'box-shadow 0.2s, transform 0.1s',
+                fontSize: '1.13rem',
+                padding: '12px 24px',
+                minWidth: 220,
+                borderRadius: 8,
+                fontWeight: 600,
+                boxShadow: '0 4px 16px rgba(124,58,237,0.13)',
+                border: 'none',
+                background: theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)',
+                color: '#fff',
+                transition: 'background 0.2s, box-shadow 0.2s, transform 0.1s',
+                outline: 'none',
+                cursor: 'pointer',
+              }}
+              onMouseOver={e => {
+                e.currentTarget.style.background = 'var(--primary-dark)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.background = theme === 'dark' ? 'var(--primary-dark)' : 'var(--primary)';
+                e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.13)';
               }}
             >
               Get My Cash Offer
@@ -200,8 +242,8 @@ export default function Home() {
 
       {/* HOW IT WORKS */}
       <section style={{ marginTop: 64, textAlign: "center" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: 18, fontFamily: "Inter, system-ui, sans-serif" }}>How It Works</h2>
-        <p style={{ color: "var(--text)", opacity: 0.7, marginBottom: 32, fontSize: "1.15rem" }}>Our Simple 3 Step Process</p>
+        <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: 18, fontFamily: "Inter, system-ui, sans-serif", color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>How It Works</h2>
+        <p style={{ color: theme === 'dark' ? '#e5e7eb' : 'var(--text)', opacity: 0.8, marginBottom: 32, fontSize: "1.15rem", fontFamily: 'Inter, system-ui, sans-serif' }}>Our Simple 3 Step Process</p>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -231,6 +273,7 @@ export default function Home() {
               style={{
                 width: 320,
                 minHeight: 360,
+                height: 380,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -243,14 +286,15 @@ export default function Home() {
                 background: theme === 'dark' ? '#232336' : 'var(--card)',
                 color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
                 fontFamily: 'Inter, system-ui, sans-serif',
+                borderRadius: 12,
               }}
               onMouseOver={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.045)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.02)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
               }}
               onMouseOut={e => {
                 (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 24px rgba(124,58,237,0.10)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
               }}
             >
               <Image
@@ -270,7 +314,7 @@ export default function Home() {
 
       {/* TESTIMONIALS */}
       <section style={{ marginTop: 80, textAlign: "center" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32, fontFamily: 'Inter, system-ui, sans-serif' }}>People We’ve Served — And Why It Matters</h2>
+        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32, fontFamily: 'Inter, system-ui, sans-serif', color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>People We’ve Served — And Why It Matters</h2>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
@@ -293,16 +337,18 @@ export default function Home() {
                 maxWidth: 260,
                 minWidth: 220,
                 minHeight: 280,
+                height: 320,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'flex-start',
+                justifyContent: 'flex-end',
                 background: theme === 'dark' ? '#232336' : '#fff',
                 boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
                 margin: '0 auto',
                 wordBreak: 'break-word',
                 color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
                 fontFamily: 'Inter, system-ui, sans-serif',
+                borderRadius: 12,
               }}
             >
               <Image
@@ -322,6 +368,8 @@ export default function Home() {
                 fontSize: '1.08rem',
                 whiteSpace: 'pre-line',
                 overflowWrap: 'break-word',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
                 lineHeight: 1.3,
                 padding: '0 0.5rem',
                 fontFamily: 'Inter, system-ui, sans-serif',
@@ -333,7 +381,7 @@ export default function Home() {
 
       {/* PROPERTY PHOTOS */}
       <section style={{ marginTop: 64, textAlign: "center" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32, fontFamily: 'Inter, system-ui, sans-serif' }}>We’ve Helped with Real Properties Like These</h2>
+        <h2 style={{ fontWeight: 900, fontSize: "2rem", marginBottom: 32, fontFamily: 'Inter, system-ui, sans-serif', color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>We’ve Helped with Real Properties Like These</h2>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
@@ -360,22 +408,23 @@ export default function Home() {
                 maxWidth: 260,
                 minWidth: 220,
                 minHeight: 200,
+                height: 200,
                 margin: '0 auto',
                 boxShadow: theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)',
                 transition: 'transform 0.16s, box-shadow 0.16s',
                 cursor: 'pointer',
-                borderRadius: '1.2rem',
+                borderRadius: 10,
                 background: theme === 'dark' ? '#232336' : '#fff',
                 color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
                 fontFamily: 'Inter, system-ui, sans-serif',
               }}
               onMouseOver={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.045)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(124,58,237,0.18)';
+                (e.currentTarget as HTMLDivElement).style.transform = 'scale(1.02)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
               }}
               onMouseOut={e => {
                 (e.currentTarget as HTMLDivElement).style.transform = 'scale(1)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 24px rgba(124,58,237,0.10)';
+                (e.currentTarget as HTMLDivElement).style.boxShadow = theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 4px 24px rgba(124,58,237,0.10)';
               }}
             >
               <Image
@@ -410,7 +459,7 @@ export default function Home() {
           color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
           fontFamily: 'Inter, system-ui, sans-serif',
         }}>
-          <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24, fontFamily: 'Inter, system-ui, sans-serif' }}>Why Sellers Trust Us</h2>
+          <h2 style={{ fontWeight: 900, fontSize: '1.7rem', textAlign: 'center', marginBottom: 24, fontFamily: 'Inter, system-ui, sans-serif', color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>Why Sellers Trust Us</h2>
           <ul style={{
             maxWidth: 600,
             margin: '0 auto',
@@ -432,9 +481,23 @@ export default function Home() {
               'You choose your timeline',
               'Everything is explained clearly — no pressure',
             ].map((item, i) => (
-              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'rgba(124,58,237,0.04)', borderRadius: 12, padding: '0.85rem 1.1rem', margin: 0 }}>
+              <li
+                key={i}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 14,
+                  background: theme === 'dark' ? 'rgba(124,58,237,0.10)' : 'rgba(124,58,237,0.04)',
+                  borderRadius: 12,
+                  padding: '0.85rem 1.1rem',
+                  margin: 0,
+                  fontSize: '1.09rem',
+                  color: theme === 'dark' ? '#f3f4f6' : 'var(--text)',
+                  fontWeight: 600,
+                }}
+              >
                 <span style={{ fontSize: 22, color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 28 }}>✔️</span>
-                <span style={{ fontWeight: 600, fontSize: '1.09rem', color: 'var(--text)', lineHeight: 1.5 }}>{item}</span>
+                <span style={{ fontWeight: 600, fontSize: '1.09rem', color: theme === 'dark' ? '#f3f4f6' : 'var(--text)', lineHeight: 1.5 }}>{item}</span>
               </li>
             ))}
           </ul>
@@ -443,8 +506,8 @@ export default function Home() {
 
       {/* FAQ SECTION - interactive accordion, only one open at a time */}
       <section style={{ marginTop: 80, maxWidth: 800, marginLeft: "auto", marginRight: "auto" }}>
-        <h2 style={{ fontWeight: 900, fontSize: "2.1rem", textAlign: "center", marginBottom: 18, fontFamily: 'Inter, system-ui, sans-serif' }}>Frequently Asked Questions</h2>
-        <p style={{ textAlign: "center", color: "var(--text)", opacity: 0.7, marginBottom: 32, fontSize: "1.13rem" }}>We Have The Answers</p>
+        <h2 style={{ fontWeight: 900, fontSize: "2.1rem", textAlign: "center", marginBottom: 18, fontFamily: 'Inter, system-ui, sans-serif', color: theme === 'dark' ? '#fff' : 'var(--primary-dark)' }}>Frequently Asked Questions</h2>
+        <p style={{ textAlign: "center", color: theme === 'dark' ? '#e5e7eb' : 'var(--text)', opacity: 0.8, marginBottom: 32, fontSize: "1.13rem", fontFamily: 'Inter, system-ui, sans-serif' }}>We Have The Answers</p>
         {[
           {
             q: "What do you do with my information?",
@@ -479,12 +542,13 @@ export default function Home() {
             key={i}
             className="faq"
             style={{
-              marginBottom: 24,
-              border: '1.5px solid var(--faq-border)',
+              marginBottom: 28,
+              border: theme === 'dark' ? '2px solid #7c3aed' : '1.5px solid var(--faq-border)',
               borderRadius: '1.5rem',
-              background: 'var(--faq-bg)',
-              boxShadow: faqOpen === i ? '0 8px 32px rgba(124,58,237,0.13)' : '0 4px 24px rgba(31,38,135,0.07)',
-              transition: 'box-shadow 0.2s',
+              background: theme === 'dark' ? 'linear-gradient(120deg, #232336 60%, #18181b 100%)' : 'var(--faq-bg)',
+              boxShadow: faqOpen === i ? (theme === 'dark' ? '0 8px 32px rgba(124,58,237,0.18)' : '0 8px 32px rgba(124,58,237,0.13)') : (theme === 'dark' ? '0 4px 24px rgba(31,38,135,0.10)' : '0 4px 24px rgba(31,38,135,0.07)'),
+              transition: 'box-shadow 0.25s, border 0.18s, background 0.18s',
+              overflow: 'hidden',
             }}
           >
             <button
@@ -514,17 +578,17 @@ export default function Home() {
                 border: 'none',
                 outline: 'none',
                 fontWeight: 900,
-                fontSize: '1.18rem',
-                color: 'var(--primary)',
-                borderBottom: '1.5px solid var(--faq-border)',
-                borderRadius: '0.5rem',
-                padding: '0.5rem 0',
+                fontSize: '1.22rem',
+                color: faqOpen === i ? (theme === 'dark' ? '#fff' : 'var(--primary)') : (theme === 'dark' ? '#c7bfff' : 'var(--primary)'),
+                borderBottom: faqOpen === i ? '2px solid var(--primary)' : '1.5px solid var(--faq-border)',
+                borderRadius: '0.7rem',
+                padding: '1.1rem 1.2rem',
                 textAlign: 'left',
                 cursor: 'pointer',
-                transition: 'color 0.2s, border 0.2s',
+                transition: 'color 0.2s, border 0.2s, background 0.18s',
                 boxShadow: faqOpen === i ? '0 0 0 2.5px var(--primary)' : 'none',
-                // outline removed (duplicate)
                 outlineOffset: 0,
+                letterSpacing: '-0.01em',
               }}
               tabIndex={0}
               onFocus={e => {
@@ -544,17 +608,18 @@ export default function Home() {
                 maxHeight: faqOpen === i ? 400 : 0,
                 overflow: 'hidden',
                 opacity: faqOpen === i ? 1 : 0,
-                marginTop: faqOpen === i ? 14 : 0,
-                transition: 'max-height 0.35s cubic-bezier(.4,0,.2,1), opacity 0.25s, margin-top 0.25s',
-                lineHeight: 1.6,
-                color: 'var(--text)',
+                marginTop: faqOpen === i ? 10 : 0,
+                transition: 'max-height 0.38s cubic-bezier(.4,0,.2,1), opacity 0.25s, margin-top 0.22s',
+                lineHeight: 1.7,
+                color: theme === 'dark' ? '#e5e7eb' : 'var(--text)',
                 fontWeight: 500,
-                fontSize: '1.08rem',
-                padding: faqOpen === i ? '0.7rem 0 0.7rem 0' : '0 0',
-                background: 'none',
+                fontSize: '1.13rem',
+                padding: faqOpen === i ? '0.9rem 1.2rem 1.1rem 1.2rem' : '0 1.2rem',
+                background: theme === 'dark' ? 'rgba(124,58,237,0.08)' : 'rgba(124,58,237,0.04)',
                 border: 'none',
                 boxSizing: 'border-box',
                 willChange: 'max-height, opacity, margin-top',
+                borderRadius: '0 0 1.2rem 1.2rem',
               }}
               aria-hidden={faqOpen !== i}
             >
