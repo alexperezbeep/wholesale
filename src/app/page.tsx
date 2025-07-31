@@ -77,10 +77,10 @@ export default function Home() {
               className="btn-primary"
               onClick={() => setStep(1)}
               style={{
-                fontWeight: 800,
-                fontSize: '1.02rem',
-                padding: '0.8rem 1.5rem',
-                borderRadius: '1.1rem',
+                fontWeight: 900,
+                fontSize: '1.28rem',
+                padding: '1.2rem 2.7rem',
+                borderRadius: '1.3rem',
                 background: theme === 'dark'
                   ? 'linear-gradient(90deg, #7c3aed, #a78bfa)'
                   : 'linear-gradient(90deg, var(--primary), var(--accent))',
@@ -93,7 +93,7 @@ export default function Home() {
                 display: 'block',
                 alignSelf: 'center',
                 transition: 'margin 0.28s',
-                maxWidth: 220,
+                maxWidth: 340,
               }}
             >
               Get My Offer
@@ -103,7 +103,7 @@ export default function Home() {
           {step > 0 && (
             <section id="form" style={{
               margin: "0 auto",
-              maxWidth: 420,
+              maxWidth: 480,
               padding: '1rem 1rem 0.5rem 1rem',
               marginTop: 0,
               boxSizing: 'border-box',
@@ -118,12 +118,38 @@ export default function Home() {
                 padding: '2rem 1.5rem',
               }}>
                 <form style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-                  <label htmlFor="address" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Property Address</label>
-                  <input id="address" type="text" placeholder="123 Main St, City, State" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }} />
+                  <label htmlFor="name" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Full Name</label>
+                  <input id="name" type="text" placeholder="Your Name" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }} />
                   <label htmlFor="email" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Email</label>
                   <input id="email" type="email" placeholder="you@example.com" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }} />
                   <label htmlFor="phone" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Phone</label>
                   <input id="phone" type="tel" placeholder="(555) 555-5555" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }} />
+                  <label htmlFor="address" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Property Address</label>
+                  <input id="address" type="text" placeholder="123 Main St, City, State" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }} />
+                  <label htmlFor="propertyType" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Property Type</label>
+                  <select id="propertyType" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }}>
+                    <option value="">Select type</option>
+                    <option value="single-family">Single Family</option>
+                    <option value="multi-family">Multi Family</option>
+                    <option value="condo">Condo</option>
+                    <option value="townhouse">Townhouse</option>
+                    <option value="mobile-home">Mobile Home</option>
+                    <option value="land">Land</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <label htmlFor="reason" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Reason for Selling</label>
+                  <input id="reason" type="text" placeholder="Why are you selling?" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }} />
+                  <label htmlFor="timeline" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Timeline to Sell</label>
+                  <select id="timeline" style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16 }}>
+                    <option value="">Select timeline</option>
+                    <option value="asap">ASAP</option>
+                    <option value="30days">Within 30 days</option>
+                    <option value="60days">Within 60 days</option>
+                    <option value="90days">Within 90 days</option>
+                    <option value="flexible">Flexible</option>
+                  </select>
+                  <label htmlFor="comments" style={{ fontWeight: 700, marginBottom: 8, color: theme === 'dark' ? '#fff' : '#232336', fontSize: '1.09rem' }}>Additional Comments</label>
+                  <textarea id="comments" placeholder="Anything else we should know?" rows={3} style={{ padding: '1.1rem 1.5rem', borderRadius: '1.2rem', border: '1.5px solid var(--input-border)', fontSize: '1.09rem', background: theme === 'dark' ? '#232336' : '#fff', color: theme === 'dark' ? '#fff' : '#232336', marginBottom: 16, resize: 'vertical' }} />
                   <button type="submit" style={{
                     fontWeight: 700,
                     fontSize: '1.13rem',

@@ -26,6 +26,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }
           @media (max-width: 600px) {
             h1, h2, h3 { font-size: 80% !important; }
+            footer.lh-footer { display: none !important; }
+            footer.lh-footer-mobile { display: block !important; }
+          }
+          @media (min-width: 601px) {
+            footer.lh-footer { display: block !important; }
+            footer.lh-footer-mobile { display: none !important; }
           }
         `}</style>
       </head>
@@ -91,7 +97,9 @@ function AppContent({ children }: { children: React.ReactNode }) {
         <ThemeToggle />
       </header>
       {children}
+      {/* Desktop Footer */}
       <footer
+        className="lh-footer"
         style={{
           background: "var(--glass-bg)",
           padding: "3.5rem 1.5rem 2.2rem 1.5rem",
@@ -110,32 +118,21 @@ function AppContent({ children }: { children: React.ReactNode }) {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "flex-start",
             maxWidth: "1200px",
             margin: "0 auto",
-            gap: "2.5rem",
+            gap: "1.2rem",
           }}
         >
           <div style={{ flex: "1", minWidth: "220px", marginBottom: "2rem" }}>
             <img
               src="/logosite.png"
               alt="Luna Haven Logo"
-              width={100}
-              height={100}
-              style={{ display: "block", maxWidth: "100%", borderRadius: 20, background: "var(--logo-bg, transparent)" }}
+              width={220}
+              height={220}
+              style={{ display: "block", maxWidth: 220, borderRadius: 20, background: "var(--logo-bg, transparent)", margin: '0 auto' }}
             />
-            <div style={{ marginTop: "1.3rem", display: "flex", gap: "1.3rem", alignItems: "center" }}>
-              <a href="https://facebook.com/lunahaven" aria-label="Facebook" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary)", fontSize: 24, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 700 }}>
-                <span aria-hidden="true">&#x1F426;</span>
-              </a>
-              <a href="https://instagram.com/lunahaven" aria-label="Instagram" target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary)", fontSize: 24, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 700 }}>
-                <span aria-hidden="true">&#x1F33C;</span>
-              </a>
-              <a href="mailto:support@lunahaven.net" aria-label="Email" style={{ color: "var(--primary)", fontSize: 24, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 700 }}>
-                <span aria-hidden="true">&#x2709;&#xFE0F;</span>
-              </a>
-            </div>
           </div>
           <div style={{ flex: "1", minWidth: "180px", marginBottom: "1.5rem" }}>
             <h4 style={{ color: "var(--primary)", fontWeight: 600, marginBottom: "1rem", borderBottom: "2px solid var(--accent)", display: "inline-block", fontFamily: 'Inter, system-ui, sans-serif', fontSize: '1.08rem' }}>
@@ -167,6 +164,65 @@ function AppContent({ children }: { children: React.ReactNode }) {
         <div style={{ width: "100%", margin: "2.5rem auto 0 auto", borderTop: "1.5px solid var(--faq-border)", paddingTop: "1.2rem" }}>
           <div style={{ textAlign: "center", color: '#6b7280', fontSize: "1.09rem", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, letterSpacing: "0.01em" }}>
             Luna Haven LLC is a legally registered homebuyer based in Texas.<br />
+            &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
+          </div>
+        </div>
+      </footer>
+      {/* Mobile Footer */}
+      <footer
+        className="lh-footer-mobile"
+        style={{
+          background: "var(--glass-bg)",
+          padding: "2.2rem 0.5rem 1.5rem 0.5rem",
+          marginTop: "0",
+          borderTop: "2.5px solid var(--faq-border)",
+          borderRadius: "2.2rem 2.2rem 0 0",
+          color: "var(--text)",
+          fontFamily: 'Inter, system-ui, sans-serif',
+          boxShadow: "0 -6px 36px rgba(31,38,135,0.09)",
+          backdropFilter: "var(--glass-blur)",
+          WebkitBackdropFilter: "var(--glass-blur)",
+          transition: "background 0.5s, color 0.3s",
+          display: 'block',
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', gap: '1.2rem', width: '100%', maxWidth: 400, margin: '0 auto' }}>
+          {/* Quick Links */}
+          <div style={{ minWidth: 0, flex: 1, textAlign: 'center' }}>
+            <h4 style={{ color: "var(--primary)", fontWeight: 700, marginBottom: "0.7rem", fontFamily: 'Inter, system-ui, sans-serif', fontSize: '1.01rem', letterSpacing: 0 }}>QUICK LINKS</h4>
+            <div>
+              <a href="/" style={{ color: "var(--primary)", textDecoration: "underline", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 600, fontSize: '0.98rem' }}>Home</a>
+            </div>
+            <div>
+              <a href="/privacy-policy" style={{ color: "var(--primary)", textDecoration: "underline", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 600, fontSize: '0.98rem' }}>Privacy Policy</a>
+            </div>
+          </div>
+          {/* Contact Us */}
+          <div style={{ minWidth: 0, flex: 1, textAlign: 'center' }}>
+            <h4 style={{ color: "var(--primary)", fontWeight: 700, marginBottom: "0.7rem", fontFamily: 'Inter, system-ui, sans-serif', fontSize: '1.01rem', letterSpacing: 0 }}>CONTACT US</h4>
+            <div style={{ marginBottom: "0.5rem" }}>
+              <a href="tel:9152747574" style={{ color: "var(--primary)", textDecoration: "underline", fontWeight: 600, fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.98rem' }}>
+                📞 (915) 274-7574
+              </a>
+            </div>
+            <div>
+              <a href="mailto:support@lunahaven.net" style={{ color: "var(--primary)", textDecoration: "underline", fontWeight: 600, fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.98rem' }}>
+                📧 support@lunahaven.net
+              </a>
+            </div>
+          </div>
+        </div>
+        <div style={{ width: '100%', margin: '1.5rem auto 0 auto', display: 'flex', justifyContent: 'center' }}>
+          <img
+            src="/logosite.png"
+            alt="Luna Haven Logo"
+            width={90}
+            height={90}
+            style={{ display: "block", maxWidth: 90, borderRadius: 16, background: "var(--logo-bg, transparent)", margin: '0 auto' }}
+          />
+        </div>
+        <div style={{ width: "100%", margin: "1.2rem auto 0 auto", borderTop: "1.5px solid var(--faq-border)", paddingTop: "0.7rem" }}>
+          <div style={{ textAlign: "center", color: '#6b7280', fontSize: "0.97rem", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, letterSpacing: "0.01em" }}>
             &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
           </div>
         </div>

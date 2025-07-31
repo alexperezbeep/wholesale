@@ -233,6 +233,9 @@ const HomeMobile = () => {
       {/* TENANT REVIEWS CAROUSEL */}
       <section className="testimonial-section" style={{ marginTop: 32, textAlign: "center", padding: "2rem 0 1.2rem 0" }}>
         <h2 style={{ fontWeight: 900, fontSize: "1.3rem", marginBottom: 12, color: theme === "dark" ? "#fff" : "#5b21b6" }}>Happy Tenants, Trusted Sellers</h2>
+        <p style={{ color: theme === 'dark' ? '#e5e7eb' : '#232336', fontSize: '0.98rem', marginBottom: 18, maxWidth: 420, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.5 }}>
+          The trust our homeowners place in us is reflected in the happiness of our tenants. Here’s what real renters say about our service, reliability, and care—proof that when you sell your home to us, you’re working with a team that values people and property.
+        </p>
       <Carousel itemsPerView={1}>
           {[{ name: "Laurie S.", img: "/laurie.png" }, { name: "Tony Z.", img: "/tony.png" }, { name: "Mark L.", img: "/mark.png" }, { name: "Grace T.", img: "/grace.png" }, { name: "Enrique G.", img: "/enrique.png" }, { name: "Nicholas P.", img: "/nicholas.png" }].map((t, i) => (
             <div key={i} className="testimonial-card" style={{ maxWidth: 220, margin: "0 auto" }}>
@@ -281,7 +284,7 @@ const HomeMobile = () => {
           ))}
         </div>
       </section>
-      {/* ...existing code for footer... */}
+      {/* Footer removed as requested */}
     </main>
   );
 };
