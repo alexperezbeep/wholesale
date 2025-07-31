@@ -163,7 +163,11 @@ function AppContent({ children }: { children: React.ReactNode }) {
         </div>
         <div style={{ width: "100%", margin: "2.5rem auto 0 auto", borderTop: "1.5px solid var(--faq-border)", paddingTop: "1.2rem" }}>
           <div style={{ textAlign: "center", color: '#6b7280', fontSize: "1.09rem", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, letterSpacing: "0.01em" }}>
-            Luna Haven LLC is a legally registered homebuyer based in Texas.<br />
+            Luna Haven LLC is a legally registered homebuyer based in Virginia.
+          </div>
+        </div>
+        <div style={{ width: "100%", margin: "0 auto", paddingTop: "0.7rem" }}>
+          <div style={{ textAlign: "center", color: '#6b7280', fontSize: "1.09rem", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, letterSpacing: "0.01em" }}>
             &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
           </div>
         </div>
@@ -222,6 +226,11 @@ function AppContent({ children }: { children: React.ReactNode }) {
           />
         </div>
         <div style={{ width: "100%", margin: "1.2rem auto 0 auto", borderTop: "1.5px solid var(--faq-border)", paddingTop: "0.7rem" }}>
+          <div style={{ textAlign: "center", color: '#6b7280', fontSize: "0.97rem", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, letterSpacing: "0.01em" }}>
+            Luna Haven LLC is a legally registered homebuyer based in Virginia.
+          </div>
+        </div>
+        <div style={{ width: "100%", margin: "0 auto", paddingTop: "0.7rem" }}>
           <div style={{ textAlign: "center", color: '#6b7280', fontSize: "0.97rem", fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, letterSpacing: "0.01em" }}>
             &copy; {new Date().getFullYear()} Luna Haven LLC. All rights reserved.
           </div>

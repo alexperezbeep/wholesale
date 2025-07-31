@@ -274,12 +274,6 @@ export default function Home() {
               ))}
             </div>
           </section>
-          {/* Footer */}
-          <footer style={{ textAlign: 'center', marginTop: 0, padding: '1.2rem 1.5rem 1.2rem 1.5rem', color: theme === 'dark' ? '#c7bfff' : '#232336', fontSize: '1.09rem', background: 'transparent', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.7rem', transition: 'padding 0.38s' }}>
-            <div style={{ fontSize: '0.98rem', opacity: 0.7, marginTop: 6 }}>
-              &copy; {new Date().getFullYear()} Luna Haven. All rights reserved.
-            </div>
-          </footer>
         </main>
       )}
     </>
